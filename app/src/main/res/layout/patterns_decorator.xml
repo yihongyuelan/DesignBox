@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hero_title"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textSize="20dip"/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/role"
+            android:textStyle="bold"/>
+
+    <RadioGroup
+            android:id="@+id/radio_group_role"
+            android:checkedButton="@+id/radio_btn_worrior"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <RadioButton
+                android:id="@+id/radio_btn_worrior"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/worrior"/>
+
+        <RadioButton
+                android:id="@+id/radio_btn_mage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/mage"/>
+
+        <RadioButton
+                android:id="@+id/radio_btn_hunter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hunter"/>
+
+        <RadioButton
+                android:id="@+id/radio_btn_warlock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/warlock"/>
+    </RadioGroup>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/gender"
+            android:textStyle="bold"/>
+
+    <RadioGroup
+            android:id="@+id/radio_group_gender"
+            android:checkedButton="@+id/radio_btn_male"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <RadioButton
+                android:id="@+id/radio_btn_male"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/male"/>
+
+        <RadioButton
+                android:id="@+id/radio_btn_female"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/female"/>
+
+    </RadioGroup>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/weapon"
+            android:textStyle="bold"/>
+
+    <RadioGroup
+            android:id="@+id/radio_group_weapon"
+            android:checkedButton="@+id/radio_btn_sword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <RadioButton
+                android:id="@+id/radio_btn_sword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sword"/>
+
+        <RadioButton
+                android:id="@+id/radio_btn_sledge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sledge"/>
+
+        <RadioButton
+                android:id="@+id/radio_btn_wand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/wand"/>
+
+        <RadioButton
+                android:id="@+id/radio_btn_bowarrow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/bowarrow"/>
+    </RadioGroup>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_generate"
+            android:id="@+id/button_generate"
+            android:textStyle="bold"
+            android:textSize="20dip"/>
+
+    <TextView
+            android:id="@+id/hero_details_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hero_details"/>
+
+</LinearLayout>

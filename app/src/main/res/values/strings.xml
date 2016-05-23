@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">DemoBox</string>
+    <string name="no_demos">No demos</string>
+    <string name="test_title1">TestActivity1</string>
+    <string name="test_description1">This is TestActivity1</string>
+    <string name="design_pattern_title">DesignPatterns</string>
+    <string name="design_pattern_description">Head First design patterns</string>
+    <!-- Decorator Pattern strings @Start -->
+    <string name="role">Role:</string>
+    <string name="worrior">Worrior</string>
+    <string name="mage">Mage</string>
+    <string name="hunter">Hunter</string>
+    <string name="warlock">WarLock</string>
+    <string name="gender">Gender:</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="weapon">Weapon:</string>
+    <string name="sword">Sword</string>
+    <string name="sledge">Sledge</string>
+    <string name="wand">Wand</string>
+    <string name="bowarrow">BowArrow</string>
+    <string name="button_generate">Generate</string>
+    <string name="hero_details">Hero details</string>
+    <string name="hero_title">Please create your Hero!!!</string>
+    <!-- weather info -->
+    <string name="cityLabel">City</string>
+</resources>

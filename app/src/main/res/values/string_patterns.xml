@@ -1,0 +1,11 @@
+<resources>
+    <!-- Observer -->
+    <string name="observer_pattern_title">ObserverPattern</string>
+    <string name="observer_pattern_description">Publisher and Subscriber</string>
+    <!-- Decorator -->
+    <string name="decorator_pattern_title">DecoratorPattern</string>
+    <string name="decorator_pattern_description">Decorator or Wrapper</string>
+    <!-- Factory -->
+    <string name="factory_pattern_title">FactoryPattern</string>
+    <string name="factory_pattern_description">SimpleFactory/FactoryMethod/AbstractFactory</string>
+</resources>
