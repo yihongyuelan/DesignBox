@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Android CodePad</title>
+		<title>Simple Factory</title>
 		<style type="text/css">
 			h1 { text-align:center; text-shadow: #BBB 1px 1px 1px; color: black !important; font-family:  "Gill Sans", "Lucida Grande", Helvetica, sans-serif;  }
 			body { font-family:Arial, Helvetica, sans-serif; font-size:12px; background: -webkit-gradient(linear,left top,left bottom,color-stop(0.04, rgb(240,240,240)), color-stop(0.52, rgb(255,255,255)))}
@@ -18,102 +18,90 @@
 	<body onload="prettyPrint()">
 		<div id="content_div">
 			
-			<h1>Android CodePad测试中文</h1>
-			<span>
-				<span class="important_text">Welcome to Android CodePad.</span><br />
+			<h1>Simple Factory</h1>
+				<span class="important_text">Classification and Encapsulation</span><br />
 				<span class="regular_text">
-					Android CodePad is a simple source code viewer that supports syntax highlighting.
-					it supports all C-like, Bash-like, and XML-like languages. it automatically selects the syntax depending on the file.
+					In the code, if you need to return different objects depending on the type,
+					or different operations, you can use a simple factory pattern. Extract the
+					relevant code and encapsulated into a method, depending on the type of return
+					or be treated differently.
 					<br /><br>
-					Android CodePad uses <b style="color: blue;">WebKit</b> and <b>google-code-prettify</b> to do the syntax highlighting.
+					The key word for Simple Factory are:<b style="color: red;">Encapsulation</b> and <b style="color: red;">Decoupling.</b>
 				</span>
 				<br /><br />
-				<span class="important_text">Here's some examples:.</span><br /><br />
-				<span class="regular_text">Java</span><br />
+				<span class="important_text">The following is an example of the production of Pizza.</span><br /><br />
 				<div class="code_style">
 					<pre class="prettyprint">
-// This is one line comment
 /**
- * multi line comment
+ * Order pizza process
  */
-class HelloWorldApp {
-	private static final String TEST="test";
-	private int i = 0;
-	private float j = 1.235f;
-	public static void main(String[] args) {
-		System.out.println("Hello World!");
-	}
-	private int testFun(int count) {
-		if (count == TEST) {
-			System.out.println("count ok!!");
+Pizza orderPizza(String type) {
+		Pizza pizza = null;
+		if (type.equals("cheese")) {
+			pizza = new CheesePizza();
+		} else if (type.equals("pepperoni")) {
+			pizza = new PepperoniPizza();
+		} else if (type.equals("clam")) {
+			pizza = new ClamPizza();
+		}else if (type.equals("veggie")) {
+			pizza = new VeggiePizza();
 		}
+		pizza.prpare();
+		pizza.bake();
+		pizza.cut();
+		pizza.box();
+		return pizza;
+}
+				</pre>
+				</div>
+				<br />
+			<div class="code_style">
+					<pre class="prettyprint">
+/**
+ * Encapsulating object creation
+ */
+public class PizzaStore {
+	SimplePizzaFactory factory;
+
+	public PizzaStore(SimplePizzaFactory factory) {
+		this.factory = factory;
+	}
+
+	Pizza orderPizza(String type) {
+		Pizza pizza = null;
+		pizza = factory.createPizza(type);
+		pizza.prpare();
+		pizza.bake();
+		pizza.cut();
+		pizza.box();
+		return pizza;
 	}
 }
-    protected void onActivityResult(int requestCode, int resultCode, Intent intent)
-    {
-	    if (requestCode == PICK_REQUEST_CODE)
-	    {
-		    if (resultCode == RESULT_OK)
-		    {
-			    Uri uri = intent.getData();
-			    if (uri != null)
-			    {
-			    	String path = uri.toString();
-			    	if (path.toLowerCase().startsWith("file://"))
-			    	{
-			    		path = (new File(URI.create(path))).getAbsolutePath();
-			    		loadFile(Uri.parse(path), "text/html");
-			    	}
-			    }
-		    }
-		    else{}
-	    }
-    }
+/**
+ * Building a simple pizza factory
+ */
+public class SimplePizzaFactory {
+
+	public Pizza createPizza(String type) {
+		Pizza pizza = null;
+		if (type.equals("cheese")) {
+			pizza = new CheesePizza();
+		} else if (type.equals("pepperoni")) {
+			pizza = new PepperoniPizza();
+		} else if (type.equals("clam")) {
+			pizza = new ClamPizza();
+		}else if (type.equals("veggie")) {
+			pizza = new VeggiePizza();
+		}
+		return pizza;
+	}
+}
 					</pre>
 				</div>
 				<br />
-				<span class="regular_text">C++</span><br>
-				<div class="code_style">
-					<pre class="prettyprint">
-// My C++ Comment
-
-#include &lt;iostream&gt;
-using namespace std;
-int main ()
-{
-  cout &lt;&lt; "Hello World!";
-  return 0;
-}
-					</pre>		
-				</div>
-				<span class="regular_text">Python</span>
-				<div class="code_style">
-					<pre class="prettyprint">
-#!/usr/local/bin/python
-
-import string, sys
-
-# If no arguments were given, print a helpful message
-if len(sys.argv)==1:<br>
-    print 'Usage: celsius temp1 temp2 ...'
-    sys.exit(0)
-	
-# Loop over the arguments
-for i in sys.argv[1:]:
-    try: 
-        fahrenheit=float(string.atoi(i))
-    except string.atoi_error:
-	print repr(i), "not a numeric value"
-    else:
-	celsius=(fahrenheit-32)*5.0/9.0
-	print '%i\260F = %i\260C' % (int(fahrenheit), int(celsius+.5))				
-					</pre>
-				</div>
-				
-									
-			</span>
 			<br /><br />
-			<span class="important_text">Open a file to get started.</span><br />
+			<span class="important_text">The Simple Factory defined.</span><br />
+			<img src="file:///android_asset/images/SimpleFactory.jpg">
 		</div>
 	</body>
 </html>

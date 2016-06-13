@@ -71,6 +71,8 @@ public class SimpleFactoryFragment extends Fragment {
             s.setSupportZoom(true);
             s.setSupportMultipleWindows(true);
             s.setJavaScriptEnabled(true);
+            s.setUseWideViewPort(true);
+            s.setLoadWithOverviewMode(true);
         }
         return webView;
     }
