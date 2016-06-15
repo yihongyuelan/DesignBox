@@ -1,0 +1,90 @@
+<html>
+<head>
+    <title>Factory Method</title>
+    <style type="text/css">
+        h1 { text-align:center; text-shadow: #BBB 1px 1px 1px; color: black !important; font-family:  "Gill Sans", "Lucida Grande", Helvetica, sans-serif;  }
+        body { font-family:Arial, Helvetica, sans-serif; font-size:12px; background: -webkit-gradient(linear,left top,left bottom,color-stop(0.04, rgb(240,240,240)), color-stop(0.52, rgb(255,255,255)))}
+        .important_text { text-align:left; text-shadow: #BBB 1px 1px 1px; color: black !important; font-weight:bold; }
+        .regular_text { text-align:left; color: black; }
+        .code_style { font-size: 12px; text-align:left; }
+        .code_style pre.prettyprint{overflow-x:scroll;}
+        #content_div { }
+    </style>
+    <link href="file:///android_asset/prettify.css" rel="stylesheet" type="text/css" />
+    <script src="file:///android_asset/prettify.js" type="text/javascript"></script>
+    <link href="file:///android_asset/vibrant-ink.css" type="text/css" rel="stylesheet" />
+</head>
+<body onload="prettyPrint()">
+<div id="content_div">
+    <span class="important_text">Why we need factory method?</span>
+    <br />
+    <span class="regular_text"> If you want <b style="color: red;">regional differences</b>, each franchise might want to offer different styles of pizzas (New York, Chicago, and California, to name a few), depending on where the franchise store is located and the tastes of the local pizza connoisseurs.</span>
+    <br />
+    <img src="file:///android_asset/images/DifferentFactory.jpg" />
+    <br />
+    <span class="important_text">Let's take a look ad NYPizza and ChicagoPizza.</span>
+    <br />
+    <br />
+    <div class="code_style">
+    <pre class="prettyprint">
+/**
+ * We need different Pizza store.
+ */
+		NYPizzaFactory nyFactory = new NYPizzaFactory();
+		PizzaStore nyStore = new PizzaStore(nyFactory);
+		nyStore.orderPizza("veggie");
+
+		ChicagoPizzaFactory chicagoFactory = new ChicagoPizzaFactory();
+		PizzaStore chicagoStore = new PizzaStore(chicagoFactory);
+		chicagoStore.orderPizza("veggie");
+				</pre>
+    <pre class="prettyprint">
+/**
+ * Create new NYPizzaFactory.
+ */
+public class NYPizzaFactory extends SimplePizzaFactory {
+
+	@Override
+	public Pizza createPizza(String type) {
+		Pizza pizza = null;
+		if (type.equals("cheese")) {
+			pizza = new NYCheesePizza();
+		} else if (type.equals("pepperoni")) {
+			pizza = new NYPepperoniPizza();
+		} else if (type.equals("clam")) {
+			pizza = new NYClamPizza();
+		} else if (type.equals("veggie")) {
+			pizza = new NYVeggiePizza();
+		}
+		return pizza;
+	}
+}
+        </pre>
+    </div>
+    <br />
+    <div class="code_style">
+    <pre class="prettyprint">
+/**
+ * Encapsulating object creation
+ */
+public class PizzaStore {
+	x
+}
+/**
+ * Building a simple pizza factory
+ */
+public class SimplePizzaFactory {
+
+	xxxx
+}
+					</pre>
+    </div>
+    <br />
+    <br />
+    <br />
+    <span class="important_text">The Simple Factory defined.</span>
+    <br />
+    <img src="file:///android_asset/images/SimpleFactory.jpg" />
+</div>
+</body>
+</html>

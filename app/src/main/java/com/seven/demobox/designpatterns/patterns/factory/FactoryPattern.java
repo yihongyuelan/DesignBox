@@ -24,7 +24,7 @@ public class FactoryPattern extends PatternsCommonActivity {
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 getSupportFragmentManager(), FragmentPagerItems.with(this)
                 .add("SimpleFactory", SimpleFactoryFragment.class)
-                .add("FactoryMethod", SampleFragment.class)
+                .add("FactoryMethod", FactoryMethodFragment.class)
                 .add("AbstractFactory", SampleFragment.class)
                 .create());
 

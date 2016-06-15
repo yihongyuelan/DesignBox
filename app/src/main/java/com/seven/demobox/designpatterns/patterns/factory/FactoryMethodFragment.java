@@ -11,7 +11,7 @@ import android.webkit.CookieSyncManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-public class SimpleFactoryFragment extends Fragment {
+public class FactoryMethodFragment extends Fragment {
 
     private WebView mWebView;
     private Context mContext;
@@ -84,7 +84,7 @@ public class SimpleFactoryFragment extends Fragment {
             webView.restoreState(bundle);
         } else {
             //Home Screen, Simple explanation
-            webView.loadUrl("file:///android_asset/SimpleFactory.html");
+            webView.loadUrl("file:///android_asset/FactoryPattern.html");
         }
     }
 }

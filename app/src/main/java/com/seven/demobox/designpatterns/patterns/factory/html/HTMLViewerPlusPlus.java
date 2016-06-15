@@ -194,7 +194,7 @@ public class HTMLViewerPlusPlus extends Activity {
                 }
             } else {
                 //Home Screen, Simple explanation
-                mWebView.loadUrl("file:///android_asset/home.html");
+                mWebView.loadUrl("file:///android_asset/SimpleFactory.html");
             }
         }
     }
@@ -296,7 +296,7 @@ public class HTMLViewerPlusPlus extends Activity {
      */
     public void loadHomeScreen() {
         mWebView.getSettings().setUseWideViewPort(false);
-        mWebView.loadUrl("file:///android_asset/home.html");
+        mWebView.loadUrl("file:///android_asset/SimpleFactory.html");
     }
 
     /**
@@ -304,7 +304,7 @@ public class HTMLViewerPlusPlus extends Activity {
      */
     public void loadHelpScreen() {
         mWebView.getSettings().setUseWideViewPort(false);
-        mWebView.loadUrl("file:///android_asset/home.html"); //Need to change for the help screen
+        mWebView.loadUrl("file:///android_asset/SimpleFactory.html"); //Need to change for the help screen
     }
 
     /**
