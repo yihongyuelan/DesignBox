@@ -25,7 +25,7 @@ public class FactoryPattern extends PatternsCommonActivity {
                 getSupportFragmentManager(), FragmentPagerItems.with(this)
                 .add("SimpleFactory", SimpleFactoryFragment.class)
                 .add("FactoryMethod", FactoryMethodFragment.class)
-                .add("AbstractFactory", SampleFragment.class)
+                .add("AbstractFactory", AbstractFactoryFragment.class)
                 .create());
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
