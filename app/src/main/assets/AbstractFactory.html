@@ -29,79 +29,86 @@
     <div class="code_style">
     <pre class="prettyprint">
 /**
- * We need different Pizza store.
+ * Different region has its own taste, so we create a Ingredient interface.
  */
-		NYPizzaFactory nyFactory = new NYPizzaFactory();
-		PizzaStore nyStore = new PizzaStore(nyFactory);
-		nyStore.orderPizza("veggie");
-
-		ChicagoPizzaFactory chicagoFactory = new ChicagoPizzaFactory();
-		PizzaStore chicagoStore = new PizzaStore(chicagoFactory);
-		chicagoStore.orderPizza("veggie");
-				</pre>
+public interface PizzaIngredientFactory {
+	Dough createDough();
+	Sause createSause();
+	Cheese createCheese();
+}
+	</pre>
     <pre class="prettyprint">
 /**
- * Create new NYPizzaFactory.
+ * Create new NYPizzaIntegredientFactory.
  */
-public class NYPizzaFactory extends SimplePizzaFactory {
+public class NYPizzaIntegredientFactory implements PizzaIngredientFactory {
+	@Override
+	public Dough createDough() {
+		return new ThinCrustDough();
+	}
 
 	@Override
-	public Pizza createPizza(String type) {
-		Pizza pizza = null;
-		if (type.equals("cheese")) {
-			pizza = new NYCheesePizza();
-		} else if (type.equals("pepperoni")) {
-			pizza = new NYPepperoniPizza();
-		} else if (type.equals("clam")) {
-			pizza = new NYClamPizza();
-		} else if (type.equals("veggie")) {
-			pizza = new NYVeggiePizza();
-		}
-		return pizza;
+	public Sause createSause() {
+		return new MarinaraSause();
+	}
+
+	@Override
+	public Cheese createCheese() {
+		return new ReggianoCheese();
 	}
 }
-        </pre>
+    </pre>
     </div>
     <br />
-    <span class="important_text">Rethinking about PizzaStore.</span>
-    <br />
-    <img src="file:///android_asset/images/AbstractPizzaStore.jpg" />
-    <br />
-    <br />
-    <span class="important_text">So we create NYStylePizzaStore and ChicagoStylePizzaStore to decide their own taste.</span>
-    <br />
-    <img src="file:///android_asset/images/DifferentPizzaStore.jpg" />
-    <br />
-    <br />
-    <div class="code_style">
+    <span class="important_text">Rework the Pizza class.</span>
     <pre class="prettyprint">
 /**
- * Abstract PizzaStore
+ * Make prepare to abstract.
  */
-public abstract class PizzaStore {
+public abstract class Pizza {
+	Dough dough;
+	Sause sause;
+	Cheese cheese;
+	public abstract void prepare();
+	public void bake() {}
+	public void cut() {}
+	public void box() {}
+}
 
-	Pizza orderPizza(String type) {
-		Pizza pizza = null;
-		pizza = createPizza(type);
-		pizza.prepare();
-		pizza.bake();
-		pizza.cut();
-		pizza.box();
-		return pizza;
+/**
+ * Then we got the CheesePizza.
+ */
+public class CheesePizza extends Pizza {
+
+	PizzaIngredientFactory ingredientFactory;
+
+	public CheesePizza(PizzaIngredientFactory ingredientFactory) {
+		this.ingredientFactory = ingredientFactory;
 	}
 
-	abstract Pizza createPizza(String type);
+	@Override
+	public void prepare() {
+		Print.print("CheesePizza prepare");
+		dough = ingredientFactory.createDough();
+		sause = ingredientFactory.createSause();
+		cheese = ingredientFactory.createCheese();
+	}
 }
+    </pre>
+    <br />
+    <span class="important_text">Revisiting our pizza stores.</span>
+    <br />
+    <pre class="prettyprint">
 /**
- * NYStylePizzaStore is subclass of PizzaStore, and implement its own style pizza.
+ * NYStylePizzaStore will create NYStyleCheesePizza, so we need NYPizzaIntegredientFactory.
  */
 public class NYStylePizzaStore extends PizzaStore{
-
 	@Override
 	Pizza createPizza(String type) {
 		Pizza pizza = null;
+		PizzaIngredientFactory ingredientFactory = new NYPizzaIntegredientFactory();
 		if (type.equals("cheese")) {
-			pizza = new NYCheesePizza();
+			pizza = new CheesePizza(ingredientFactory);
 		} else if (type.equals("pepperoni")) {
 			pizza = new NYPepperoniPizza();
 		} else if (type.equals("clam")) {
@@ -112,22 +119,21 @@ public class NYStylePizzaStore extends PizzaStore{
 		return pizza;
 	}
 }
-					</pre>
+    </pre>
+    <br />
     </div>
     <br />
-    <span class="important_text">What is Factory Method looks like?</span>
+    <span class="important_text">Abstract Factory Pattern defined</span>
     <br />
-    <img src="file:///android_asset/images/FactoryMethodExpression.jpg" />
+    <span class="regular_text"> The Abstract Factory Pattern provides an interface for creating families of related or dependent objects without specifying their concrete classes.</span>
+    <img src="file:///android_asset/images/AbstractFactoryDefined.jpg" />
     <br />
+    <span class="important_text">Keyword for Abstract Factory:</span>
     <br />
-    <img src="file:///android_asset/images/CreatorAndProduct.jpg" />
-    <br />
-    <span class="important_text">Official definition of the Factory Method Pattern:</span>
-    <br />
-    <span class="regular_text">The Factory Method Pattern defines an interface for creating an object, but lets subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses.</span>
+    <span class="regular_text">Depend on abstraction. Do not depend on concrete classes.</span>
     <br />
     <br />
-    <img src="file:///android_asset/images/FactoryMethodDefine.jpg" />
+    <img src="file:///android_asset/images/OO_Principles.jpg" />
     <br />
 </div>
 </body>
