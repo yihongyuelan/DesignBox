@@ -17,15 +17,15 @@ public class FactoryPattern extends PatternsCommonActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patterns_factory);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("FactoryPatterns");
+        toolbar.setTitle(R.string.factory_pattern_title);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 getSupportFragmentManager(), FragmentPagerItems.with(this)
-                .add("SimpleFactory", SimpleFactoryFragment.class)
-                .add("FactoryMethod", FactoryMethodFragment.class)
-                .add("AbstractFactory", AbstractFactoryFragment.class)
+                .add(R.string.factory_pattern_simple, SimpleFactoryFragment.class)
+                .add(R.string.factory_pattern_method, FactoryMethodFragment.class)
+                .add(R.string.factory_pattern_abstract, AbstractFactoryFragment.class)
                 .create());
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);

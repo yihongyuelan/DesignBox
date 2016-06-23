@@ -3,8 +3,6 @@
     <string name="no_demos">No demos</string>
     <string name="test_title1">TestActivity1</string>
     <string name="test_description1">This is TestActivity1</string>
-    <string name="design_pattern_title">DesignPatterns</string>
-    <string name="design_pattern_description">Head First design patterns</string>
     <!-- Decorator Pattern strings @Start -->
     <string name="role">Role:</string>
     <string name="worrior">Worrior</string>
@@ -24,4 +22,8 @@
     <string name="hero_title">Please create your Hero!!!</string>
     <!-- weather info -->
     <string name="cityLabel">City</string>
+
+    <string name="factory_pattern_simple">SimpleFactory</string>
+    <string name="factory_pattern_method">FactoryMethod</string>
+    <string name="factory_pattern_abstract">AbstractFactory</string>
 </resources>

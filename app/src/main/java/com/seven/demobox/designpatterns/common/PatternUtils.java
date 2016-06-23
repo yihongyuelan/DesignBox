@@ -1,6 +1,7 @@
 package com.seven.demobox.designpatterns.common;
 
 import com.seven.demobox.R;
+import com.seven.demobox.designpatterns.patterns.singleton.SingletonPattern;
 import com.seven.demobox.designpatterns.patterns.decorator.DecoratorPattern;
 import com.seven.demobox.designpatterns.patterns.factory.FactoryPattern;
 import com.seven.demobox.designpatterns.patterns.observer.ObserverPattern;
@@ -16,5 +17,8 @@ public class PatternUtils {
             new PatternDetails(R.string.factory_pattern_title,
                     R.string.factory_pattern_description,
                     FactoryPattern.class),
+            new PatternDetails(R.string.singleton_pattern_title,
+                    R.string.singleton_pattern_description,
+                    SingletonPattern.class),
     };
 }

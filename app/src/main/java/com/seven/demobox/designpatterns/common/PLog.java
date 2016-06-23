@@ -1,6 +1,6 @@
 package com.seven.demobox.designpatterns.common;
 
-public final class Log {
+public final class PLog {
     private static final boolean DEBUGABLE = true;
     public static final void i(String tag, String msg) {
         if (DEBUGABLE) {

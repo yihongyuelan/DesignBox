@@ -40,7 +40,7 @@ public class CityFinderActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 CityResult result = (CityResult) parent.getItemAtPosition(position);
                 SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(CityFinderActivity.this);
-                //Log.d("SwA", "WOEID [" + result.getWoeid() + "]");
+                //PLog.d("SwA", "WOEID [" + result.getWoeid() + "]");
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putString("woeid", result.getWoeid());
                 editor.putString("cityName", result.getCityName());

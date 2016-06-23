@@ -34,7 +34,7 @@ public class YahooClient {
         HttpURLConnection yahooHttpConn = null;
         try {
             String query = makeQueryCityURL(cityName);
-            // Log.d("Seven", "URL [" + query + "]");
+            // PLog.d("Seven", "URL [" + query + "]");
             yahooHttpConn = (HttpURLConnection) (new URL(query)).openConnection();
             yahooHttpConn.connect();
             XmlPullParser parser = XmlPullParserFactory.newInstance().newPullParser();
@@ -54,10 +54,10 @@ public class YahooClient {
                     if (tagName.equals("place")) {
                         // place Tag Found so we create a new CityResult
                         cty = new CityResult();
-                        // Log.d("Seven", "New City found");
+                        // PLog.d("Seven", "New City found");
                     }
                     currentTag = tagName;
-                    // Log.d("Seven", "Tag ["+tagName+"]");
+                    // PLog.d("Seven", "Tag ["+tagName+"]");
                 }
                 else if (event == XmlPullParser.TEXT) {
                     // We found some text. let's see the tagName to know the tag
@@ -80,7 +80,7 @@ public class YahooClient {
             }
         } catch (Throwable t) {
             t.printStackTrace();
-            // Log.e("Error in getCityList", t.getMessage());
+            // PLog.e("Error in getCityList", t.getMessage());
         } finally {
             try {
                 yahooHttpConn.disconnect();
@@ -101,20 +101,20 @@ public class YahooClient {
 
 //    public static void request (final Context context) {
 //        final String url2Call = getWeatherUrl(context);
-//        Log.i("Seven", "url2Call="+url2Call);
+//        PLog.i("Seven", "url2Call="+url2Call);
 //        final Weather result = new Weather();
 //        StringRequest req = new StringRequest(Request.Method.GET, url2Call,
 //                new Response.Listener<String>() {
 //                    @Override
 //                    public void onResponse(String s) {
 //                        parseResponse(s, result);
-//                        Log.i("Seven", "Condition="+result.condition.code+"\nTemp="+result.condition.temp+"\nDotCode="+result.condition.dotCode);
+//                        PLog.i("Seven", "Condition="+result.condition.code+"\nTemp="+result.condition.temp+"\nDotCode="+result.condition.dotCode);
 //                        broadcastWeatherData(context, result);
 //                    }
 //                }, new Response.ErrorListener() {
 //                    @Override
 //                    public void onErrorResponse(VolleyError volleyError) {
-//                        Log.i("Seven", "error....");
+//                        PLog.i("Seven", "error....");
 //                    }
 //                });
 //        GlobalApplication.requestQueue.add(req);
@@ -122,7 +122,7 @@ public class YahooClient {
 
 //    public static void request(Context context, final WeatherClientListener listener) {
 //        final String url2Call = getWeatherUrl(context);
-//        Log.i("Seven", "url2Call="+url2Call);
+//        PLog.i("Seven", "url2Call="+url2Call);
 //        final Weather result = new Weather();
 //        StringRequest req = new StringRequest(Request.Method.GET, url2Call,
 //                new Response.Listener<String>() {
@@ -134,7 +134,7 @@ public class YahooClient {
 //                }, new Response.ErrorListener() {
 //                    @Override
 //                    public void onErrorResponse(VolleyError volleyError) {
-//                        Log.i("Seven", "error....");
+//                        PLog.i("Seven", "error....");
 //                    }
 //                });
 //        GlobalApplication.requestQueue.add(req);
@@ -153,7 +153,7 @@ public class YahooClient {
     public static void getWeather(String woeid, String unit, RequestQueue rq,
             final WeatherClientListener listener) {
         String url2Call = makeWeatherURL(woeid, unit);
-        // Log.d("SwA", "Weather URL ["+url2Call+"]");
+        // PLog.d("SwA", "Weather URL ["+url2Call+"]");
         final Weather result = new Weather();
         StringRequest req = new StringRequest(Request.Method.GET, url2Call,
                 new Response.Listener<String>() {
@@ -172,7 +172,7 @@ public class YahooClient {
     }
 
     private static Weather parseResponse(String resp, Weather result) {
-        // Log.d("SwA", "Response ["+resp+"]");
+        // PLog.d("SwA", "Response ["+resp+"]");
         try {
             XmlPullParser parser = XmlPullParserFactory.newInstance().newPullParser();
             parser.setInput(new StringReader(resp));
@@ -187,7 +187,7 @@ public class YahooClient {
 
                 if (event == XmlPullParser.START_TAG) {
                     if (tagName.equals("yweather:wind")) {
-                        // Log.d("SwA", "Tag [Wind]");
+                        // PLog.d("SwA", "Tag [Wind]");
                         result.wind.chill = Integer.parseInt(parser
                                 .getAttributeValue(null, "chill"));
                         result.wind.direction = Integer.parseInt(parser.getAttributeValue(null,
@@ -196,7 +196,7 @@ public class YahooClient {
                                 "speed"));
                     }
                     else if (tagName.equals("yweather:atmosphere")) {
-                        // Log.d("SwA", "Tag [Atmos]");
+                        // PLog.d("SwA", "Tag [Atmos]");
                         result.atmosphere.humidity = Integer.parseInt(parser.getAttributeValue(
                                 null, "humidity"));
                         result.atmosphere.visibility = Float.parseFloat(parser.getAttributeValue(
@@ -207,7 +207,7 @@ public class YahooClient {
                                 "rising"));
                     }
                     else if (tagName.equals("yweather:forecast")) {
-                        // Log.d("SwA", "Tag [Fore]");
+                        // PLog.d("SwA", "Tag [Fore]");
                         if (isFirstDayForecast) {
                             result.forecast.code = Integer.parseInt(parser.getAttributeValue(null,
                                     "code"));
@@ -219,7 +219,7 @@ public class YahooClient {
                         }
                     }
                     else if (tagName.equals("yweather:condition")) {
-                        // Log.d("SwA", "Tag [Condition]");
+                        // PLog.d("SwA", "Tag [Condition]");
                         result.condition.code = Integer.parseInt(parser.getAttributeValue(null,
                                 "code"));
                         result.condition.description = parser.getAttributeValue(null, "text");
@@ -228,7 +228,7 @@ public class YahooClient {
                         result.condition.date = parser.getAttributeValue(null, "date");
                     }
                     else if (tagName.equals("yweather:units")) {
-                        // Log.d("SwA", "Tag [units]");
+                        // PLog.d("SwA", "Tag [units]");
                         result.units.temperature = "°"
                                 + parser.getAttributeValue(null, "temperature");
                         result.units.pressure = parser.getAttributeValue(null, "pressure");

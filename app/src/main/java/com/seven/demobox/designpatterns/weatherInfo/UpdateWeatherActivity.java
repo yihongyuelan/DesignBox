@@ -98,7 +98,7 @@ public class UpdateWeatherActivity extends Activity {
 
 
         String woeid = prefs.getString("woeid", null);
-        //Log.d("SwA", "WOEID ["+woeid+"]");
+        //PLog.d("SwA", "WOEID ["+woeid+"]");
         if (woeid != null) {
             String loc = prefs.getString("cityName", null) + "," + prefs.getString("country", null);
             String unit = prefs.getString("temp_unit", null);
@@ -106,7 +106,7 @@ public class UpdateWeatherActivity extends Activity {
             YahooClient.getWeather(woeid, unit, requestQueue, new YahooClient.WeatherClientListener() {
                 @Override
                 public void onWeatherResponse(Weather weather) {
-                    //Log.d("SwA", "Weather ["+weather+"] - Cond ["+weather.condition+"] - Temp ["+weather.condition.temp+"]");
+                    //PLog.d("SwA", "Weather ["+weather+"] - Cond ["+weather.condition+"] - Temp ["+weather.condition.temp+"]");
                     int code = weather.condition.code;
                     
                     //description

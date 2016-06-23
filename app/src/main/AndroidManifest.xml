@@ -32,6 +32,9 @@
         <activity android:name=".designpatterns.patterns.factory.FactoryPattern"
                   android:theme="@style/AppTheme.NoActionBar"
                   android:parentActivityName=".designpatterns.common.DesignPatternsActivity"/>
+        <activity android:name=".designpatterns.patterns.singleton.SingletonPattern"
+                  android:theme="@style/AppTheme.NoActionBar"
+                  android:parentActivityName=".designpatterns.common.DesignPatternsActivity"/>
     </application>
 
 </manifest>
