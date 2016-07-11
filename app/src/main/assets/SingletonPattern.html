@@ -28,35 +28,33 @@
     <div class="code_style">
     <pre class="prettyprint">
 /**
- * We need different Pizza store.
+ * What is Singleton pattern?
  */
-		NYPizzaFactory nyFactory = new NYPizzaFactory();
-		PizzaStore nyStore = new PizzaStore(nyFactory);
-		nyStore.orderPizza("veggie");
+public class MyClass {
+    public class MyClass {
+	//Can not be created by "new MyClass()"
+	private MyClass() {
+	}
 
-		ChicagoPizzaFactory chicagoFactory = new ChicagoPizzaFactory();
-		PizzaStore chicagoStore = new PizzaStore(chicagoFactory);
-		chicagoStore.orderPizza("veggie");
+	public static MyClass getInstance() {
+		return new MyClass();
+	}
+}
 				</pre>
     <pre class="prettyprint">
 /**
- * Create new NYPizzaFactory.
+ * Classic Singleton Pattern Implementation.
  */
-public class NYPizzaFactory extends SimplePizzaFactory {
+public class Singleton {
+	private static Singleton uniqueInstance;
 
-	@Override
-	public Pizza createPizza(String type) {
-		Pizza pizza = null;
-		if (type.equals("cheese")) {
-			pizza = new NYCheesePizza();
-		} else if (type.equals("pepperoni")) {
-			pizza = new NYPepperoniPizza();
-		} else if (type.equals("clam")) {
-			pizza = new NYClamPizza();
-		} else if (type.equals("veggie")) {
-			pizza = new NYVeggiePizza();
+	private Singleton() {}
+
+	public static Singleton getInstance() {
+		if (uniqueInstance == null) {
+			uniqueInstance = new Singleton();
 		}
-		return pizza;
+		return uniqueInstance;
 	}
 }
         </pre>
