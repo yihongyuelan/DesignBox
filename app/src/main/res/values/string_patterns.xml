@@ -13,4 +13,7 @@
     <!-- Singleton -->
     <string name="singleton_pattern_title">SingletonPattern</string>
     <string name="singleton_pattern_description">Only one object</string>
+    <!-- Command -->
+    <string name="command_pattern_title">CommandPattern</string>
+    <string name="command_pattern_description">command and execute</string>
 </resources>
