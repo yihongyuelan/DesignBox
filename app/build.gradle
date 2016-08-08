@@ -33,4 +33,5 @@ dependencies {
     compile(name: 'library-release', ext: 'aar')
     compile(name: 'utils-v4-release', ext: 'aar')
     compile(name: 'volley-debug', ext: 'aar')
+    compile 'com.zhy:autolayout:1.4.5'
 }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:android_custom="http://schemas.android.com/apk/res/com.seven.demobox"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <com.seven.demobox.designpatterns.patterns.command.CommandItemLayout
+            android:id="@+id/item1"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android_custom:item_title="Light"
+            android_custom:item_on_name="On"
+            android_custom:item_off_name="Off" />
+
+    <com.seven.demobox.designpatterns.patterns.command.CommandItemLayout
+            android:id="@+id/item2"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android_custom:item_title="Door"
+            android_custom:item_on_name="Open"
+            android_custom:item_off_name="Close" />
+
+    <com.seven.demobox.designpatterns.patterns.command.CommandItemLayout
+            android:id="@+id/item3"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android_custom:item_title="Fan"
+            android_custom:item_on_name="On"
+            android_custom:item_off_name="Off" />
+
+    <com.seven.demobox.designpatterns.patterns.command.CommandItemLayout
+            android:id="@+id/item4"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android_custom:item_title="Stereo"
+            android_custom:item_on_name="Start"
+            android_custom:item_off_name="Stop" />
+
+    <TextView
+            android:id="@+id/page_tv"
+            android:layout_width="match_parent"
+            android:layout_height="500px"
+            android:lineSpacingMultiplier="1.2"
+            android:scrollbars="vertical"
+            android:text="HELLO \n xxx"/>
+
+</LinearLayout>
