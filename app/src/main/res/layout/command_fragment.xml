@@ -38,11 +38,11 @@
             android_custom:item_off_name="Stop" />
 
     <TextView
-            android:id="@+id/page_tv"
+            android:id="@+id/command_info_tv"
             android:layout_width="match_parent"
             android:layout_height="500px"
             android:lineSpacingMultiplier="1.2"
-            android:scrollbars="vertical"
-            android:text="HELLO \n xxx"/>
+            android:layout_marginTop="30px"
+            android:scrollbars="vertical" />
 
 </LinearLayout>

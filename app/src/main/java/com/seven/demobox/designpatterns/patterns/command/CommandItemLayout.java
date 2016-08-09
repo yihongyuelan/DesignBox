@@ -63,15 +63,24 @@ public class CommandItemLayout extends LinearLayout implements View.OnClickListe
         }
     }
 
-    public void setBtnOnClickListener(OnClickListener listener) {
+    private void setBtnOnClickListener(OnClickListener listener) {
         if (mBtnOn != null && listener != null) {
             mBtnOn.setOnClickListener(listener);
         }
     }
 
-    public void setBtnOffClickListener(OnClickListener listener) {
+    private void setBtnOffClickListener(OnClickListener listener) {
         if (mBtnOff != null && listener != null) {
             mBtnOff.setOnClickListener(listener);
         }
+    }
+
+    public void setBtnClickListener(OnClickListener onListener, OnClickListener offListener) {
+        setBtnOnClickListener(onListener);
+        setBtnOffClickListener(offListener);
+    }
+
+    public String getCommandName() {
+        return mNameTv.getText().toString();
     }
 }
