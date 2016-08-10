@@ -16,10 +16,6 @@ public class CommandPattern extends PatternsCommonActivity {
     private CommandItemLayout mCommandThr;
     private CommandItemLayout mCommandFou;
     private TextView mCommandInfo;
-    private CommandController mController;
-
-    private LightOnCommand mLightOnCommand;
-    private LightOffCommand mLightOffCommand;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,12 +30,6 @@ public class CommandPattern extends PatternsCommonActivity {
         initListeners();
     }
 
-    private void initCommands() {
-        final Light light = new Light();
-        mLightOnCommand = new LightOnCommand(light);
-        mLightOffCommand = new LightOffCommand(light);
-    }
-
     private void initViews() {
         mCommandOne = (CommandItemLayout) findViewById(R.id.item1);
         mCommandTwo = (CommandItemLayout) findViewById(R.id.item2);
@@ -52,53 +42,48 @@ public class CommandPattern extends PatternsCommonActivity {
         mCommandOne.setBtnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO:BtnOn clicked
-                final String commandName = mCommandOne.getCommandName();
-                mController.setCommand(mLightOnCommand);
-                mController.buttonClicked();
+                ControllerProxy.getInstance().buttonOnClicked(mCommandOne.getCommandName());
             }
         }, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO:BtnOff clicked
-                mController.setCommand(mLightOffCommand);
-                mController.buttonClicked();
+                ControllerProxy.getInstance().buttonOffClicked(mCommandOne.getCommandName());
             }
         });
 
         mCommandTwo.setBtnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO:BtnOn clicked
+                ControllerProxy.getInstance().buttonOnClicked(mCommandTwo.getCommandName());
             }
         }, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO:BtnOff clicked
+                ControllerProxy.getInstance().buttonOffClicked(mCommandTwo.getCommandName());
             }
         });
 
         mCommandThr.setBtnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO:BtnOn clicked
+                ControllerProxy.getInstance().buttonOnClicked(mCommandThr.getCommandName());
             }
         }, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO:BtnOff clicked
+                ControllerProxy.getInstance().buttonOffClicked(mCommandThr.getCommandName());
             }
         });
 
         mCommandFou.setBtnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO:BtnOn clicked
+                ControllerProxy.getInstance().buttonOnClicked(mCommandFou.getCommandName());
             }
         }, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO:BtnOff clicked
+                ControllerProxy.getInstance().buttonOffClicked(mCommandFou.getCommandName());
             }
         });
     }
