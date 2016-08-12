@@ -57,8 +57,8 @@ public class CommandItemLayout extends LinearLayout implements View.OnClickListe
                 mBtnOff.setBackgroundColor(Color.GRAY);
                 break;
             case R.id.btn_off:
-                mBtnOff.setBackgroundResource(R.color.colorButtonRed);
                 mBtnOn.setBackgroundColor(Color.GRAY);
+                mBtnOff.setBackgroundResource(R.color.colorButtonRed);
                 break;
         }
     }

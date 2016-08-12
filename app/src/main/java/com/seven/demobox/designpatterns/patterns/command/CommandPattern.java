@@ -16,18 +16,29 @@ public class CommandPattern extends PatternsCommonActivity {
     private CommandItemLayout mCommandThr;
     private CommandItemLayout mCommandFou;
     private TextView mCommandInfo;
+    private CommandStateManager mStateManager;
+    private CommandChangedListener mListener;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patterns_command);
+
+
+        initViews();
+//        initClickListeners();
+        initOthers();
+    }
+
+    private void initOthers() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.command_pattern_title);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        initViews();
-        initListeners();
+        mStateManager = CommandStateManager.getInstance();
+        mListener = new CommandChangedListener();
+        mStateManager.setStateListener(mListener);
     }
 
     private void initViews() {
@@ -38,7 +49,7 @@ public class CommandPattern extends PatternsCommonActivity {
         mCommandInfo = (TextView) findViewById(R.id.command_info_tv);
     }
 
-    private void initListeners() {
+    private void initClickListeners() {
         mCommandOne.setBtnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,5 +97,20 @@ public class CommandPattern extends PatternsCommonActivity {
                 ControllerProxy.getInstance().buttonOffClicked(mCommandFou.getCommandName());
             }
         });
+    }
+
+    class CommandChangedListener implements CommandStateListener {
+        @Override
+        public void onStateChanged(CommandState state) {
+
+            final String lastInfo = mCommandInfo.getText().toString()
+                    + "\n-----------\n";
+            final String newInfo = lastInfo
+                    + "Light:" + state.getLightState() + "\n"
+                    + "Door:" + state.getDoorState() + "\n"
+                    + "Fan:" + state.getFanState() + "\n"
+                    + "Stereo:" + state.getStereoState();
+            mCommandInfo.setText(newInfo);
+        }
     }
 }
