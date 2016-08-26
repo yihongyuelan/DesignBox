@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class CommandItemLayout extends LinearLayout implements View.OnClickListener {
+public class CommandItemLayout extends LinearLayout {
 
     private TextView mNameTv;
     private Button mBtnOn;
@@ -37,30 +37,14 @@ public class CommandItemLayout extends LinearLayout implements View.OnClickListe
         final String btnOnStr = ta.getString(R.styleable.CommandItemAttr_item_on_name);
         final String btnOffStr = ta.getString(R.styleable.CommandItemAttr_item_off_name);
         ta.recycle();
-        LayoutInflater inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.command_custom_layout, this);
         mNameTv = (TextView) findViewById(R.id.tv_name);
-        mBtnOn =(Button) findViewById(R.id.btn_on);
-        mBtnOn.setOnClickListener(this);
-        mBtnOff =(Button) findViewById(R.id.btn_off);
-        mBtnOff.setOnClickListener(this);
+        mBtnOn = (Button) findViewById(R.id.btn_on);
+        mBtnOff = (Button) findViewById(R.id.btn_off);
         mNameTv.setText(title);
         mBtnOn.setText(btnOnStr);
         mBtnOff.setText(btnOffStr);
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_on:
-                mBtnOn.setBackgroundResource(R.color.colorButtonGreen);
-                mBtnOff.setBackgroundColor(Color.GRAY);
-                break;
-            case R.id.btn_off:
-                mBtnOn.setBackgroundColor(Color.GRAY);
-                mBtnOff.setBackgroundResource(R.color.colorButtonRed);
-                break;
-        }
     }
 
     private void setBtnOnClickListener(OnClickListener listener) {
@@ -82,5 +66,25 @@ public class CommandItemLayout extends LinearLayout implements View.OnClickListe
 
     public String getCommandName() {
         return mNameTv.getText().toString();
+    }
+
+    class CommandItemBtnClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.btn_on:
+                    if (mBtnOn != null && mBtnOff != null) {
+                        mBtnOn.setBackgroundResource(R.color.colorButtonGreen);
+                        mBtnOff.setBackgroundColor(Color.GRAY);
+                    }
+                    break;
+                case R.id.btn_off:
+                    if (mBtnOn != null && mBtnOff != null) {
+                        mBtnOn.setBackgroundColor(Color.GRAY);
+                        mBtnOff.setBackgroundResource(R.color.colorButtonRed);
+                    }
+                    break;
+            }
+        }
     }
 }

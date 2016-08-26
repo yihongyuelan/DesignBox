@@ -26,7 +26,7 @@ public class CommandPattern extends PatternsCommonActivity {
 
 
         initViews();
-//        initClickListeners();
+        initClickListeners();
         initOthers();
     }
 
@@ -50,51 +50,63 @@ public class CommandPattern extends PatternsCommonActivity {
     }
 
     private void initClickListeners() {
-        mCommandOne.setBtnClickListener(new View.OnClickListener() {
+        final String nameOne = mCommandOne.getCommandName();
+        mCommandOne.setBtnClickListener(mCommandOne.new CommandItemBtnClickListener() {
             @Override
             public void onClick(View v) {
-                ControllerProxy.getInstance().buttonOnClicked(mCommandOne.getCommandName());
+                super.onClick(v);
+                ControllerProxy.getInstance().buttonOnClicked(nameOne);
             }
-        }, new View.OnClickListener() {
+        }, mCommandOne.new CommandItemBtnClickListener() {
             @Override
             public void onClick(View v) {
-                ControllerProxy.getInstance().buttonOffClicked(mCommandOne.getCommandName());
-            }
-        });
-
-        mCommandTwo.setBtnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ControllerProxy.getInstance().buttonOnClicked(mCommandTwo.getCommandName());
-            }
-        }, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ControllerProxy.getInstance().buttonOffClicked(mCommandTwo.getCommandName());
+                super.onClick(v);
+                ControllerProxy.getInstance().buttonOffClicked(nameOne);
             }
         });
 
-        mCommandThr.setBtnClickListener(new View.OnClickListener() {
+        final String nameTwo = mCommandTwo.getCommandName();
+        mCommandTwo.setBtnClickListener(mCommandTwo.new CommandItemBtnClickListener() {
             @Override
             public void onClick(View v) {
-                ControllerProxy.getInstance().buttonOnClicked(mCommandThr.getCommandName());
+                super.onClick(v);
+                ControllerProxy.getInstance().buttonOnClicked(nameTwo);
             }
-        }, new View.OnClickListener() {
+        }, mCommandTwo.new CommandItemBtnClickListener() {
             @Override
             public void onClick(View v) {
-                ControllerProxy.getInstance().buttonOffClicked(mCommandThr.getCommandName());
+                super.onClick(v);
+                ControllerProxy.getInstance().buttonOffClicked(nameTwo);
             }
         });
 
-        mCommandFou.setBtnClickListener(new View.OnClickListener() {
+        final String nameThr = mCommandThr.getCommandName();
+        mCommandThr.setBtnClickListener(mCommandThr.new CommandItemBtnClickListener() {
             @Override
             public void onClick(View v) {
-                ControllerProxy.getInstance().buttonOnClicked(mCommandFou.getCommandName());
+                super.onClick(v);
+                ControllerProxy.getInstance().buttonOnClicked(nameThr);
             }
-        }, new View.OnClickListener() {
+        }, mCommandThr.new CommandItemBtnClickListener() {
             @Override
             public void onClick(View v) {
-                ControllerProxy.getInstance().buttonOffClicked(mCommandFou.getCommandName());
+                super.onClick(v);
+                ControllerProxy.getInstance().buttonOffClicked(nameThr);
+            }
+        });
+
+        final String nameFou = mCommandFou.getCommandName();
+        mCommandFou.setBtnClickListener(mCommandFou.new CommandItemBtnClickListener() {
+            @Override
+            public void onClick(View v) {
+                super.onClick(v);
+                ControllerProxy.getInstance().buttonOnClicked(nameFou);
+            }
+        }, mCommandFou.new CommandItemBtnClickListener() {
+            @Override
+            public void onClick(View v) {
+                super.onClick(v);
+                ControllerProxy.getInstance().buttonOffClicked(nameFou);
             }
         });
     }
