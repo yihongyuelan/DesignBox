@@ -6,6 +6,7 @@ import com.seven.demobox.designpatterns.common.PatternsCommonActivity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.TextView;
 
@@ -30,6 +31,12 @@ public class CommandPattern extends PatternsCommonActivity {
         initOthers();
     }
 
+    @Override
+    protected void onDestroy() {
+        //TODO: Need to destroy resources!!
+        super.onDestroy();
+    }
+
     private void initOthers() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.command_pattern_title);
@@ -47,6 +54,7 @@ public class CommandPattern extends PatternsCommonActivity {
         mCommandThr = (CommandItemLayout) findViewById(R.id.item3);
         mCommandFou = (CommandItemLayout) findViewById(R.id.item4);
         mCommandInfo = (TextView) findViewById(R.id.command_info_tv);
+        mCommandInfo.setMovementMethod(ScrollingMovementMethod.getInstance());
     }
 
     private void initClickListeners() {
@@ -116,7 +124,7 @@ public class CommandPattern extends PatternsCommonActivity {
         public void onStateChanged(CommandState state) {
 
             final String lastInfo = mCommandInfo.getText().toString()
-                    + "\n-----------\n";
+                    + "\n---------------------------\n";
             final String newInfo = lastInfo
                     + "Light:" + state.getLightState() + "\n"
                     + "Door:" + state.getDoorState() + "\n"

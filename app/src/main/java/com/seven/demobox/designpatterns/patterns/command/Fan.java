@@ -1,14 +1,16 @@
 package com.seven.demobox.designpatterns.patterns.command;
 
-import static com.seven.demobox.designpatterns.patterns.command.CommandState.State;
+import static com.seven.demobox.designpatterns.patterns.command.CommandState.State.*;
 
 public class Fan extends CommandTarget {
 
     public void turnOn() {
-        update(State.STATE_ON);
+        mState.setFanState(STATE_ON);
+        update(mState);
     }
 
     public void turnOff() {
-        update(State.STATE_OFF);
+        mState.setFanState(STATE_OFF);
+        update(mState);
     }
 }

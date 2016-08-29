@@ -9,7 +9,7 @@ public class CommandState {
 
     private static CommandState mState;
 
-    public static enum State {
+    public enum State {
         STATE_ON,
         STATE_OFF
     }

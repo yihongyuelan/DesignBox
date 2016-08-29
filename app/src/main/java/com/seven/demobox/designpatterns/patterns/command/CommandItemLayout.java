@@ -47,21 +47,11 @@ public class CommandItemLayout extends LinearLayout {
         mBtnOff.setText(btnOffStr);
     }
 
-    private void setBtnOnClickListener(OnClickListener listener) {
-        if (mBtnOn != null && listener != null) {
-            mBtnOn.setOnClickListener(listener);
-        }
-    }
-
-    private void setBtnOffClickListener(OnClickListener listener) {
-        if (mBtnOff != null && listener != null) {
-            mBtnOff.setOnClickListener(listener);
-        }
-    }
-
     public void setBtnClickListener(OnClickListener onListener, OnClickListener offListener) {
-        setBtnOnClickListener(onListener);
-        setBtnOffClickListener(offListener);
+        if (mBtnOn != null && mBtnOff != null && onListener != null) {
+            mBtnOn.setOnClickListener(onListener);
+            mBtnOff.setOnClickListener(offListener);
+        }
     }
 
     public String getCommandName() {
@@ -71,18 +61,17 @@ public class CommandItemLayout extends LinearLayout {
     class CommandItemBtnClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
+            if (mBtnOff == null || mBtnOff == null) {
+                return;
+            }
             switch (v.getId()) {
                 case R.id.btn_on:
-                    if (mBtnOn != null && mBtnOff != null) {
-                        mBtnOn.setBackgroundResource(R.color.colorButtonGreen);
-                        mBtnOff.setBackgroundColor(Color.GRAY);
-                    }
+                    mBtnOn.setBackgroundResource(R.color.colorButtonGreen);
+                    mBtnOff.setBackgroundColor(Color.GRAY);
                     break;
                 case R.id.btn_off:
-                    if (mBtnOn != null && mBtnOff != null) {
-                        mBtnOn.setBackgroundColor(Color.GRAY);
-                        mBtnOff.setBackgroundResource(R.color.colorButtonRed);
-                    }
+                    mBtnOn.setBackgroundColor(Color.GRAY);
+                    mBtnOff.setBackgroundResource(R.color.colorButtonRed);
                     break;
             }
         }

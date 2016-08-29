@@ -1,14 +1,16 @@
 package com.seven.demobox.designpatterns.patterns.command;
 
-import static com.seven.demobox.designpatterns.patterns.command.CommandState.State;
+import static com.seven.demobox.designpatterns.patterns.command.CommandState.State.*;
 
 public class Door extends CommandTarget {
 
     public void open() {
-        update(State.STATE_ON);
+        mState.setDoorState(STATE_ON);
+        update(mState);
     }
 
     public void closed() {
-        update(State.STATE_OFF);
+        mState.setDoorState(STATE_OFF);
+        update(mState);
     }
 }

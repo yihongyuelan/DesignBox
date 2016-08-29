@@ -40,7 +40,7 @@
     <TextView
             android:id="@+id/command_info_tv"
             android:layout_width="match_parent"
-            android:layout_height="500px"
+            android:layout_height="match_parent"
             android:lineSpacingMultiplier="1.2"
             android:layout_marginTop="30px"
             android:scrollbars="vertical" />

@@ -1,14 +1,16 @@
 package com.seven.demobox.designpatterns.patterns.command;
 
-import static com.seven.demobox.designpatterns.patterns.command.CommandState.State;
+import static com.seven.demobox.designpatterns.patterns.command.CommandState.State.*;
 
 public class Light extends CommandTarget {
 
     public void turnOn() {
-        update(State.STATE_ON);
+        mState.setLightState(STATE_ON);
+        update(mState);
     }
 
     public void turnOff() {
-        update(State.STATE_OFF);
+        mState.setLightState(STATE_OFF);
+        update(mState);
     }
 }
