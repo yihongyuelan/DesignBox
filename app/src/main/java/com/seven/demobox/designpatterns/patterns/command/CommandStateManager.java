@@ -28,4 +28,8 @@ public class CommandStateManager {
     public void setStateListener(CommandStateListener listener) {
         mListener = listener;
     }
+
+    public void onRelease() {
+        CommandState.getInstance().onRelease();
+    }
 }

@@ -1,11 +1,10 @@
 package com.seven.demobox.designpatterns.patterns.command;
 
 public class CommandState {
-    // 0 means state off, other means on
-    public State mLightState;
-    public State mDoorState;
-    public State mFanState;
-    public State mStereoState;
+    public State mLightState = null;
+    public State mDoorState = null;
+    public State mFanState = null;
+    public State mStereoState = null;
 
     private static CommandState mState;
 
@@ -58,5 +57,12 @@ public class CommandState {
 
     public void setStereoState(State stereoState) {
         mStereoState = stereoState;
+    }
+
+    public void onRelease() {
+        mLightState = null;
+        mDoorState = null;
+        mFanState = null;
+        mStereoState = null;
     }
 }

@@ -35,6 +35,9 @@ public class CommandPattern extends PatternsCommonActivity {
     protected void onDestroy() {
         //TODO: Need to destroy resources!!
         super.onDestroy();
+        mStateManager.onRelease();
+        mStateManager = null;
+        mListener = null;
     }
 
     private void initOthers() {
