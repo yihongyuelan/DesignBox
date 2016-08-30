@@ -54,40 +54,36 @@ public class ControllerProxy {
         mStereoStopCommand = new StereoStopCommand(mStereo);
     }
 
-    public void buttonOnClicked(String commandName) {
+    public void buttonClicked(boolean on, String commandName) {
         Command command = null;
         switch (commandName) {
             case "Light":
-                command = mLightOnCommand;
+                if (on) {
+                    command = mLightOnCommand;
+                } else {
+                    command = mLightOffCommand;
+                }
                 break;
             case "Door":
-                command = mDoorOpenCommand;
+                if (on) {
+                    command = mDoorOpenCommand;
+                } else {
+                    command = mDoorClosedCommand;
+                }
                 break;
             case "Fan":
-                command = mFanOnCommand;
+                if (on) {
+                    command = mFanOnCommand;
+                } else {
+                    command = mFanOffCommand;
+                }
                 break;
             case "Stereo":
-                command = mStereoStartCommand;
-                break;
-        }
-        mController.setCommand(command);
-        mController.buttonClicked();
-    }
-
-    public void buttonOffClicked(String commandName) {
-        Command command = null;
-        switch (commandName) {
-            case "Light":
-                command = mLightOffCommand;
-                break;
-            case "Door":
-                command = mDoorClosedCommand;
-                break;
-            case "Fan":
-                command = mFanOffCommand;
-                break;
-            case "Stereo":
-                command = mStereoStopCommand;
+                if (on) {
+                    command = mStereoStartCommand;
+                } else {
+                    command = mStereoStopCommand;
+                }
                 break;
         }
         mController.setCommand(command);

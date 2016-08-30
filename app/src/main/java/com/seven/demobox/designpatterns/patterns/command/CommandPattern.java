@@ -66,13 +66,13 @@ public class CommandPattern extends PatternsCommonActivity {
             @Override
             public void onClick(View v) {
                 super.onClick(v);
-                ControllerProxy.getInstance().buttonOnClicked(nameOne);
+                ControllerProxy.getInstance().buttonClicked(true, nameOne);
             }
         }, mCommandOne.new CommandItemBtnClickListener() {
             @Override
             public void onClick(View v) {
                 super.onClick(v);
-                ControllerProxy.getInstance().buttonOffClicked(nameOne);
+                ControllerProxy.getInstance().buttonClicked(false, nameOne);
             }
         });
 
@@ -81,13 +81,13 @@ public class CommandPattern extends PatternsCommonActivity {
             @Override
             public void onClick(View v) {
                 super.onClick(v);
-                ControllerProxy.getInstance().buttonOnClicked(nameTwo);
+                ControllerProxy.getInstance().buttonClicked(true, nameTwo);
             }
         }, mCommandTwo.new CommandItemBtnClickListener() {
             @Override
             public void onClick(View v) {
                 super.onClick(v);
-                ControllerProxy.getInstance().buttonOffClicked(nameTwo);
+                ControllerProxy.getInstance().buttonClicked(false, nameTwo);
             }
         });
 
@@ -96,13 +96,13 @@ public class CommandPattern extends PatternsCommonActivity {
             @Override
             public void onClick(View v) {
                 super.onClick(v);
-                ControllerProxy.getInstance().buttonOnClicked(nameThr);
+                ControllerProxy.getInstance().buttonClicked(true, nameThr);
             }
         }, mCommandThr.new CommandItemBtnClickListener() {
             @Override
             public void onClick(View v) {
                 super.onClick(v);
-                ControllerProxy.getInstance().buttonOffClicked(nameThr);
+                ControllerProxy.getInstance().buttonClicked(false, nameThr);
             }
         });
 
@@ -111,13 +111,13 @@ public class CommandPattern extends PatternsCommonActivity {
             @Override
             public void onClick(View v) {
                 super.onClick(v);
-                ControllerProxy.getInstance().buttonOnClicked(nameFou);
+                ControllerProxy.getInstance().buttonClicked(true, nameFou);
             }
         }, mCommandFou.new CommandItemBtnClickListener() {
             @Override
             public void onClick(View v) {
                 super.onClick(v);
-                ControllerProxy.getInstance().buttonOffClicked(nameFou);
+                ControllerProxy.getInstance().buttonClicked(false, nameFou);
             }
         });
     }
