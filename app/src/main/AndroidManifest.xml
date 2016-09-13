@@ -41,6 +41,9 @@
         <activity android:name=".designpatterns.patterns.command.CommandPattern"
                   android:theme="@style/AppTheme.NoActionBar"
                   android:parentActivityName=".designpatterns.common.DesignPatternsActivity"/>
+        <activity android:name=".designpatterns.patterns.adaptive.AdaptivePattern"
+                  android:theme="@style/AppTheme.NoActionBar"
+                  android:parentActivityName=".designpatterns.common.DesignPatternsActivity"/>
     </application>
 
 </manifest>

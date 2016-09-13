@@ -1,6 +1,7 @@
 package com.seven.demobox.designpatterns.common;
 
 import com.seven.demobox.R;
+import com.seven.demobox.designpatterns.patterns.adaptive.AdaptivePattern;
 import com.seven.demobox.designpatterns.patterns.command.CommandPattern;
 import com.seven.demobox.designpatterns.patterns.singleton.SingletonPattern;
 import com.seven.demobox.designpatterns.patterns.decorator.DecoratorPattern;
@@ -24,5 +25,8 @@ public class PatternUtils {
             new PatternDetails(R.string.command_pattern_title,
                     R.string.command_pattern_description,
                     CommandPattern.class),
+            new PatternDetails(R.string.adaptive_pattern_title,
+                    R.string.adaptive_pattern_description,
+                    AdaptivePattern.class),
     };
 }

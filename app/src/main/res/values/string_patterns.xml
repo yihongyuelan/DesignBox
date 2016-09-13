@@ -15,5 +15,8 @@
     <string name="singleton_pattern_description">Only one object</string>
     <!-- Command -->
     <string name="command_pattern_title">CommandPattern</string>
-    <string name="command_pattern_description">command and execute</string>
+    <string name="command_pattern_description">Command and execute</string>
+    <!-- Adaptive -->
+    <string name="adaptive_pattern_title">Adapter and Facade pattern</string>
+    <string name="adaptive_pattern_description">Adapter and facade</string>
 </resources>

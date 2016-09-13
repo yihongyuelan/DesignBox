@@ -1,9 +1,10 @@
 package com.seven.demobox.designpatterns.common;
 
+import com.seven.demobox.BuildConfig;
+
 public final class PLog {
-    private static final boolean DEBUGABLE = true;
     public static final void i(String tag, String msg) {
-        if (DEBUGABLE) {
+        if (BuildConfig.DEBUG) {
             android.util.Log.i(tag,msg);
         }
     }
