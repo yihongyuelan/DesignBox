@@ -1,4 +1,4 @@
-package com.seven.demobox.designpatterns.patterns.factory.html;
+package com.seven.demobox.designpatterns.common.html;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -14,7 +14,6 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.Window;
 import android.webkit.CookieSyncManager;
 import android.webkit.WebSettings;

@@ -1,12 +1,12 @@
-package com.seven.demobox.designpatterns.patterns.factory.html;
+package com.seven.demobox.designpatterns.common.html;
 
 import android.text.TextUtils;
 
-public class MxmlDocumentHandler implements DocumentHandler {
+public class JavascriptDocumentHandler implements DocumentHandler {
 
     @Override
     public String getFileExtension() {
-        return "mxml";
+        return "js";
     }
 
     @Override

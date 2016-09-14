@@ -1,12 +1,12 @@
-package com.seven.demobox.designpatterns.patterns.factory.html;
+package com.seven.demobox.designpatterns.common.html;
 
 import android.text.TextUtils;
 
-public class CDocumentHandler implements DocumentHandler {
+public class MlDocumentHandler implements DocumentHandler {
 
     @Override
     public String getFileExtension() {
-        return "c";
+        return "ml";
     }
 
     @Override
@@ -21,12 +21,12 @@ public class CDocumentHandler implements DocumentHandler {
 
     @Override
     public String getFilePrettifyClass() {
-        return "prettyprint";
+        return "prettyprint lang-ml";
     }
 
     @Override
     public String getFileScriptFiles() {
-        return "";
+        return "<script src='file:///android_asset/lang-ml.js' type='text/javascript'></script> ";
     }
 
 }

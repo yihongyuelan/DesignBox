@@ -1,12 +1,12 @@
-package com.seven.demobox.designpatterns.patterns.factory.html;
+package com.seven.demobox.designpatterns.common.html;
 
 import android.text.TextUtils;
 
-public class JavaDocumentHandler implements DocumentHandler {
+public class CssDocumentHandler implements DocumentHandler {
 
     @Override
     public String getFileExtension() {
-        return ".java";
+        return "css";
     }
 
     @Override
@@ -21,13 +21,12 @@ public class JavaDocumentHandler implements DocumentHandler {
 
     @Override
     public String getFilePrettifyClass() {
-
-        return "prettyprint";
+        return "prettyprint lang-css";
     }
 
     @Override
     public String getFileScriptFiles() {
-        return "";
+        return "<script src='file:///android_asset/lang-css.js' type='text/javascript'></script> ";
     }
 
 }

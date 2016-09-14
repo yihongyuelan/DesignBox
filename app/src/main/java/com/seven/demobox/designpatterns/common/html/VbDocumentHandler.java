@@ -1,12 +1,12 @@
-package com.seven.demobox.designpatterns.patterns.factory.html;
+package com.seven.demobox.designpatterns.common.html;
 
 import android.text.TextUtils;
 
-public class CppDocumentHandler implements DocumentHandler {
+public class VbDocumentHandler implements DocumentHandler {
 
     @Override
     public String getFileExtension() {
-        return "cpp";
+        return "ml";
     }
 
     @Override
@@ -21,12 +21,12 @@ public class CppDocumentHandler implements DocumentHandler {
 
     @Override
     public String getFilePrettifyClass() {
-        return "prettyprint";
+        return "prettyprint lang-vb";
     }
 
     @Override
     public String getFileScriptFiles() {
-        return "";
+        return "<script src='file:///android_asset/lang-vb.js' type='text/javascript'></script> ";
     }
 
 }

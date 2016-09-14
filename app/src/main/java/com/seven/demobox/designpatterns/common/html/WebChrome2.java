@@ -1,4 +1,4 @@
-package com.seven.demobox.designpatterns.patterns.factory.html;
+package com.seven.demobox.designpatterns.common.html;
 
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;

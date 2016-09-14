@@ -1,12 +1,12 @@
-package com.seven.demobox.designpatterns.patterns.factory.html;
+package com.seven.demobox.designpatterns.common.html;
 
 import android.text.TextUtils;
 
-public class CssDocumentHandler implements DocumentHandler {
+public class SqlDocumentHandler implements DocumentHandler {
 
     @Override
     public String getFileExtension() {
-        return "css";
+        return "sql";
     }
 
     @Override
@@ -21,12 +21,12 @@ public class CssDocumentHandler implements DocumentHandler {
 
     @Override
     public String getFilePrettifyClass() {
-        return "prettyprint lang-css";
+        return "prettyprint lang-sql";
     }
 
     @Override
     public String getFileScriptFiles() {
-        return "<script src='file:///android_asset/lang-css.js' type='text/javascript'></script> ";
+        return "<script src='file:///android_asset/lang-sql.js' type='text/javascript'></script> ";
     }
 
 }

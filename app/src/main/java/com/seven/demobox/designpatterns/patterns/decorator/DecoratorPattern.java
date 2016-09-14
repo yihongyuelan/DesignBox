@@ -22,6 +22,7 @@ public class DecoratorPattern extends PatternsCommonActivity implements View.OnC
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patterns_decorator);
+        setTitle(R.string.decorator_pattern_title);
 
         mRoleGroup = (RadioGroup) findViewById(R.id.radio_group_role);
         mGenderGroup = (RadioGroup) findViewById(R.id.radio_group_gender);

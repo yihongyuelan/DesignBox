@@ -1,12 +1,12 @@
-package com.seven.demobox.designpatterns.patterns.factory.html;
+package com.seven.demobox.designpatterns.common.html;
 
 import android.text.TextUtils;
 
-public class TextDocumentHandler implements DocumentHandler {
+public class LuaDocumentHandler implements DocumentHandler {
 
     @Override
     public String getFileExtension() {
-        return "txt";
+        return "lua";
     }
 
     @Override
@@ -16,17 +16,17 @@ public class TextDocumentHandler implements DocumentHandler {
 
     @Override
     public String getFileMimeType() {
-        return "text/plain";
+        return "text/html";
     }
 
     @Override
     public String getFilePrettifyClass() {
-        return "prettyprint";
+        return "prettyprint lang-lua";
     }
 
     @Override
     public String getFileScriptFiles() {
-        return "";
+        return "<script src='file:///android_asset/lang-lua.js' type='text/javascript'></script> ";
     }
 
 }

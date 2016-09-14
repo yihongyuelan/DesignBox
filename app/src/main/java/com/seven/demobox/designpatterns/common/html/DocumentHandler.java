@@ -1,4 +1,4 @@
-package com.seven.demobox.designpatterns.patterns.factory.html;
+package com.seven.demobox.designpatterns.common.html;
 
 public interface DocumentHandler {
     public String getFileExtension();

@@ -1,12 +1,12 @@
-package com.seven.demobox.designpatterns.patterns.factory.html;
+package com.seven.demobox.designpatterns.common.html;
 
 import android.text.TextUtils;
 
-public class JavascriptDocumentHandler implements DocumentHandler {
+public class LispDocumentHandler implements DocumentHandler {
 
     @Override
     public String getFileExtension() {
-        return "js";
+        return "lisp";
     }
 
     @Override
@@ -21,12 +21,12 @@ public class JavascriptDocumentHandler implements DocumentHandler {
 
     @Override
     public String getFilePrettifyClass() {
-        return "prettyprint";
+        return "prettyprint lang-lisp";
     }
 
     @Override
     public String getFileScriptFiles() {
-        return "";
+        return "<script src='file:///android_asset/lang-lisp.js' type='text/javascript'></script> ";
     }
 
 }

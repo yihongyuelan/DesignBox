@@ -5,7 +5,6 @@ import com.seven.demobox.designpatterns.common.PatternsCommonActivity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.TextView;
@@ -25,7 +24,6 @@ public class CommandPattern extends PatternsCommonActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patterns_command);
 
-
         initViews();
         initClickListeners();
         initOthers();
@@ -41,10 +39,7 @@ public class CommandPattern extends PatternsCommonActivity {
     }
 
     private void initOthers() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.command_pattern_title);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle(R.string.command_pattern_title);
 
         mStateManager = CommandStateManager.getInstance();
         mListener = new CommandChangedListener();

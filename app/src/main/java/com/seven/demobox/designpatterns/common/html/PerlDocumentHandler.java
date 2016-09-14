@@ -1,12 +1,12 @@
-package com.seven.demobox.designpatterns.patterns.factory.html;
+package com.seven.demobox.designpatterns.common.html;
 
 import android.text.TextUtils;
 
-public class HtmlDocumentHandler implements DocumentHandler {
+public class PerlDocumentHandler implements DocumentHandler {
 
     @Override
     public String getFileExtension() {
-        return "html";
+        return "pl";
     }
 
     @Override

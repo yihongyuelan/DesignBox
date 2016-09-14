@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-                android:layout_height="match_parent">
-    <include
-            android:id="@+id/toolbar_layout"
-            layout="@layout/layout_toolbar"/>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <include layout="@layout/layout_toolbar"/>
 
     <fragment
             android:name="com.seven.demobox.designpatterns.patterns.command.CommandFragment"
             android:id="@+id/content_fragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/toolbar_layout"
             tools:layout="@layout/command_fragment"/>
 
-</RelativeLayout>
+</LinearLayout>

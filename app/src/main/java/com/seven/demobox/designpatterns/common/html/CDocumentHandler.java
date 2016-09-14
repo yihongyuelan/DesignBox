@@ -1,12 +1,12 @@
-package com.seven.demobox.designpatterns.patterns.factory.html;
+package com.seven.demobox.designpatterns.common.html;
 
 import android.text.TextUtils;
 
-public class PythonDocumentHandler implements DocumentHandler {
+public class CDocumentHandler implements DocumentHandler {
 
     @Override
     public String getFileExtension() {
-        return "py";
+        return "c";
     }
 
     @Override

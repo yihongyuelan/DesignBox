@@ -1,12 +1,12 @@
-package com.seven.demobox.designpatterns.patterns.factory.html;
+package com.seven.demobox.designpatterns.common.html;
 
 import android.text.TextUtils;
 
-public class RubyDocumentHandler implements DocumentHandler {
+public class TextDocumentHandler implements DocumentHandler {
 
     @Override
     public String getFileExtension() {
-        return "rb";
+        return "txt";
     }
 
     @Override
@@ -16,7 +16,7 @@ public class RubyDocumentHandler implements DocumentHandler {
 
     @Override
     public String getFileMimeType() {
-        return "text/html";
+        return "text/plain";
     }
 
     @Override
