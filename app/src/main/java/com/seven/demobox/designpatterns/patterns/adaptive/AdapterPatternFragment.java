@@ -1,4 +1,4 @@
-package com.seven.demobox.designpatterns.patterns.factory;
+package com.seven.demobox.designpatterns.patterns.adaptive;
 
 import com.seven.demobox.designpatterns.common.PatternsCommonFragment;
 
@@ -13,8 +13,7 @@ import android.webkit.CookieSyncManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-public class SimpleFactoryFragment extends PatternsCommonFragment {
-
+public class AdapterPatternFragment extends PatternsCommonFragment {
     @Override
     public void loadData(Bundle bundle, WebView webView) {
         if (webView == null) return;

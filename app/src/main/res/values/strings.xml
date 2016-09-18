@@ -26,4 +26,7 @@
     <string name="factory_pattern_simple">SimpleFactory</string>
     <string name="factory_pattern_method">FactoryMethod</string>
     <string name="factory_pattern_abstract">AbstractFactory</string>
+
+    <string name="adaptive_pattern_adapter">Adapter</string>
+    <string name="adaptive_pattern_facade">Facade</string>
 </resources>

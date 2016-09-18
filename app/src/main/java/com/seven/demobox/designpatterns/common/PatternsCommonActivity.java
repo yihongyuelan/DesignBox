@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.LinearLayout;
 
 public class PatternsCommonActivity extends AppCompatActivity {
     @Override
@@ -18,8 +17,7 @@ public class PatternsCommonActivity extends AppCompatActivity {
 
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
-        LinearLayout wrapper = new LinearLayout(this);
-        View view = getLayoutInflater().inflate(layoutResID, wrapper, true);
+        View view = getLayoutInflater().inflate(layoutResID, null);
         configureToolbar(view);
         super.setContentView(view);
     }
