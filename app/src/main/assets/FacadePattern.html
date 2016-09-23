@@ -16,110 +16,32 @@
 </head>
 <body onload="prettyPrint()">
 <div id="content_div">
-	<span class="important_text">Adapt interfaces</span>
+	<span class="important_text">Simplify and unify</span>
 	<br />
-	<span class="regular_text"> Adapt a new interface to an existing interface. </span>
-	<br />
-	<br />
-	<span class="important_text">Object oriented adapters</span>
-	<br />
-	<img src="file:///android_asset/images/Adaptive00.jpg" />
-	<br />
-	<img src="file:///android_asset/images/Adaptive01.jpg" />
-	<br />
-	<img src="file:///android_asset/images/Adaptive02.jpg" />
+	<span class="regular_text"> To use the Facade Pattern, we create a class that simplifies
+		and unifies a set of more complex classes that belong to some subsystem. Unlike a lot
+		of patterns, Facade is fairly straightforward; there are no mind bending abstractions
+		to get your head around. But that doesn't make it any less powerful; the Facade Pattern
+		allows us to avoid tight coupling betwen clients and subsystems. </span>
 	<br />
 	<br />
-	<span class="important_text">Adapter Pattern defined</span>
+	<span class="important_text">The Facade Pattern provides a unified interface to a set of
+		interfaces in a subsystem. Facade defines a higher-level interface taht makes the
+		subsystem easier to use.</span>
+	<br />
+	<img src="file:///android_asset/images/FacadePattern00.png" />
 	<br />
 	<br />
-	<span class="regular_text"> The Adapter Pattern converts the interface of a class into another
-		interface the client expect. Adapter let's classes work together that couldn't otherwise
-		because of incompatible interfaces. </span>
+	<span class="important_text"><b style="color: red;">Before</b> Facade Pattern</span>
 	<br />
-	<div class="code_style">
-    <pre class="prettyprint">
-public interface Duck {
-	void quack();
-	void fly();
-}
-				</pre>
-	</div>
+	<img src="file:///android_asset/images/FacadePattern01.png" />
 	<br />
 	<br />
-	<span class="regular_text"> MallardDuck implement Duck interface. </span>
+	<span class="important_text"><b style="color: red;">After</b> Facade Pattern</span>
 	<br />
-	<div class="code_style">
-    <pre class="prettyprint">
-public class MallardDuck implements Duck {
-
-	@Override
-	public void quack() {
-		System.out.println("Quack");
-
-	}
-
-	@Override
-	public void fly() {
-		System.out.println("I'm flying");
-	}
-
-}
-	</pre>
+	<img src="file:///android_asset/images/FacadePattern02.png" />
 	<br />
 	<br />
-	<br />
-	<pre class="prettyprint">
-public interface Turkey {
-	void gobble();
-	void fly();
-}
-	</pre>
-	<br />
-	<br />
-	<br />
-	<pre class="prettyprint">
-public class WildTurkey implements Turkey {
-
-	@Override
-	public void gobble() {
-		System.out.println("Gobble gobble");
-	}
-
-	@Override
-	public void fly() {
-		System.out.println("I'm flying a short distance");
-	}
-
-}
-	</pre>
-	<br />
-	<br />
-	<br />
-	<pre class="prettyprint">
-public class TurkeyAdapter implements Duck {
-
-	private Turkey trukey;
-	public TurkeyAdapter(Turkey trukey) {
-		super();
-		this.trukey = trukey;
-	}
-
-	@Override
-	public void quack() {
-		trukey.gobble();
-	}
-
-	@Override
-	public void fly() {
-		trukey.fly();
-		trukey.fly();
-		trukey.fly();
-	}
-
-}
-	</pre>
-	</div>
 	<br />
 </div>
 </body>
