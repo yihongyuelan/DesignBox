@@ -1,12 +1,11 @@
-package com.seven.demobox.designpatterns.patterns.singleton;
+package com.seven.demobox.designpatterns.patterns.template;
 
 import com.seven.demobox.designpatterns.common.PatternsCommonFragment;
 
 import android.os.Bundle;
 import android.webkit.WebView;
 
-public class SingletonFragment extends PatternsCommonFragment {
-
+public class TemplatePatternFragment extends PatternsCommonFragment {
     @Override
     public void loadData(Bundle bundle, WebView webView) {
         if (webView == null) return;
@@ -14,8 +13,7 @@ public class SingletonFragment extends PatternsCommonFragment {
         if (bundle != null) {
             webView.restoreState(bundle);
         } else {
-            //Home Screen, Simple explanation
-            webView.loadUrl("file:///android_asset/SingletonPattern.html");
+            webView.loadUrl("file:///android_asset/AdapterPattern.html");
         }
     }
 }

@@ -7,6 +7,7 @@ import com.seven.demobox.designpatterns.patterns.singleton.SingletonPattern;
 import com.seven.demobox.designpatterns.patterns.decorator.DecoratorPattern;
 import com.seven.demobox.designpatterns.patterns.factory.FactoryPattern;
 import com.seven.demobox.designpatterns.patterns.observer.ObserverPattern;
+import com.seven.demobox.designpatterns.patterns.template.TemplatePattern;
 
 public class PatternUtils {
     public static final PatternDetails[] PATTERN_LISTS = {
@@ -26,7 +27,10 @@ public class PatternUtils {
                     R.string.command_pattern_description,
                     CommandPattern.class),
             new PatternDetails(R.string.adaptive_pattern_title,
-                    R.string.adaptive_pattern_description,
-                    AdaptivePattern.class),
+            R.string.adaptive_pattern_description,
+            AdaptivePattern.class),
+            new PatternDetails(R.string.template_pattern_title,
+                    R.string.template_pattern_description,
+                    TemplatePattern.class),
     };
 }

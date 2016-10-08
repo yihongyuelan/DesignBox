@@ -2,21 +2,24 @@
     <string name="design_pattern_title">DesignPatterns</string>
     <string name="design_pattern_description">Head First design patterns</string>
     <!-- Observer -->
-    <string name="observer_pattern_title">ObserverPattern</string>
+    <string name="observer_pattern_title">Observer Pattern</string>
     <string name="observer_pattern_description">Publisher and Subscriber</string>
     <!-- Decorator -->
-    <string name="decorator_pattern_title">DecoratorPattern</string>
+    <string name="decorator_pattern_title">Decorator Pattern</string>
     <string name="decorator_pattern_description">Decorator or Wrapper</string>
     <!-- Factory -->
-    <string name="factory_pattern_title">FactoryPattern</string>
+    <string name="factory_pattern_title">Factory Pattern</string>
     <string name="factory_pattern_description">SimpleFactory/FactoryMethod/AbstractFactory</string>
     <!-- Singleton -->
-    <string name="singleton_pattern_title">SingletonPattern</string>
+    <string name="singleton_pattern_title">Singleton Pattern</string>
     <string name="singleton_pattern_description">Only one object</string>
     <!-- Command -->
-    <string name="command_pattern_title">CommandPattern</string>
+    <string name="command_pattern_title">Command Pattern</string>
     <string name="command_pattern_description">Command and execute</string>
     <!-- Adaptive -->
     <string name="adaptive_pattern_title">Adapter and Facade pattern</string>
     <string name="adaptive_pattern_description">Adapter and facade</string>
+    <!-- Template -->
+    <string name="template_pattern_title">Template pattern</string>
+    <string name="template_pattern_description">Unification and inheritance</string>
 </resources>

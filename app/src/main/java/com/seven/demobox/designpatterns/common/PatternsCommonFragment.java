@@ -1,15 +1,20 @@
 package com.seven.demobox.designpatterns.common;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.webkit.CookieSyncManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public abstract class PatternsCommonFragment extends Fragment {
 
@@ -53,7 +58,22 @@ public abstract class PatternsCommonFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mWebView.destroy();
+        // Fix Receiver not registered: android.widget.ZoomButtonsController issue
+        if (mWebView != null) {
+            mWebView.setVisibility(View.GONE);
+            long timeout = ViewConfiguration.getZoomControlsTimeout();
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    ((Activity)mContext).runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mWebView.destroy();
+                        }
+                    });
+                }
+            }, timeout);
+        }
     }
 
     private WebView initWebView(Context context) {
