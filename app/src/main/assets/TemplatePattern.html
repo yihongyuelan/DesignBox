@@ -1,0 +1,49 @@
+<html>
+<head>
+	<title>Template Pattern</title>
+	<style type="text/css">
+		h1 { text-align:center; text-shadow: #BBB 1px 1px 1px; color: black !important; font-family:  "Gill Sans", "Lucida Grande", Helvetica, sans-serif;  }
+		body { font-family:Arial, Helvetica, sans-serif; font-size:12px; background: -webkit-gradient(linear,left top,left bottom,color-stop(0.04, rgb(240,240,240)), color-stop(0.52, rgb(255,255,255)))}
+		.important_text { text-align:left; text-shadow: #BBB 1px 1px 1px; color: black !important; font-weight:bold; }
+		.regular_text { text-align:left; color: black; }
+		.code_style { font-size: 12px; text-align:left; }
+		.code_style pre.prettyprint{overflow-x:scroll;}
+		#content_div { }
+	</style>
+	<link href="file:///android_asset/prettify.css" rel="stylesheet" type="text/css" />
+	<script src="file:///android_asset/prettify.js" type="text/javascript"></script>
+	<link href="file:///android_asset/vibrant-ink.css" type="text/css" rel="stylesheet" />
+</head>
+<body onload="prettyPrint()">
+<div id="content_div">
+	<span class="important_text">Unification and Inheritance</span>
+	<br />
+	<span class="regular_text"> Superclass define the process but subclass decide concrete realization. </span>
+	<br />
+	<br />
+	<span class="important_text">Meet Template Method</span>
+	<br />
+	<img src="file:///android_asset/images/TemplatePattern00.png" />
+	<br />
+	<br />
+	<span class="important_text">The Template Method defines the steps of an algorithm and allows subclass to provide the implementation for one or more steps. </span>
+	<br />
+	<img src="file:///android_asset/images/TemplatePattern01.png" />
+	<br />
+	<br />
+	<span class="important_text">Template Method Pattern defined</span>
+	<br />
+	<br />
+	<span class="regular_text"> The Template Method Pattern defines the skeleton of an algorithm in a method, deferring some steps to subclass. Template Method lets subclass
+	redefine certain steps of an algorithm without changing the algorithm's structure. </span>
+	<br />
+	<br />
+	<span class="important_text">The Hollywood Principle</span>
+	<br />
+	<br />
+	<span class="regular_text"> Don't call us, we'll call you. </span>
+	<br />
+	<img src="file:///android_asset/images/TemplatePattern02.png" />
+</div>
+</body>
+</html>

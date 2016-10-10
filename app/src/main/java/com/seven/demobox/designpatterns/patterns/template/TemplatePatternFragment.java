@@ -13,7 +13,7 @@ public class TemplatePatternFragment extends PatternsCommonFragment {
         if (bundle != null) {
             webView.restoreState(bundle);
         } else {
-            webView.loadUrl("file:///android_asset/AdapterPattern.html");
+            webView.loadUrl("file:///android_asset/TemplatePattern.html");
         }
     }
 }
