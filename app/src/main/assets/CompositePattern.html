@@ -1,0 +1,134 @@
+<html>
+<head>
+	<title>Adapter Pattern</title>
+	<style type="text/css">
+		h1 { text-align:center; text-shadow: #BBB 1px 1px 1px; color: black !important; font-family:  "Gill Sans", "Lucida Grande", Helvetica, sans-serif;  }
+		body { font-family:Arial, Helvetica, sans-serif; font-size:12px; background: -webkit-gradient(linear,left top,left bottom,color-stop(0.04, rgb(240,240,240)), color-stop(0.52, rgb(255,255,255)))}
+		.important_text { text-align:left; text-shadow: #BBB 1px 1px 1px; color: black !important; font-weight:bold; }
+		.regular_text { text-align:left; color: black; }
+		.code_style { font-size: 12px; text-align:left; }
+		.code_style pre.prettyprint{overflow-x:scroll;}
+		#content_div { }
+	</style>
+	<link href="file:///android_asset/prettify.css" rel="stylesheet" type="text/css" />
+	<script src="file:///android_asset/prettify.js" type="text/javascript"></script>
+	<link href="file:///android_asset/vibrant-ink.css" type="text/css" rel="stylesheet" />
+</head>
+<body onload="prettyPrint()">
+<div id="content_div">
+	<span class="important_text">The Iterator Pattern</span>
+	<br />
+	<span class="regular_text">The Iterator Pattern provides a way to access the elements of an
+	aggregate object sequentially without exposing its underlying representation.</span>
+	<br />
+	<br />
+	<span class="regular_text"><b style="color: red;">In a word, makes all aggregate can to access
+	by Iterator interface. It's easy to iterate over the collection by 'for each' statement.</b></span>
+	<br />
+	<img src="file:///android_asset/images/CompositePattern00.png" />
+	<br />
+	<br />
+	<span class="important_text">The Composite Pattern</span>
+	<br />
+	<span class="regular_text">The Composite Pattern allows you to compose object into tree structures
+	to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions
+	of objects uniformly.</span>
+	<br />
+	<img src="file:///android_asset/images/CompositePattern01.png" />
+	<img src="file:///android_asset/images/CompositePattern02.png" />
+	<br />
+	<br />
+	<span class="important_text">Adapter Pattern defined</span>
+	<br />
+	<br />
+	<span class="regular_text"> The Adapter Pattern converts the interface of a class into another
+		interface the client expect. Adapter let's classes work together that couldn't otherwise
+		because of incompatible interfaces. </span>
+	<br />
+	<div class="code_style">
+    <pre class="prettyprint">
+public interface Duck {
+	void quack();
+	void fly();
+}
+				</pre>
+	</div>
+	<br />
+	<br />
+	<span class="regular_text"> MallardDuck implement Duck interface. </span>
+	<br />
+	<div class="code_style">
+    <pre class="prettyprint">
+public class MallardDuck implements Duck {
+
+	@Override
+	public void quack() {
+		System.out.println("Quack");
+
+	}
+
+	@Override
+	public void fly() {
+		System.out.println("I'm flying");
+	}
+
+}
+	</pre>
+	<br />
+	<br />
+	<br />
+	<pre class="prettyprint">
+public interface Turkey {
+	void gobble();
+	void fly();
+}
+	</pre>
+	<br />
+	<br />
+	<br />
+	<pre class="prettyprint">
+public class WildTurkey implements Turkey {
+
+	@Override
+	public void gobble() {
+		System.out.println("Gobble gobble");
+	}
+
+	@Override
+	public void fly() {
+		System.out.println("I'm flying a short distance");
+	}
+
+}
+	</pre>
+	<br />
+	<br />
+	<br />
+	<pre class="prettyprint">
+public class TurkeyAdapter implements Duck {
+
+	private Turkey trukey;
+	public TurkeyAdapter(Turkey trukey) {
+		super();
+		this.trukey = trukey;
+	}
+
+	@Override
+	public void quack() {
+		trukey.gobble();
+	}
+
+	@Override
+	public void fly() {
+		trukey.fly();
+		trukey.fly();
+		trukey.fly();
+	}
+
+}
+	</pre>
+	</div>
+	<br />
+</div>
+</body>
+</html>

@@ -29,4 +29,7 @@
 
     <string name="adaptive_pattern_adapter">Adapter</string>
     <string name="adaptive_pattern_facade">Facade</string>
+
+    <string name="composite_pattern_des">Description</string>
+    <string name="composite_pattern_demo">Demo</string>
 </resources>

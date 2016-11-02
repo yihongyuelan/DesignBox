@@ -23,30 +23,43 @@
         <activity android:name=".main.TestActivity1"
                   android:theme="@style/AppTheme.NoActionBar"
                   android:parentActivityName=".main.MainActivity"/>
+
         <activity android:name=".designpatterns.common.DesignPatternsActivity"
                   android:theme="@style/AppTheme.NoActionBar"
                   android:parentActivityName=".main.MainActivity"/>
+
         <activity android:name=".designpatterns.patterns.observer.ObserverPattern"
-                  android:theme="@style/AppTheme.NoActionBar"
-                  android:parentActivityName=".designpatterns.common.DesignPatternsActivity"/>
+                  android:parentActivityName=".designpatterns.common.DesignPatternsActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity android:name=".designpatterns.patterns.decorator.DecoratorPattern"
-                  android:theme="@style/AppTheme.NoActionBar"
-                  android:parentActivityName=".designpatterns.common.DesignPatternsActivity"/>
+                  android:parentActivityName=".designpatterns.common.DesignPatternsActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity android:name=".designpatterns.patterns.factory.FactoryPattern"
-                  android:theme="@style/AppTheme.NoActionBar"
-                  android:parentActivityName=".designpatterns.common.DesignPatternsActivity"/>
+                  android:parentActivityName=".designpatterns.common.DesignPatternsActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity android:name=".designpatterns.patterns.singleton.SingletonPattern"
-                  android:theme="@style/AppTheme.NoActionBar"
-                  android:parentActivityName=".designpatterns.common.DesignPatternsActivity"/>
+                  android:parentActivityName=".designpatterns.common.DesignPatternsActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity android:name=".designpatterns.patterns.command.CommandPattern"
-                  android:theme="@style/AppTheme.NoActionBar"
-                  android:parentActivityName=".designpatterns.common.DesignPatternsActivity"/>
+                  android:parentActivityName=".designpatterns.common.DesignPatternsActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity android:name=".designpatterns.patterns.adaptive.AdaptivePattern"
-                  android:theme="@style/AppTheme.NoActionBar"
-                  android:parentActivityName=".designpatterns.common.DesignPatternsActivity"/>
+                  android:parentActivityName=".designpatterns.common.DesignPatternsActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity android:name=".designpatterns.patterns.template.TemplatePattern"
-                  android:theme="@style/AppTheme.NoActionBar"
-                  android:parentActivityName=".designpatterns.common.DesignPatternsActivity"/>
+                  android:parentActivityName=".designpatterns.common.DesignPatternsActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".designpatterns.patterns.composite.CompositePattern"
+                  android:parentActivityName=".designpatterns.common.DesignPatternsActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
+
     </application>
 
 </manifest>

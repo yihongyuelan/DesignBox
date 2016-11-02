@@ -22,4 +22,7 @@
     <!-- Template -->
     <string name="template_pattern_title">Template pattern</string>
     <string name="template_pattern_description">Unification and inheritance</string>
+    <!-- Composite -->
+    <string name="composite_pattern_title">Composite pattern</string>
+    <string name="composite_pattern_description">Iterator and composite</string>
 </resources>
