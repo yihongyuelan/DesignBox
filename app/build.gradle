@@ -33,9 +33,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.0.1'
-    //import 3trd party library
     compile(name: 'library-release', ext: 'aar')
     compile(name: 'utils-v4-release', ext: 'aar')
     compile(name: 'volley-debug', ext: 'aar')
