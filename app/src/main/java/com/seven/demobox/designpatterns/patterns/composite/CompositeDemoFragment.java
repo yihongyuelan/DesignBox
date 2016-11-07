@@ -14,7 +14,7 @@ public class CompositeDemoFragment extends PatternsCommonFragment {
         if (bundle != null) {
             webView.restoreState(bundle);
         } else {
-            webView.loadUrl("file:///android_asset/SimpleFactory.html");
+            webView.loadUrl("file:///android_asset/CompositePattern_Demo.html");
         }
     }
 }

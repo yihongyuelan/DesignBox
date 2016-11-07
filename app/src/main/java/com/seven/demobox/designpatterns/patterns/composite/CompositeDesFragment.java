@@ -14,7 +14,7 @@ public class CompositeDesFragment extends PatternsCommonFragment {
         if (bundle != null) {
             webView.restoreState(bundle);
         } else {
-            webView.loadUrl("file:///android_asset/CompositePattern.html");
+            webView.loadUrl("file:///android_asset/CompositePattern_Des.html");
         }
     }
 }
