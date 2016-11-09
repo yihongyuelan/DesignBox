@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/yihongyuelan/DesignBox.svg?branch=master)](https://travis-ci.org/yihongyuelan/DesignBox/)
 
+![Logo](pictures/DesignBox_logo.png)
+
 #Indroduction
 
 Design patterns implemented by Java and built an android app. Extract from Head First Design Patterns.
