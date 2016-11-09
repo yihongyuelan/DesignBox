@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DemoBox</string>
+    <string name="app_name">DesignBox</string>
     <string name="no_demos">No demos</string>
     <string name="test_title1">TestActivity1</string>
     <string name="test_description1">This is TestActivity1</string>
