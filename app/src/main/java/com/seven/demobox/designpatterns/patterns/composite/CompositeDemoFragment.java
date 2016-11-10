@@ -1,20 +1,17 @@
 package com.seven.demobox.designpatterns.patterns.composite;
 
-import com.seven.demobox.designpatterns.common.PatternsCommonFragment;
 
 import android.os.Bundle;
-import android.webkit.WebView;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class CompositeDemoFragment extends PatternsCommonFragment {
-
+public class CompositeDemoFragment extends Fragment {
+    @Nullable
     @Override
-    public void loadData(Bundle bundle, WebView webView) {
-        if (webView == null) return;
-        // Restore a webview if we are meant to restore
-        if (bundle != null) {
-            webView.restoreState(bundle);
-        } else {
-            webView.loadUrl("file:///android_asset/CompositePattern_Demo.html");
-        }
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 }
