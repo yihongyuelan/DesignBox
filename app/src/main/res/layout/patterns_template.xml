@@ -7,7 +7,7 @@
     <include layout="@layout/toolbar_layout"/>
 
     <fragment
-            android:name="com.seven.demobox.designpatterns.patterns.template.TemplatePatternFragment"
+            android:name="com.seven.designbox.designpatterns.patterns.template.TemplatePatternFragment"
             android:id="@+id/content_fragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
