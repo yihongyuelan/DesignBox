@@ -15,9 +15,9 @@ package com.seven.designbox.designpatterns.patterns.composite;
  * limitations under the License.
  */
 
-public class MenuDinner extends Menu {
+public class MenuDiner extends Menu {
 
-    public MenuDinner(String name, String description) {
+    public MenuDiner(String name, String description) {
         super(name, description);
 
         addItem("Vegetarian BLT",
