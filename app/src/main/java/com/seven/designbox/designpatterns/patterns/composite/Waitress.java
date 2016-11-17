@@ -29,14 +29,20 @@ public class Waitress {
                 "Apple Pie with a flakey crust",
                 true,
                 3.89));
+
+        dinerMenu.add(cafeMenu);
+
         allMenus = new Menu("ALL MENUS", "All menus combined");
         allMenus.add(pancakeMenu);
         allMenus.add(dinerMenu);
-        allMenus.add(cafeMenu);
         allMenus.add(dessertMenu);
     }
 
     public MenuComponent getAllMenus() {
         return allMenus;
+    }
+
+    public int getAllMenusCounts() {
+        return allMenus.getCounts();
     }
 }

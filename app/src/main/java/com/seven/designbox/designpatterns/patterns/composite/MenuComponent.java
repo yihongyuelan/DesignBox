@@ -25,6 +25,10 @@ public abstract class MenuComponent {
         throw new UnsupportedOperationException();
     }
 
+    public int getCounts() {
+        throw new UnsupportedOperationException();
+    }
+
     public MenuComponent getChild(int i) {
         throw new UnsupportedOperationException();
     }

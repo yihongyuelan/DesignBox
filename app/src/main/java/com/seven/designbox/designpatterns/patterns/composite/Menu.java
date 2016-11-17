@@ -16,9 +16,10 @@ package com.seven.designbox.designpatterns.patterns.composite;
  */
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Menu extends MenuComponent {
-    private ArrayList<MenuComponent> mComponents = new ArrayList<>();
+    private List<MenuComponent> mComponents = new ArrayList<>();
     private String name;
     private String description;
 
@@ -52,10 +53,18 @@ public class Menu extends MenuComponent {
         return description;
     }
 
+    @Override
+    public int getCounts() {
+        if (mComponents != null) {
+            return mComponents.size();
+        }
+        return 0;
+    }
+
     protected void addItem(String name,
-                         String description,
-                         boolean vegetarian,
-                         double price) {
+                           String description,
+                           boolean vegetarian,
+                           double price) {
         MenuItem item = new MenuItem(name, description, vegetarian, price);
         //Call super method
         add(item);
