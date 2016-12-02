@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 25
     buildToolsVersion "25.0.0"
 
     defaultConfig {
@@ -38,4 +38,5 @@ dependencies {
     compile(name: 'utils-v4-release', ext: 'aar')
     compile(name: 'volley-debug', ext: 'aar')
     compile 'com.zhy:autolayout:1.4.5'
+    compile project(path: ':libtreelist')
 }

@@ -6,4 +6,6 @@
     <color name="colorButtonGray">#888888</color>
     <color name="colorButtonGreen">#2AAE29</color>
     <color name="colorButtonRed">#E54E3F</color>
+    <color name="text_lgray">#808080</color>
+
 </resources>

@@ -26,7 +26,7 @@ public abstract class MenuComponent {
     }
 
     public int getCounts() {
-        throw new UnsupportedOperationException();
+        return 0;
     }
 
     public MenuComponent getChild(int i) {

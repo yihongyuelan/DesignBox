@@ -20,6 +20,7 @@
     <string name="button_generate">Generate</string>
     <string name="hero_details">Hero details</string>
     <string name="hero_title">Please create your Hero!!!</string>
+    <string name="item_price">$ %.2f</string>
     <!-- weather info -->
     <string name="cityLabel">City</string>
 
