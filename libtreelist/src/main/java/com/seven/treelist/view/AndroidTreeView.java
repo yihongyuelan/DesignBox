@@ -59,6 +59,7 @@ public class AndroidTreeView {
         setDefaultContainerStyle(style, false);
     }
 
+    //Added by Seven for default style
     public void setDefaultContainerStyle() {
         setDefaultContainerStyle(R.style.TreeNodeStyle, false);
     }

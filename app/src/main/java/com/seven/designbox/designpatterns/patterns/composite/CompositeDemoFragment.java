@@ -14,8 +14,6 @@ import android.view.ViewGroup;
 
 public class CompositeDemoFragment extends Fragment {
     private AndroidTreeView tView;
-    private Waitress mWaitress;
-    private MenuComponent mAllMenus;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -24,16 +22,17 @@ public class CompositeDemoFragment extends Fragment {
 
         final TreeNode root = TreeNode.root();
 
-        mWaitress = new Waitress();
-        mAllMenus = mWaitress.getAllMenus();
+        Waitress mWaitress = new Waitress();
+        MenuComponent mAllMenus = mWaitress.getAllMenus();
 
-        TreeNode data = new TreeNode(new MenuTreeItemHolder.MenuTreeItem(R.drawable.menu_black, mAllMenus.getName())).setViewHolder(new MenuHeaderHolder(getActivity()));
+        TreeNode data = new TreeNode(new MenuTreeItemHolder.MenuTreeItem(R.drawable.menu_black, mAllMenus.getName()))
+                .setViewHolder(new MenuHeaderHolder(getActivity()));
         fillFolder(data, mAllMenus);
         root.addChild(data);
 
         tView = new AndroidTreeView(getActivity(), root);
-        tView.setDefaultAnimation(true);
-        tView.setUse2dScroll(true);
+        //tView.setDefaultAnimation(true);
+        //tView.setUse2dScroll(true);
         tView.setDefaultContainerStyle();
         containerView.addView(tView.getView());
 

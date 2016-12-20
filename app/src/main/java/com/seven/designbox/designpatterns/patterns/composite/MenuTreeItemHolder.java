@@ -9,9 +9,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * Created by Bogdan Melnychuk on 2/12/15.
- */
 public class MenuTreeItemHolder extends TreeNode.BaseNodeViewHolder<MenuTreeItemHolder.MenuTreeItem> {
     private TextView tvValue;
     private ImageView arrowView;
@@ -26,12 +23,9 @@ public class MenuTreeItemHolder extends TreeNode.BaseNodeViewHolder<MenuTreeItem
         final View view = inflater.inflate(R.layout.layout_menu_header, null, false);
         tvValue = (TextView) view.findViewById(R.id.node_value);
         tvValue.setText(value.text);
-
         final ImageView iconView = (ImageView) view.findViewById(R.id.icon);
         iconView.setImageResource(value.icon);
-
         arrowView = (ImageView) view.findViewById(R.id.arrow_icon);
-
         return view;
     }
 
