@@ -25,10 +25,13 @@ public class CompositeDemoFragment extends Fragment {
         Waitress mWaitress = new Waitress();
         MenuComponent mAllMenus = mWaitress.getAllMenus();
 
-        TreeNode data = new TreeNode(new MenuTreeItemHolder.MenuTreeItem(R.drawable.menu_black, mAllMenus.getName()))
-                .setViewHolder(new MenuHeaderHolder(getActivity()));
+        MenuTreeItemHolder.MenuTreeItem item = new MenuTreeItemHolder.MenuTreeItem(R.drawable.menu_black, mAllMenus.getName());
+        TreeNode data = new TreeNode(item);
+        MenuHeaderHolder holder = new MenuHeaderHolder(getActivity());
+        data.setViewHolder(holder);
         fillFolder(data, mAllMenus);
         root.addChild(data);
+
 
         tView = new AndroidTreeView(getActivity(), root);
         //tView.setDefaultAnimation(true);
