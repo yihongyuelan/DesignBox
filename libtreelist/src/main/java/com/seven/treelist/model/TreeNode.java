@@ -9,21 +9,15 @@ import com.seven.treelist.view.AndroidTreeView;
 import com.seven.treelist.view.TreeNodeWrapperView;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by Bogdan Melnychuk on 2/10/15.
- */
 public class TreeNode {
     public static final String NODES_ID_SEPARATOR = ":";
 
     private int mId;
     private int mLastId;
     private TreeNode mParent;
-    private boolean mSelected;
-    private boolean mSelectable = true;
     private final List<TreeNode> children;
     private BaseNodeViewHolder mViewHolder;
     private TreeNodeClickListener mClickListener;
@@ -33,7 +27,6 @@ public class TreeNode {
 
     public static TreeNode root() {
         TreeNode root = new TreeNode(null);
-        root.setSelectable(false);
         return root;
     }
 
@@ -51,30 +44,6 @@ public class TreeNode {
         childNode.mId = generateId();
         children.add(childNode);
         return this;
-    }
-
-    public TreeNode addChildren(TreeNode... nodes) {
-        for (TreeNode n : nodes) {
-            addChild(n);
-        }
-        return this;
-    }
-
-    public TreeNode addChildren(Collection<TreeNode> nodes) {
-        for (TreeNode n : nodes) {
-            addChild(n);
-        }
-        return this;
-    }
-
-    public int deleteChild(TreeNode child) {
-        for (int i = 0; i < children.size(); i++) {
-            if (child.mId == children.get(i).mId) {
-                children.remove(i);
-                return i;
-            }
-        }
-        return -1;
     }
 
     public List<TreeNode> getChildren() {
@@ -110,22 +79,6 @@ public class TreeNode {
         return this;
     }
 
-    public void setSelected(boolean selected) {
-        mSelected = selected;
-    }
-
-    public boolean isSelected() {
-        return mSelectable && mSelected;
-    }
-
-    public void setSelectable(boolean selectable) {
-        mSelectable = selectable;
-    }
-
-    public boolean isSelectable() {
-        return mSelectable;
-    }
-
     public String getPath() {
         final StringBuilder path = new StringBuilder();
         TreeNode node = this;
@@ -140,27 +93,6 @@ public class TreeNode {
     }
 
 
-    public int getLevel() {
-        int level = 0;
-        TreeNode root = this;
-        while (root.mParent != null) {
-            root = root.mParent;
-            level++;
-        }
-        return level;
-    }
-
-    public boolean isLastChild() {
-        if (!isRoot()) {
-            int parentSize = mParent.children.size();
-            if (parentSize > 0) {
-                final List<TreeNode> parentChildren = mParent.children;
-                return parentChildren.get(parentSize - 1).mId == mId;
-            }
-        }
-        return false;
-    }
-
     public TreeNode setViewHolder(BaseNodeViewHolder viewHolder) {
         mViewHolder = viewHolder;
         if (viewHolder != null) {
@@ -174,13 +106,13 @@ public class TreeNode {
         return this;
     }
 
-    public TreeNodeClickListener getClickListener() {
-        return this.mClickListener;
-    }
-
     public TreeNode setLongClickListener(TreeNodeLongClickListener listener) {
         mLongClickListener = listener;
         return this;
+    }
+
+    public TreeNodeClickListener getClickListener() {
+        return this.mClickListener;
     }
 
     public TreeNodeLongClickListener getLongClickListener() {
@@ -189,26 +121,6 @@ public class TreeNode {
 
     public BaseNodeViewHolder getViewHolder() {
         return mViewHolder;
-    }
-
-    public boolean isFirstChild() {
-        if (!isRoot()) {
-            List<TreeNode> parentChildren = mParent.children;
-            return parentChildren.get(0).mId == mId;
-        }
-        return false;
-    }
-
-    public boolean isRoot() {
-        return mParent == null;
-    }
-
-    public TreeNode getRoot() {
-        TreeNode root = this;
-        while (root.mParent != null) {
-            root = root.mParent;
-        }
-        return root;
     }
 
     public interface TreeNodeClickListener {
@@ -262,10 +174,6 @@ public class TreeNode {
             return (ViewGroup) getView().findViewById(R.id.node_items);
         }
 
-        public boolean isInitialized() {
-            return mView != null;
-        }
-
         public int getContainerStyle() {
             return containerStyle;
         }
@@ -277,8 +185,5 @@ public class TreeNode {
             // empty
         }
 
-        public void toggleSelectionMode(boolean editModeEnabled) {
-            // empty
-        }
     }
 }

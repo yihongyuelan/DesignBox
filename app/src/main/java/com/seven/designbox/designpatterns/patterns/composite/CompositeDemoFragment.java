@@ -35,7 +35,6 @@ public class CompositeDemoFragment extends Fragment {
 
         tView = new AndroidTreeView(getActivity(), root);
         //tView.setDefaultAnimation(true);
-        //tView.setUse2dScroll(true);
         tView.setDefaultContainerStyle();
         containerView.addView(tView.getView());
 
