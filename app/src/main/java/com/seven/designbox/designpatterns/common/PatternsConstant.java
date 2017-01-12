@@ -8,6 +8,7 @@ import com.seven.designbox.designpatterns.patterns.singleton.SingletonPattern;
 import com.seven.designbox.designpatterns.patterns.decorator.DecoratorPattern;
 import com.seven.designbox.designpatterns.patterns.factory.FactoryPattern;
 import com.seven.designbox.designpatterns.patterns.observer.ObserverPattern;
+import com.seven.designbox.designpatterns.patterns.state.StatePattern;
 import com.seven.designbox.designpatterns.patterns.template.TemplatePattern;
 
 public class PatternsConstant {
@@ -36,5 +37,8 @@ public class PatternsConstant {
             new PatternsDetail(R.string.composite_pattern_title,
                     R.string.composite_pattern_description,
                     CompositePattern.class),
+            new PatternsDetail(R.string.state_pattern_title,
+                    R.string.state_pattern_description,
+                    StatePattern.class),
     };
 }

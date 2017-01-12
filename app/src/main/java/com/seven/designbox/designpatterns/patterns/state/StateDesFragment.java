@@ -1,11 +1,11 @@
-package com.seven.designbox.designpatterns.patterns.composite;
+package com.seven.designbox.designpatterns.patterns.state;
 
 import com.seven.designbox.designpatterns.common.PatternsCommonFragment;
 
 import android.os.Bundle;
 import android.webkit.WebView;
 
-public class CompositeDesFragment extends PatternsCommonFragment {
+public class StateDesFragment extends PatternsCommonFragment {
 
     @Override
     public void loadData(Bundle bundle, WebView webView) {
@@ -14,7 +14,7 @@ public class CompositeDesFragment extends PatternsCommonFragment {
         if (bundle != null) {
             webView.restoreState(bundle);
         } else {
-            webView.loadUrl("file:///android_asset/CompositePatternDes.html");
+            webView.loadUrl("file:///android_asset/StatePatternDes.html");
         }
     }
 }

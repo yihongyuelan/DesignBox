@@ -25,4 +25,7 @@
     <!-- Composite -->
     <string name="composite_pattern_title">Composite pattern</string>
     <string name="composite_pattern_description">Iterator and composite</string>
+    <!-- State -->
+    <string name="state_pattern_title">State pattern</string>
+    <string name="state_pattern_description">Encapsulating and change state</string>
 </resources>
