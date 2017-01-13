@@ -16,16 +16,22 @@
 </head>
 <body onload="prettyPrint()">
 <div id="content_div">
-	<span class="important_text">The Iterator Pattern</span>
+	<span class="important_text">The State Pattern</span>
 	<br />
-	<span class="regular_text">The Iterator Pattern provides a way to access the elements of an
-	aggregate object sequentially without exposing its underlying representation.</span>
+	<span class="regular_text">Allow an object to alter its behavior when its internal state
+	changes. The object will appear to change its class.</span>
 	<br />
 	<br />
-	<span class="regular_text"><b style="color: red;">In a word, makes all aggregate can to access
-	by Iterator interface. It's easy to iterate over the collection by 'for each' statement.</b></span>
+	<img src="file:///android_asset/images/StatePattern00.png" />
 	<br />
-	<img src="file:///android_asset/images/CompositePattern00.png" />
+	<br />
+	<span class="regular_text"><b style="color: red;">Different state will trigger different function.</b>
+	Define the function in interface or abstract class, and implement them in different concrete
+	classes.</span>
+	<br />
+	<br />
+	<img src="file:///android_asset/images/StatePattern01.png" />
+	<br />
 	<br />
 	<br />
 	<span class="important_text">The Composite Pattern</span>
