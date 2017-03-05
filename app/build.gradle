@@ -5,7 +5,7 @@ android {
     buildToolsVersion "25.0.0"
 
     defaultConfig {
-        applicationId "com.seven.demobox"
+        applicationId "com.seven.designbox"
         minSdkVersion 18
         targetSdkVersion 23
         versionCode 1
@@ -38,5 +38,7 @@ dependencies {
     compile(name: 'utils-v4-release', ext: 'aar')
     compile(name: 'volley-debug', ext: 'aar')
     compile 'com.zhy:autolayout:1.4.5'
+    compile 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     compile project(path: ':libtreelist')
 }

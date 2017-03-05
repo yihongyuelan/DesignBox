@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:gravity="center_vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gumball counts: "
+            android:textSize="18sp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/counts_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="15"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/noGumball_Btn"
+            android:layout_width="90dp"
+            android:layout_height="120dp"
+            android:clickable="false"
+            android:background="@drawable/gumball_state_bg_default"
+            android:text="Out\nOf\ngumball"/>
+
+        <TextView
+            android:id="@+id/refill_Tv"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="Refill"
+            android:gravity="center"
+            android:drawableBottom="@drawable/arrow_right"/>
+
+        <Button
+            android:id="@+id/noQuarter_Btn"
+            android:layout_width="90dp"
+            android:layout_height="120dp"
+            android:clickable="false"
+            android:background="@drawable/gumball_state_bg_yellow"
+            android:text="No\nQuarter"/>
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="100dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/insert_Tv"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:textSize="14sp"
+                android:text="Insert"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/state_controller_selector_enable"
+                android:drawableBottom="@drawable/arrow_right_green"/>
+            <TextView
+                android:id="@+id/eject_Tv"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:textSize="14sp"
+                android:text="Eject"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:drawableBottom="@drawable/arrow_left"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/hasQuarter_Btn"
+            android:layout_width="90dp"
+            android:layout_height="120dp"
+            android:clickable="false"
+            android:background="@drawable/gumball_state_bg_default"
+            android:text="Has\nQuarter"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/dispenseEqualZero_Tv"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:textSize="12sp"
+            android:text="Dispense\ngums=0"
+            android:gravity="center"
+            android:drawableLeft="@drawable/arrow_up"/>
+
+        <TextView
+            android:id="@+id/dispenseGreaterZero_Tv"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:textSize="12sp"
+            android:layout_marginLeft="50dp"
+            android:text="Dispense\ngums>0"
+            android:gravity="center"
+            android:drawableLeft="@drawable/arrow_up"/>
+
+        <TextView
+            android:id="@+id/turnCrank_Tv"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:textSize="12sp"
+            android:layout_marginLeft="50dp"
+            android:text="Turn crank"
+            android:gravity="center"
+            android:drawableRight="@drawable/arrow_down"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="5dp"
+        android:clickable="false"
+        android:background="@drawable/gumball_state_bg_default"
+        android:text="Gumball sold"/>
+
+</LinearLayout>

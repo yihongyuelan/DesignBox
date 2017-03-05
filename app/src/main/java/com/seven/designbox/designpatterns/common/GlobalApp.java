@@ -12,6 +12,7 @@ public class GlobalApp extends Application {
         if (sContext == null) {
             sContext = getApplicationContext();
         }
+        PToast.init(getApplicationContext());
 //        try {
 //            Class<?> cls = AutoLayoutConifg.class;
 //            Field f = cls.getDeclaredField("useDeviceSize");
@@ -22,4 +23,5 @@ public class GlobalApp extends Application {
 //            e.printStackTrace();
 //        }
     }
+
 }
