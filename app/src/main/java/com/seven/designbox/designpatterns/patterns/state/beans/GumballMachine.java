@@ -71,10 +71,12 @@ public class GumballMachine {
         }
     }
 
-    public void refillGumballs() {
+    public boolean refillGumballs() {
         if (mCounts == 0) {
             mCounts = createGumballs();
+            return true;
         }
+        return false;
     }
 
     public void releaseBall() {

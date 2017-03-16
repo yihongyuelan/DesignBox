@@ -32,8 +32,10 @@ public class StateDemoFragment extends Fragment implements StateChangeListener {
     private static final int D_RIGHT = 3;
     @BindView(R.id.eject_Tv)
     TextView mEjectTv;
-    @BindView(R.id.counts_Tv)
-    TextView mCountsTv;
+    @BindView(R.id.gumball_counts_Tv)
+    TextView mGumballCountsTv;
+    @BindView(R.id.quarter_counts_Tv)
+    TextView mQuarterCountsTv;
     @BindView(R.id.refill_Tv)
     TextView mRefillTv;
     @BindView(R.id.insert_Tv)
@@ -80,10 +82,14 @@ public class StateDemoFragment extends Fragment implements StateChangeListener {
         if (hasQuarter) {
             mMachine.ejectQuarter();
             hasQuarter = false;
+            updateQuarterCounts();
 
             dimNoQuarter(false);
             dimHasQuarter(true);
             dimNoGumball(true);
+
+            dimDispenseGtZero(true);
+            dimDispenseEqZero(true);
 
             dimInsert(false);
             dimEject(true);
@@ -93,8 +99,7 @@ public class StateDemoFragment extends Fragment implements StateChangeListener {
 
     @OnClick(R.id.refill_Tv)
     public void onRefillClick() {
-        if (mMachine.getCounts() == 0) {
-            mMachine.refillGumballs();
+        if (mMachine.refillGumballs()) {
             updateGumballCounts();
             dimRefill(true);
             dimDispenseEqZero(true);
@@ -102,14 +107,17 @@ public class StateDemoFragment extends Fragment implements StateChangeListener {
                 //Update for gumball state
                 dimHasQuarter(false);
                 dimNoGumball(true);
+                dimInsert(true);
                 dimEject(false);
                 dimTurnCrank(false);
+                mMachine.setState(mMachine.getHasQuarterState());
             } else {
                 //Update for gumball state
                 dimNoQuarter(false);
                 dimHasQuarter(true);
                 dimNoGumball(true);
                 dimInsert(false);
+                mMachine.setState(mMachine.getNoQuarterState());
             }
         }
     }
@@ -120,6 +128,7 @@ public class StateDemoFragment extends Fragment implements StateChangeListener {
             return;
         }
         hasQuarter = true;
+        updateQuarterCounts();
         mMachine.insertQuarter();
     }
 
@@ -129,7 +138,11 @@ public class StateDemoFragment extends Fragment implements StateChangeListener {
     }
 
     private void updateGumballCounts() {
-        mCountsTv.setText(String.valueOf(mMachine.getCounts()));
+        mGumballCountsTv.setText(String.valueOf(mMachine.getCounts()));
+    }
+
+    private void updateQuarterCounts() {
+        mQuarterCountsTv.setText(hasQuarter ? "1" : "0");
     }
 
     private void dimInsert(boolean dim) {
@@ -229,6 +242,7 @@ public class StateDemoFragment extends Fragment implements StateChangeListener {
     public void onNoQuarterState() {
         updateGumballCounts();
         hasQuarter = false;
+        updateQuarterCounts();
         //Update for gumball state
         dimNoQuarter(true);
         dimHasQuarter(true);

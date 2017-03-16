@@ -15,6 +15,8 @@ package com.seven.designbox.designpatterns.patterns.state.beans;
  * limitations under the License.
  */
 
+import com.seven.designbox.designpatterns.common.PToast;
+
 public class SoldOutState implements IState {
     private GumballMachine mMachine;
 
@@ -24,7 +26,8 @@ public class SoldOutState implements IState {
 
     @Override
     public void insertQuarter() {
-
+        PToast.showToast("You inserted a quarter");
+        mMachine.setState(mMachine.getHasQuarterState());
     }
 
     @Override
