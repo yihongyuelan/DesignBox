@@ -28,4 +28,7 @@
     <!-- State -->
     <string name="state_pattern_title">State pattern</string>
     <string name="state_pattern_description">Encapsulating and change state</string>
+    <!-- Proxy -->
+    <string name="proxy_pattern_title">Proxy pattern</string>
+    <string name="proxy_pattern_description">Wraps another object and control access</string>
 </resources>

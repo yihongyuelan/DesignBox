@@ -64,6 +64,10 @@
                   android:parentActivityName="com.seven.designbox.designpatterns.common.DesignPatternsActivity"
                   android:theme="@style/AppTheme.NoActionBar"/>
 
+        <activity android:name="com.seven.designbox.designpatterns.patterns.proxy.ProxyPattern"
+                  android:parentActivityName="com.seven.designbox.designpatterns.common.DesignPatternsActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
+
     </application>
 
 </manifest>
