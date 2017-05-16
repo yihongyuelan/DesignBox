@@ -1,0 +1,60 @@
+<html>
+<head>
+	<title>Proxy Pattern</title>
+	<style type="text/css">
+		h1 { text-align:center; text-shadow: #BBB 1px 1px 1px; color: black !important; font-family:  "Gill Sans", "Lucida Grande", Helvetica, sans-serif;  }
+		body { font-family:Arial, Helvetica, sans-serif; font-size:12px; background: -webkit-gradient(linear,left top,left bottom,color-stop(0.04, rgb(240,240,240)), color-stop(0.52, rgb(255,255,255)))}
+		.important_text { text-align:left; text-shadow: #BBB 1px 1px 1px; color: black !important; font-weight:bold; }
+		.regular_text { text-align:left; color: black; }
+		.code_style { font-size: 12px; text-align:left; }
+		.code_style pre.prettyprint{overflow-x:scroll;}
+		#content_div { }
+	</style>
+	<link href="prettify.css" rel="stylesheet" type="text/css" />
+	<script src="prettify.js" type="text/javascript"></script>
+	<link href="vibrant-ink.css" type="text/css" rel="stylesheet" />
+</head>
+<body onload="prettyPrint()">
+<div id="content_div">
+	<span class="important_text">The Proxy Pattern</span>
+	<br />
+	<span class="regular_text">Provides a surrogate or placeholder for another object to <b style="color: red;">control access to it.</b></span>
+	<br />
+	<br />
+	<img src="images/ProxyPattern00.png" />
+	<br />
+	<br />
+	<span class="regular_text">Use the Proxy Pattern to create a representative object that controls access to another object,
+	which maybe remote, expensive to create or in need of securing.</span>
+	<br />
+	<br />
+	<span class="important_text">Remote Proxy</span>
+	<br />
+	<span class="regular_text">With Remote Proxy, the proxy acts as a local representative for an object that lives in a different JVM.
+	A method call on the proxy results in the call being transferred over the wire, invoked remotely, and the result
+	being returned back to the proxy and then to the client.</span>
+	<br />
+	<br />
+	<img src="images/ProxyPattern01.png" />
+	<br />
+	<br />
+	<span class="important_text">Virtual Proxy</span>
+	<br />
+	<span class="regular_text">Virtual Proxy acts as a representative for an object that may be expensive to create. The Virtual Proxy
+	often defers the creation of the object until it is needed; the Virtual Proxy also acts as a surrogate for the object before and
+	while it is being created. After that, the proxy delegates requests directly to the RealSubject.</span>
+	<br />
+	<br />
+	<img src="images/ProxyPattern02.png" />
+	<br />
+	<br />
+	<span class="important_text">Protection Proxy</span>
+	<p>
+	<span class="regular_text">It's a proxy that controls access to an object based on access rights. For instance, if we had
+	an employee object, a protection proxy might allow the employee to call certain methods on the object. a manager to call
+	additional methods(like setSalary())), an a human resources employee to call any method on the object.</span>
+	</p>
+	<img src="images/ProxyPattern03.png" />
+</div>
+</body>
+</html>

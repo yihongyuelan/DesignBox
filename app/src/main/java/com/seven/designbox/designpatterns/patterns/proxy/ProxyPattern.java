@@ -17,7 +17,7 @@ public class ProxyPattern extends PatternsCommonActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patterns_composite);
-        setTitle(R.string.state_pattern_title);
+        setTitle(R.string.proxy_pattern_title);
 
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 getSupportFragmentManager(), FragmentPagerItems.with(this)

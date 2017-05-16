@@ -10,9 +10,9 @@
         .code_style pre.prettyprint{overflow-x:scroll;}
         #content_div { }
     </style>
-    <link href="file:///android_asset/prettify.css" rel="stylesheet" type="text/css" />
-    <script src="file:///android_asset/prettify.js" type="text/javascript"></script>
-    <link href="file:///android_asset/vibrant-ink.css" type="text/css" rel="stylesheet" />
+    <link href="prettify.css" rel="stylesheet" type="text/css" />
+    <script src="prettify.js" type="text/javascript"></script>
+    <link href="vibrant-ink.css" type="text/css" rel="stylesheet" />
 </head>
 <body onload="prettyPrint()">
 <div id="content_div">
@@ -62,12 +62,12 @@ public class Singleton {
     <br />
     <span class="important_text">Singleton Pattern defined.</span>
     <br />
-    <img src="file:///android_asset/images/SingletonPatternDefined.png" />
+    <img src="images/SingletonPatternDefined.png" />
     <br />
     <br />
     <span class="important_text">If there are multi threads to call getInstance at the same time, that may create two object.</span>
     <br />
-    <img src="file:///android_asset/images/SingletonMultithreading.jpg" />
+    <img src="images/SingletonMultithreading.jpg" />
     <br />
     <br />
     <span class="important_text">The only time synchronization is relevant is the first time through this method. In other words, once we've set the uniqueInstance variable to an instance of Singleton, we hava no further need to synchronize this method. After the first time through, synchronization is totally unneeded overhead!</span>
@@ -103,7 +103,7 @@ class Singleton2 {
     <br />
     <span class="important_text">3. Use "double-checked locking" to reduce the use of synchronization in getInstance().</span>
     <br />
-    <img src="file:///android_asset/images/SingletonMultithreading_volatile.jpg" />
+    <img src="images/SingletonMultithreading_volatile.jpg" />
     <br />
     </div>
     <br />

@@ -14,7 +14,7 @@ public class ProxyDesFragment extends PatternsCommonFragment {
         if (bundle != null) {
             webView.restoreState(bundle);
         } else {
-            webView.loadUrl("file:///android_asset/StatePatternDes.html");
+            webView.loadUrl("file:///android_asset/ProxyPatternDes.html");
         }
     }
 }
