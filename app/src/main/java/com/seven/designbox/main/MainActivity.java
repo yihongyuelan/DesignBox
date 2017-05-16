@@ -13,6 +13,8 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.seven.designbox.R;
+import com.seven.designbox.designpatterns.common.PatternsConstant;
+import com.seven.designbox.designpatterns.common.PatternsDetail;
 
 /**
  * The main activity of the API library demo gallery.
@@ -26,13 +28,13 @@ public final class MainActivity extends AppCompatActivity
     /**
      * A custom array adapter that shows a {@link FeatureView} containing details about the demo.
      */
-    private static class CustomArrayAdapter extends ArrayAdapter<DemoDetails> {
+    private static class CustomArrayAdapter extends ArrayAdapter<PatternsDetail> {
 
         /**
-         * @param demos An array containing the details of the demos to be displayed.
+         * @param patterns An array containing the details of the demos to be displayed.
          */
-        public CustomArrayAdapter(Context context, DemoDetails[] demos) {
-            super(context, R.layout.feature, R.id.title, demos);
+        public CustomArrayAdapter(Context context, PatternsDetail[] patterns) {
+            super(context, R.layout.feature, R.id.title, patterns);
         }
 
         @Override
@@ -44,14 +46,14 @@ public final class MainActivity extends AppCompatActivity
                 featureView = new FeatureView(getContext());
             }
 
-            DemoDetails demo = getItem(position);
+            PatternsDetail pattern = getItem(position);
 
-            featureView.setTitleId(demo.titleId);
-            featureView.setDescriptionId(demo.descriptionId);
+            featureView.setTitleId(pattern.titleId);
+            featureView.setDescriptionId(pattern.desId);
 
             Resources resources = getContext().getResources();
-            String title = resources.getString(demo.titleId);
-            String description = resources.getString(demo.descriptionId);
+            String title = resources.getString(pattern.titleId);
+            String description = resources.getString(pattern.desId);
             featureView.setContentDescription(title + ". " + description);
 
             return featureView;
@@ -65,7 +67,7 @@ public final class MainActivity extends AppCompatActivity
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ListView list = (ListView) findViewById(R.id.list);
 
-        ListAdapter adapter = new CustomArrayAdapter(this, DemoDetailsList.DEMOS);
+        ListAdapter adapter = new CustomArrayAdapter(this, PatternsConstant.PATTERN_LISTS);
 
         list.setAdapter(adapter);
         list.setOnItemClickListener(this);
@@ -91,7 +93,7 @@ public final class MainActivity extends AppCompatActivity
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        DemoDetails demo = (DemoDetails) parent.getAdapter().getItem(position);
-        startActivity(new Intent(this, demo.activityClass));
+        PatternsDetail patttern = (PatternsDetail) parent.getAdapter().getItem(position);
+        startActivity(new Intent(this, patttern.patternClass));
     }
 }

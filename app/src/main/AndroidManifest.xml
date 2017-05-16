@@ -20,52 +20,35 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.seven.designbox.main.TestActivity1"
-                  android:theme="@style/AppTheme.NoActionBar"
-                  android:parentActivityName="com.seven.designbox.main.MainActivity"/>
-
-        <activity android:name="com.seven.designbox.designpatterns.common.DesignPatternsActivity"
-                  android:theme="@style/AppTheme.NoActionBar"
-                  android:parentActivityName="com.seven.designbox.main.MainActivity"/>
 
         <activity android:name="com.seven.designbox.designpatterns.patterns.observer.ObserverPattern"
-                  android:parentActivityName="com.seven.designbox.designpatterns.common.DesignPatternsActivity"
                   android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name="com.seven.designbox.designpatterns.patterns.decorator.DecoratorPattern"
-                  android:parentActivityName="com.seven.designbox.designpatterns.common.DesignPatternsActivity"
                   android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name="com.seven.designbox.designpatterns.patterns.factory.FactoryPattern"
-                  android:parentActivityName="com.seven.designbox.designpatterns.common.DesignPatternsActivity"
                   android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name="com.seven.designbox.designpatterns.patterns.singleton.SingletonPattern"
-                  android:parentActivityName="com.seven.designbox.designpatterns.common.DesignPatternsActivity"
                   android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name="com.seven.designbox.designpatterns.patterns.command.CommandPattern"
-                  android:parentActivityName="com.seven.designbox.designpatterns.common.DesignPatternsActivity"
                   android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name="com.seven.designbox.designpatterns.patterns.adaptive.AdaptivePattern"
-                  android:parentActivityName="com.seven.designbox.designpatterns.common.DesignPatternsActivity"
                   android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name="com.seven.designbox.designpatterns.patterns.template.TemplatePattern"
-                  android:parentActivityName="com.seven.designbox.designpatterns.common.DesignPatternsActivity"
                   android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name="com.seven.designbox.designpatterns.patterns.composite.CompositePattern"
-                  android:parentActivityName="com.seven.designbox.designpatterns.common.DesignPatternsActivity"
                   android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name="com.seven.designbox.designpatterns.patterns.state.StatePattern"
-                  android:parentActivityName="com.seven.designbox.designpatterns.common.DesignPatternsActivity"
                   android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name="com.seven.designbox.designpatterns.patterns.proxy.ProxyPattern"
-                  android:parentActivityName="com.seven.designbox.designpatterns.common.DesignPatternsActivity"
                   android:theme="@style/AppTheme.NoActionBar"/>
 
     </application>

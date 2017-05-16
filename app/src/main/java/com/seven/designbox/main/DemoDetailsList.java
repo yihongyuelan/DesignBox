@@ -10,11 +10,12 @@ public final class DemoDetailsList {
     }
 
     public static final DemoDetails[] DEMOS = {
-            new DemoDetails(R.string.test_title1,
-                    R.string.test_description1,
-                    TestActivity1.class),
-            new DemoDetails(R.string.design_pattern_title,
+            createDetail(R.string.design_pattern_title,
                     R.string.design_pattern_description,
                     DesignPatternsActivity.class),
     };
+
+    private static DemoDetails createDetail(int titleId, int desId, Class detail) {
+        return new DemoDetails(titleId, desId, detail);
+    }
 }

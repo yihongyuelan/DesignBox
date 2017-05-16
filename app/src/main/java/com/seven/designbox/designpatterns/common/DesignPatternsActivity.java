@@ -15,8 +15,8 @@ public class DesignPatternsActivity extends LauncherActivity {
         super.onCreate(icicle);
 
         for (int i = 0; i < PatternsConstant.PATTERN_LISTS.length; i++) {
-            patternNames[i] = getResources().getString(PatternsConstant.PATTERN_LISTS[i].patterTitleId);
-            patternClasses[i] = PatternsConstant.PATTERN_LISTS[i].patternActivityClass;
+            patternNames[i] = getResources().getString(PatternsConstant.PATTERN_LISTS[i].titleId);
+            patternClasses[i] = PatternsConstant.PATTERN_LISTS[i].patternClass;
         }
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, patternNames);
