@@ -1,5 +1,4 @@
-package com.seven.designbox.designpatterns.patterns.proxy.bean;
-/*
+package com.seven.designbox.designpatterns.patterns.proxy.download; /*
  * Copyright 2016 Seven_Tang <yihongyuelan@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
@@ -15,29 +14,5 @@ package com.seven.designbox.designpatterns.patterns.proxy.bean;
  * limitations under the License.
  */
 
-public class User {
-    private UserBean mBean;
-
-    public User(String name) {
-        initUserBean();
-        mBean.setUserName(name);
-    }
-
-    public User(String name, boolean isVip) {
-        initUserBean();
-        mBean.setUserName(name);
-        mBean.setVip(isVip);
-    }
-
-    private void initUserBean() {
-        if (mBean == null) {
-            mBean = new UserBean();
-        }
-    }
-
-    public void tryVipService() {
-        if (!mBean.isVip()) {
-            mBean.setVip(true);
-        }
-    }
+public class DownloadContract {
 }

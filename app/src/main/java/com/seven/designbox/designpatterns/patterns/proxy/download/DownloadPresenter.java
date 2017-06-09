@@ -1,5 +1,4 @@
-package com.seven.designbox.designpatterns.patterns.proxy.bean;
-/*
+package com.seven.designbox.designpatterns.patterns.proxy.download; /*
  * Copyright 2016 Seven_Tang <yihongyuelan@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
@@ -15,23 +14,5 @@ package com.seven.designbox.designpatterns.patterns.proxy.bean;
  * limitations under the License.
  */
 
-public class NormalUser extends User {
-    private UserBean mBean;
-
-    public NormalUser(String name) {
-        UserBean bean = getBean();
-        initUserInfo(bean);
-    }
-
-    private UserBean getBean() {
-        if (mBean == null) {
-            mBean = new UserBean();
-        }
-        return mBean;
-    }
-
-    @Override
-    void initUserInfo(UserBean bean) {
-
-    }
+public class DownloadPresenter {
 }
