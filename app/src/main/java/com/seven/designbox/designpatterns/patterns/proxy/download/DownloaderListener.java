@@ -1,5 +1,4 @@
-package com.seven.designbox.designpatterns.patterns.proxy.download;
-/*
+package com.seven.designbox.designpatterns.patterns.proxy.download; /*
  * Copyright 2016 Seven_Tang <yihongyuelan@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
@@ -15,12 +14,16 @@ package com.seven.designbox.designpatterns.patterns.proxy.download;
  * limitations under the License.
  */
 
-public interface DownloadContract {
-    interface View extends BaseView<Presenter> {
+import java.io.File;
 
-    }
+public interface DownloaderListener {
+    void onStart();
 
-    interface Presenter extends BasePresenter {
+    void onProgress(long current, long total);
 
-    }
+    void onError(String err);
+
+    void onSuccess(String url, File file);
+
+    void onStop();
 }

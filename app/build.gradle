@@ -32,8 +32,9 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:25.0.0'
+    compile 'com.android.support:support-annotations:25.0.0'
     compile(name: 'library-release', ext: 'aar')
     compile(name: 'utils-v4-release', ext: 'aar')
     compile(name: 'volley-debug', ext: 'aar')
@@ -41,4 +42,7 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     compile project(path: ':libtreelist')
+    compile 'com.google.guava:guava:22.0-android'
+    compile 'com.squareup.okhttp3:okhttp:3.8.0'
+    compile 'org.apache.directory.studio:org.apache.commons.io:2.4'
 }

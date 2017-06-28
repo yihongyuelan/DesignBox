@@ -1,4 +1,5 @@
-package com.seven.designbox.designpatterns.patterns.proxy.download; /*
+package com.seven.designbox.designpatterns.patterns.proxy.download;
+/*
  * Copyright 2016 Seven_Tang <yihongyuelan@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
@@ -14,5 +15,21 @@ package com.seven.designbox.designpatterns.patterns.proxy.download; /*
  * limitations under the License.
  */
 
-public class DownloadPresenter {
+import android.support.annotation.NonNull;
+
+import static com.google.common.base.Preconditions.checkNotNull;
+
+public class DownloadPresenter implements DownloadContract.Presenter {
+
+    private final DownloadContract.View mDownloadView;
+
+    public DownloadPresenter(@NonNull DownloadContract.View downloadView) {
+        mDownloadView = checkNotNull(downloadView, "DownloadView cannot be null!");
+        mDownloadView.setPresenter(this);
+    }
+
+    @Override
+    public void start() {
+
+    }
 }
