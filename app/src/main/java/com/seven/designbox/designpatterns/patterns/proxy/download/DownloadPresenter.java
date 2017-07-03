@@ -17,14 +17,45 @@ package com.seven.designbox.designpatterns.patterns.proxy.download;
 
 import android.support.annotation.NonNull;
 
+import java.io.File;
+
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class DownloadPresenter implements DownloadContract.Presenter {
 
     private final DownloadContract.View mDownloadView;
+    private final DownloadManager mDownloadManager;
 
-    public DownloadPresenter(@NonNull DownloadContract.View downloadView) {
-        mDownloadView = checkNotNull(downloadView, "DownloadView cannot be null!");
+    private DownloaderListener mDownloaderListener = new DownloaderListener() {
+        @Override
+        public void onStart() {
+
+        }
+
+        @Override
+        public void onProgress(long current, long total) {
+
+        }
+
+        @Override
+        public void onError(String err) {
+
+        }
+
+        @Override
+        public void onSuccess(String url, File file) {
+
+        }
+
+        @Override
+        public void onStop() {
+
+        }
+    };
+
+    public DownloadPresenter(@NonNull DownloadManager manager, @NonNull DownloadContract.View downloadView) {
+        mDownloadManager = checkNotNull(manager, "DownloadManager cannot be null");
+        mDownloadView = checkNotNull(downloadView, "DownloadView cannot be null");
         mDownloadView.setPresenter(this);
     }
 
@@ -32,4 +63,15 @@ public class DownloadPresenter implements DownloadContract.Presenter {
     public void start() {
 
     }
+
+    @Override
+    public void startDownload() {
+        mDownloadManager.prepare()
+                .url("http://ovh.net/files/100Mio.dat")
+                .fileName("test.dat")
+                .listener(mDownloaderListener)
+                .startDownload();
+        mDownloadView.onDownloadProgress();
+    }
+
 }

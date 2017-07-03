@@ -75,12 +75,37 @@ public class DownloadFragment extends Fragment implements DownloadContract.View 
 
     @OnClick(R.id.download_btn)
     public void onDownloadClick() {
-
+        mPresenter.startDownload();
     }
 
     @Override
     public void setPresenter(@NonNull DownloadContract.Presenter presenter) {
         mPresenter = checkNotNull(presenter);
+    }
+
+    @Override
+    public void onDownloadStart() {
+
+    }
+
+    @Override
+    public void onDownloadProgress() {
+
+    }
+
+    @Override
+    public void onDownloadSuccess() {
+
+    }
+
+    @Override
+    public void onDownloadStop() {
+
+    }
+
+    @Override
+    public void onDownloadError() {
+
     }
 
 //    //Just call the downloader directly, do not add dialog here

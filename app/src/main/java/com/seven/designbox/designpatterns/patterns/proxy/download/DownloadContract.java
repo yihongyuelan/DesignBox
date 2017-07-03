@@ -17,10 +17,15 @@ package com.seven.designbox.designpatterns.patterns.proxy.download;
 
 public interface DownloadContract {
     interface View extends BaseView<Presenter> {
-
+        void onDownloadStart();
+        void onDownloadProgress();
+        void onDownloadSuccess();
+        void onDownloadStop();
+        void onDownloadError();
     }
 
     interface Presenter extends BasePresenter {
+        void startDownload();
 
     }
 }

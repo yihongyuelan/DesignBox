@@ -15,6 +15,8 @@ package com.seven.designbox.designpatterns.patterns.proxy.download;
  * limitations under the License.
  */
 
+import android.content.Context;
+
 import java.io.File;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
@@ -29,11 +31,11 @@ public class DownloadManager {
     private static final int STEP_URL = 0x0010;
     private static final int STEP_FILENAME = 0x0100;
     private static final int STEP_LISTENER = 0x1000;
-    private static DownloadManager sDownloadManager;
     private HashMap<String, Downloader> mHashMap;
     private OkHttpClient mHttpClient;
     private DownloadItem mDownloadItem;
     private AdapterListener mAdapterListener;
+    private Context mContext;
     private int mStep = 0;
 
     private class DownloadItem {
@@ -72,29 +74,8 @@ public class DownloadManager {
         }
     }
 
-
-//    public static DownloadManager getInstance() {
-//        if (sDownloadManager == null) {
-//            synchronized (DownloadManager.class) {
-//                if (sDownloadManager == null) {
-//                    sDownloadManager = new DownloadManager();
-//                }
-//            }
-//        }
-//        return sDownloadManager;
-//    }
-
-    private void init() {
-        if (sDownloadManager == null) {
-            synchronized (DownloadManager.class) {
-                if (sDownloadManager == null) {
-                    sDownloadManager = new DownloadManager();
-                }
-            }
-        }
-    }
-
-    private DownloadManager() {
+    public DownloadManager(Context context) {
+        mContext = context.getApplicationContext();
         mHashMap = new HashMap<>();
         mHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
@@ -104,29 +85,28 @@ public class DownloadManager {
     }
 
     public DownloadManager prepare() {
-        init();
         mDownloadItem = new DownloadItem();
         mAdapterListener = new AdapterListener();
         mStep |= STEP_PREPARE;
-        return sDownloadManager;
+        return this;
     }
 
     public DownloadManager url(String url) {
         mDownloadItem.url = url;
         mStep |= STEP_URL;
-        return sDownloadManager;
+        return this;
     }
 
     public DownloadManager fileName(String name) {
-        mDownloadItem.fileName = name;
+        mDownloadItem.fileName = mContext.getFilesDir().getAbsolutePath() + name;
         mStep |= STEP_FILENAME;
-        return sDownloadManager;
+        return this;
     }
 
     public DownloadManager listener(DownloaderListener listener) {
         mDownloadItem.listener = listener;
         mStep |= STEP_LISTENER;
-        return sDownloadManager;
+        return this;
     }
 
     public void startDownload() {
@@ -135,9 +115,11 @@ public class DownloadManager {
         }
 
         if (mHashMap.keySet().contains(mDownloadItem.url)) {
-            //This url is being downloaded
+            //This url has being downloaded
             return;
         }
+
+        mStep = 0;
 
         Downloader downloader = new Downloader(
                 mHttpClient,
