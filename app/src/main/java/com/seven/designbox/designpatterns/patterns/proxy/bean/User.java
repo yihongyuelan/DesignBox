@@ -20,12 +20,12 @@ public class User {
 
     public User(String name) {
         initUserBean();
-        mBean.setUserName(name);
+        mBean.setName(name);
     }
 
     public User(String name, boolean isVip) {
         initUserBean();
-        mBean.setUserName(name);
+        mBean.setName(name);
         mBean.setVip(isVip);
     }
 
@@ -33,6 +33,14 @@ public class User {
         if (mBean == null) {
             mBean = new UserBean();
         }
+    }
+
+    public boolean isVip() {
+        return mBean.isVip();
+    }
+
+    public String getUserName() {
+        return mBean.getName();
     }
 
     public void tryVipService() {

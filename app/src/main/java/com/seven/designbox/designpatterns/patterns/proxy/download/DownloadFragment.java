@@ -15,11 +15,14 @@ package com.seven.designbox.designpatterns.patterns.proxy.download; /*
  */
 
 import com.seven.designbox.R;
-import static com.google.common.base.Preconditions.checkNotNull;
+import com.seven.designbox.designpatterns.patterns.proxy.bean.User;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,16 +35,19 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 public class DownloadFragment extends Fragment implements DownloadContract.View {
 
     @BindView(R.id.download_btn)
     Button mDownloadBtn;
 
-    @NonNull
     private static final String ARGUMENT_NAME = "NAME";
     private static final String ARGUMENT_VIP = "VIP";
     private Unbinder mUnbinder;
     private DownloadContract.Presenter mPresenter;
+    @NonNull
+    private User mUser;
 
     public static DownloadFragment newInstance(@NonNull String name, boolean isVip) {
         Bundle arguments = new Bundle();
@@ -50,6 +56,13 @@ public class DownloadFragment extends Fragment implements DownloadContract.View 
         DownloadFragment fragment = new DownloadFragment();
         fragment.setArguments(arguments);
         return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Bundle bundle = getArguments();
+        mUser = new User(bundle.getString(ARGUMENT_NAME), bundle.getBoolean(ARGUMENT_VIP, false));
     }
 
     @Override
@@ -85,46 +98,76 @@ public class DownloadFragment extends Fragment implements DownloadContract.View 
 
     @Override
     public void onDownloadStart() {
-
+        updateDownloadingProgress(0f);
     }
 
     @Override
-    public void onDownloadProgress() {
-
+    public void onDownloadProgress(long current, long total) {
+        updateDownloadingProgress(100f * current / total);
     }
 
     @Override
     public void onDownloadSuccess() {
-
+        restoreDownload();
     }
 
     @Override
     public void onDownloadStop() {
-
+        restoreDownload();
     }
 
     @Override
-    public void onDownloadError() {
-
+    public void onDownloadError(String err) {
+        if (err.equals("NOT VIP")) {
+            tryVipService();
+        }
+        restoreDownload();
     }
 
-//    //Just call the downloader directly, do not add dialog here
-//    AlertDialog dialog = new AlertDialog.Builder(getActivity()).create();
-//        dialog.setCancelable(false);
-//        dialog.setTitle("Suggest");
-//        dialog.setMessage("You are not currently VIP users, whether to try VIP service?");
-//        dialog.setButton(DialogInterface.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
-//        @Override
-//        public void onClick(DialogInterface dialog, int which) {
-//            isDownloading = false;
-//        }
-//    });
-//        dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "NO", new DialogInterface.OnClickListener() {
-//        @Override
-//        public void onClick(DialogInterface dialog, int which) {
-//            isDownloading = true;
-//            //Change permission to VIP
-//        }
-//    });
-//        dialog.show();
+    @Override
+    public User getUser() {
+        return mUser;
+    }
+
+    private void tryVipService() {
+        AlertDialog dialog = new AlertDialog.Builder(getActivity()).create();
+        dialog.setCancelable(false);
+        dialog.setTitle("Suggest");
+        dialog.setMessage("You are not currently VIP users, whether to try VIP service?");
+        dialog.setButton(DialogInterface.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mUser.tryVipService();
+                mPresenter.startDownload();
+                dialog.dismiss();
+            }
+        });
+        dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
+    private void updateDownloadingProgress(final float progress) {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mDownloadBtn.setEnabled(false);
+                mDownloadBtn.setText(progress + "%");
+            }
+        });
+    }
+
+    private void restoreDownload() {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mDownloadBtn.setEnabled(true);
+                mDownloadBtn.setText("Click to download");
+            }
+        });
+    }
 }

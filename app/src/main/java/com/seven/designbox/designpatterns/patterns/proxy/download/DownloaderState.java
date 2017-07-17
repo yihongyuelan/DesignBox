@@ -1,4 +1,4 @@
-package com.seven.designbox.designpatterns.patterns.proxy.bean; /*
+package com.seven.designbox.designpatterns.patterns.proxy.download; /*
  * Copyright 2016 Seven_Tang <yihongyuelan@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
@@ -14,23 +14,11 @@ package com.seven.designbox.designpatterns.patterns.proxy.bean; /*
  * limitations under the License.
  */
 
-public class UserBean {
-    private boolean isVip;
-    private String name;
-
-    public final boolean isVip() {
-        return isVip;
-    }
-
-    public final void setVip(boolean vip) {
-        isVip = vip;
-    }
-
-    public final String getName() {
-        return name;
-    }
-
-    public final void setName(String name) {
-        this.name = name;
-    }
+public enum DownloaderState {
+    IDLE,
+    START,
+    PROCESSING,
+    ERROR,
+    SUCCESS,
+    STOPPED
 }

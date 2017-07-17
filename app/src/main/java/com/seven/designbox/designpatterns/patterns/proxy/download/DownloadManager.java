@@ -15,6 +15,8 @@ package com.seven.designbox.designpatterns.patterns.proxy.download;
  * limitations under the License.
  */
 
+import com.seven.designbox.designpatterns.patterns.proxy.bean.User;
+
 import android.content.Context;
 
 import java.io.File;
@@ -23,7 +25,15 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 
+import static com.seven.designbox.designpatterns.patterns.proxy.download.DownloaderState.ERROR;
+import static com.seven.designbox.designpatterns.patterns.proxy.download.DownloaderState.IDLE;
+import static com.seven.designbox.designpatterns.patterns.proxy.download.DownloaderState.PROCESSING;
+import static com.seven.designbox.designpatterns.patterns.proxy.download.DownloaderState.START;
+import static com.seven.designbox.designpatterns.patterns.proxy.download.DownloaderState.STOPPED;
+import static com.seven.designbox.designpatterns.patterns.proxy.download.DownloaderState.SUCCESS;
+
 public class DownloadManager {
+    private static final byte[] lock = new byte[0];
     private static final int CONNECT_TIMEOUT = 60;
     private static final int WRITE_TIMEOUT = 60;
     private static final int READ_TIMEOUT = 60;
@@ -31,44 +41,52 @@ public class DownloadManager {
     private static final int STEP_URL = 0x0010;
     private static final int STEP_FILENAME = 0x0100;
     private static final int STEP_LISTENER = 0x1000;
-    private HashMap<String, Downloader> mHashMap;
+    private HashMap<String, DownloadItem> mHashMap;
     private OkHttpClient mHttpClient;
     private DownloadItem mDownloadItem;
     private AdapterListener mAdapterListener;
+    private User mUser;
     private Context mContext;
     private int mStep = 0;
 
     private class DownloadItem {
         String url;
         String fileName;
+        DownloaderState state = IDLE;
         DownloaderListener listener;
+        Downloader downloader;
     }
 
     private class AdapterListener implements DownloaderListener {
         @Override
         public void onStart() {
+            setDownloaderState(START);
             mDownloadItem.listener.onStart();
         }
 
         @Override
         public void onProgress(long current, long total) {
+            setDownloaderState(PROCESSING);
             mDownloadItem.listener.onProgress(current, total);
         }
 
         @Override
         public void onError(String err) {
+            setDownloaderState(ERROR);
             mDownloadItem.listener.onError(err);
             mHashMap.remove(mDownloadItem.url);
         }
 
         @Override
         public void onSuccess(String url, File file) {
+            setDownloaderState(SUCCESS);
             mDownloadItem.listener.onSuccess(url, file);
             mHashMap.remove(mDownloadItem.url);
         }
 
         @Override
         public void onStop() {
+            setDownloaderState(STOPPED);
             mDownloadItem.listener.onStop();
             mHashMap.remove(mDownloadItem.url);
         }
@@ -84,7 +102,8 @@ public class DownloadManager {
                 .build();
     }
 
-    public DownloadManager prepare() {
+    public DownloadManager prepare(User user) {
+        mUser = user;
         mDownloadItem = new DownloadItem();
         mAdapterListener = new AdapterListener();
         mStep |= STEP_PREPARE;
@@ -113,23 +132,43 @@ public class DownloadManager {
         if (mStep != 0x1111) {
             throw new IllegalArgumentException("Please call prepare() url() listener()");
         }
+        mStep = 0;
 
         if (mHashMap.keySet().contains(mDownloadItem.url)) {
             //This url has being downloaded
             return;
         }
 
-        mStep = 0;
+        if (!mUser.isVip()) {
+            mAdapterListener.onError("NOT VIP");
+            return;
+        }
 
-        Downloader downloader = new Downloader(
+        mDownloadItem.downloader = new Downloader(
                 mHttpClient,
                 mDownloadItem.url,
                 mDownloadItem.fileName,
                 mAdapterListener);
 
-        mHashMap.put(mDownloadItem.url, downloader);
+        mHashMap.put(mDownloadItem.url, mDownloadItem);
 
-        downloader.start();
+        mDownloadItem.downloader.start();
+    }
+
+    private void setDownloaderState(DownloaderState state) {
+        synchronized (lock) {
+            mDownloadItem.state = state;
+        }
+    }
+
+    public DownloaderState getDownloaderState(String url) {
+        synchronized (lock) {
+            DownloadItem item = mHashMap.get(url);
+            if (item != null) {
+                return item.state;
+            }
+            return null;
+        }
     }
 
 }

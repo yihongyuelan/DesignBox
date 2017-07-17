@@ -15,13 +15,16 @@ package com.seven.designbox.designpatterns.patterns.proxy.download;
  * limitations under the License.
  */
 
+import com.seven.designbox.designpatterns.patterns.proxy.bean.User;
+
 public interface DownloadContract {
     interface View extends BaseView<Presenter> {
         void onDownloadStart();
-        void onDownloadProgress();
+        void onDownloadProgress(long current, long total);
         void onDownloadSuccess();
         void onDownloadStop();
-        void onDownloadError();
+        void onDownloadError(String err);
+        User getUser();
     }
 
     interface Presenter extends BasePresenter {

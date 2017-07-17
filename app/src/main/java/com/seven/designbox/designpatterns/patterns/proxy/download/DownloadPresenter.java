@@ -29,27 +29,27 @@ public class DownloadPresenter implements DownloadContract.Presenter {
     private DownloaderListener mDownloaderListener = new DownloaderListener() {
         @Override
         public void onStart() {
-
+            mDownloadView.onDownloadStart();
         }
 
         @Override
         public void onProgress(long current, long total) {
-
+            mDownloadView.onDownloadProgress(current, total);
         }
 
         @Override
         public void onError(String err) {
-
+            mDownloadView.onDownloadError(err);
         }
 
         @Override
         public void onSuccess(String url, File file) {
-
+            mDownloadView.onDownloadSuccess();
         }
 
         @Override
         public void onStop() {
-
+            mDownloadView.onDownloadStop();
         }
     };
 
@@ -66,12 +66,11 @@ public class DownloadPresenter implements DownloadContract.Presenter {
 
     @Override
     public void startDownload() {
-        mDownloadManager.prepare()
+        mDownloadManager.prepare(mDownloadView.getUser())
                 .url("http://ovh.net/files/100Mio.dat")
                 .fileName("test.dat")
                 .listener(mDownloaderListener)
                 .startDownload();
-        mDownloadView.onDownloadProgress();
     }
 
 }
