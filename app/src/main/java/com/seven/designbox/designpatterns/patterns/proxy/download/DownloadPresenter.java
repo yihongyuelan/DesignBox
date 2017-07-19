@@ -67,7 +67,7 @@ public class DownloadPresenter implements DownloadContract.Presenter {
     @Override
     public void startDownload() {
         mDownloadManager.prepare(mDownloadView.getUser())
-                .url("http://ovh.net/files/100Mio.dat")
+                .url("https://github.com/yihongyuelan/DesignBox/releases/download/v0.1/20MB.bin")
                 .fileName("test.dat")
                 .listener(mDownloaderListener)
                 .startDownload();

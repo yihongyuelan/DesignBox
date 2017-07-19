@@ -30,6 +30,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -98,12 +100,12 @@ public class DownloadFragment extends Fragment implements DownloadContract.View 
 
     @Override
     public void onDownloadStart() {
-        updateDownloadingProgress(0f);
+        updateDownloadingProgress("0%");
     }
 
     @Override
     public void onDownloadProgress(long current, long total) {
-        updateDownloadingProgress(100f * current / total);
+        updateDownloadingProgress(getPercentage(current, total));
     }
 
     @Override
@@ -151,21 +153,29 @@ public class DownloadFragment extends Fragment implements DownloadContract.View 
         dialog.show();
     }
 
-    private void updateDownloadingProgress(final float progress) {
+    private String getPercentage(long current, long total) {
+        return new DecimalFormat("0.0").format(100f * current / total);
+    }
+
+    private void updateDownloadingProgress(final String progress) {
+        if (getActivity() == null) {
+            return;
+        }
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                mDownloadBtn.setEnabled(false);
-                mDownloadBtn.setText(progress + "%");
+                mDownloadBtn.setText(progress);
             }
         });
     }
 
     private void restoreDownload() {
+        if (getActivity() == null) {
+            return;
+        }
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                mDownloadBtn.setEnabled(true);
                 mDownloadBtn.setText("Click to download");
             }
         });
