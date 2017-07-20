@@ -23,6 +23,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 public class DownloadPresenter implements DownloadContract.Presenter {
 
+    private static final String URL = "https://github.com/yihongyuelan/DesignBox/releases/download/v0.1/20MB.bin";
     private final DownloadContract.View mDownloadView;
     private final DownloadManager mDownloadManager;
 
@@ -66,8 +67,11 @@ public class DownloadPresenter implements DownloadContract.Presenter {
 
     @Override
     public void startDownload() {
+        if (mDownloadManager.getDownloaderState(URL).equals(DownloaderState.IDLE)) {
+
+        }
         mDownloadManager.prepare(mDownloadView.getUser())
-                .url("https://github.com/yihongyuelan/DesignBox/releases/download/v0.1/20MB.bin")
+                .url(URL)
                 .fileName("test.dat")
                 .listener(mDownloaderListener)
                 .startDownload();

@@ -19,6 +19,5 @@ public enum DownloaderState {
     START,
     PROCESSING,
     ERROR,
-    SUCCESS,
-    STOPPED
+    SUCCESS
 }

@@ -29,7 +29,6 @@ import static com.seven.designbox.designpatterns.patterns.proxy.download.Downloa
 import static com.seven.designbox.designpatterns.patterns.proxy.download.DownloaderState.IDLE;
 import static com.seven.designbox.designpatterns.patterns.proxy.download.DownloaderState.PROCESSING;
 import static com.seven.designbox.designpatterns.patterns.proxy.download.DownloaderState.START;
-import static com.seven.designbox.designpatterns.patterns.proxy.download.DownloaderState.STOPPED;
 import static com.seven.designbox.designpatterns.patterns.proxy.download.DownloaderState.SUCCESS;
 
 public class DownloadManager {
@@ -86,7 +85,7 @@ public class DownloadManager {
 
         @Override
         public void onStop() {
-            setDownloaderState(STOPPED);
+            setDownloaderState(IDLE);
             mDownloadItem.listener.onStop();
             mHashMap.remove(mDownloadItem.url);
         }
@@ -117,7 +116,7 @@ public class DownloadManager {
     }
 
     public DownloadManager fileName(String name) {
-        mDownloadItem.fileName = mContext.getFilesDir().getAbsolutePath() + name;
+        mDownloadItem.fileName = mContext.getFilesDir().getAbsolutePath() + File.pathSeparator + name;
         mStep |= STEP_FILENAME;
         return this;
     }

@@ -154,7 +154,7 @@ public class DownloadFragment extends Fragment implements DownloadContract.View 
     }
 
     private String getPercentage(long current, long total) {
-        return new DecimalFormat("0.0").format(100f * current / total);
+        return new DecimalFormat("0.0").format(100f * current / total) + "%";
     }
 
     private void updateDownloadingProgress(final String progress) {
