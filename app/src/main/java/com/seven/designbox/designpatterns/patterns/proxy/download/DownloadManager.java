@@ -25,11 +25,9 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 
-import static com.seven.designbox.designpatterns.patterns.proxy.download.DownloaderState.ERROR;
 import static com.seven.designbox.designpatterns.patterns.proxy.download.DownloaderState.IDLE;
 import static com.seven.designbox.designpatterns.patterns.proxy.download.DownloaderState.PROCESSING;
 import static com.seven.designbox.designpatterns.patterns.proxy.download.DownloaderState.START;
-import static com.seven.designbox.designpatterns.patterns.proxy.download.DownloaderState.SUCCESS;
 
 public class DownloadManager {
     private static final byte[] lock = new byte[0];
@@ -71,14 +69,14 @@ public class DownloadManager {
 
         @Override
         public void onError(String err) {
-            setDownloaderState(ERROR);
+            setDownloaderState(IDLE);
             mDownloadItem.listener.onError(err);
             mHashMap.remove(mDownloadItem.url);
         }
 
         @Override
         public void onSuccess(String url, File file) {
-            setDownloaderState(SUCCESS);
+            setDownloaderState(IDLE);
             mDownloadItem.listener.onSuccess(url, file);
             mHashMap.remove(mDownloadItem.url);
         }
@@ -154,6 +152,14 @@ public class DownloadManager {
         mDownloadItem.downloader.start();
     }
 
+    public void stopDownload() {
+        if (mDownloadItem.downloader != null) {
+            if (!mDownloadItem.downloader.isStopped()) {
+                mDownloadItem.downloader.stop();
+            }
+        }
+    }
+
     private void setDownloaderState(DownloaderState state) {
         synchronized (lock) {
             mDownloadItem.state = state;
@@ -166,7 +172,7 @@ public class DownloadManager {
             if (item != null) {
                 return item.state;
             }
-            return null;
+            return IDLE;
         }
     }
 

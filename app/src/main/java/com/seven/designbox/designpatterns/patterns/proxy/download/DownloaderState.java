@@ -17,7 +17,5 @@ package com.seven.designbox.designpatterns.patterns.proxy.download; /*
 public enum DownloaderState {
     IDLE,
     START,
-    PROCESSING,
-    ERROR,
-    SUCCESS
+    PROCESSING
 }

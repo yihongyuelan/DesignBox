@@ -62,7 +62,15 @@ public class Downloader {
         checkParams(mUrl, mDownloadPath, mDownloaderListener);
 
         final File file = new File(mDownloadPath);
+        final File cache = new File(mDownloadPath + ".tmp");
         Request request = new Request.Builder().tag(mUrl).url(mUrl).build();
+        if (cache.exists()) {
+            //https://www.ibm.com/developerworks/cn/java/joy-down/index.html
+            request = new Request.Builder().tag(mUrl).url(mUrl)
+                    .header("Range", "bytes=" + cache.length() + "-")
+                    .build();
+        }
+
         mCall = mHttpClient.newCall(request);
         mCall.enqueue(new Callback() {
             @Override
@@ -84,11 +92,11 @@ public class Downloader {
                     if (rCode == 200) {
                         //Common download or net support range.
                         cacheLen = 0;
-                        fOut = new FileOutputStream(file, false);
+                        fOut = new FileOutputStream(cache, false);
                     } else if (rCode == 206) {
                         //206 Partial content
-                        cacheLen = file.length();
-                        fOut = new FileOutputStream(file, true);
+                        cacheLen = cache.length();
+                        fOut = new FileOutputStream(cache, true);
                     } else {
                         mDownloaderListener.onError("Server response is:" + rCode);
                         return;
@@ -103,7 +111,11 @@ public class Downloader {
                             mDownloaderListener.onProgress(cacheLen + len, total);
                         }
                     });
-                    mDownloaderListener.onSuccess(mUrl, file);
+                    if (cache.renameTo(file)) {
+                        mDownloaderListener.onSuccess(mUrl, file);
+                    } else {
+                        mDownloaderListener.onError("Rename Cache Error!");
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                     mDownloaderListener.onError("Download file failed(Downloading):" + e.getMessage());

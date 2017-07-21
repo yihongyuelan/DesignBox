@@ -67,14 +67,16 @@ public class DownloadPresenter implements DownloadContract.Presenter {
 
     @Override
     public void startDownload() {
-        if (mDownloadManager.getDownloaderState(URL).equals(DownloaderState.IDLE)) {
-
+        DownloaderState state = mDownloadManager.getDownloaderState(URL);
+        if (state != null && state.equals(DownloaderState.IDLE)) {
+            mDownloadManager.prepare(mDownloadView.getUser())
+                    .url(URL)
+                    .fileName("test.dat")
+                    .listener(mDownloaderListener)
+                    .startDownload();
+        } else {
+            mDownloadManager.stopDownload();
         }
-        mDownloadManager.prepare(mDownloadView.getUser())
-                .url(URL)
-                .fileName("test.dat")
-                .listener(mDownloaderListener)
-                .startDownload();
     }
 
 }
