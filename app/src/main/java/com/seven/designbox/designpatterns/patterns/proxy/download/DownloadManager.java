@@ -114,7 +114,7 @@ public class DownloadManager {
     }
 
     public DownloadManager fileName(String name) {
-        mDownloadItem.fileName = mContext.getFilesDir().getAbsolutePath() + File.pathSeparator + name;
+        mDownloadItem.fileName = mContext.getFilesDir().getAbsolutePath() + File.separator + name;
         mStep |= STEP_FILENAME;
         return this;
     }
