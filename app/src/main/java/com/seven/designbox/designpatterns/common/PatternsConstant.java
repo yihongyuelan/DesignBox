@@ -4,6 +4,7 @@ import com.seven.designbox.R;
 import com.seven.designbox.designpatterns.patterns.adaptive.AdaptivePattern;
 import com.seven.designbox.designpatterns.patterns.command.CommandPattern;
 import com.seven.designbox.designpatterns.patterns.composite.CompositePattern;
+import com.seven.designbox.designpatterns.patterns.compound.CompoundPattern;
 import com.seven.designbox.designpatterns.patterns.proxy.ProxyPattern;
 import com.seven.designbox.designpatterns.patterns.singleton.SingletonPattern;
 import com.seven.designbox.designpatterns.patterns.decorator.DecoratorPattern;
@@ -44,5 +45,8 @@ public class PatternsConstant {
             new PatternsDetail(R.string.proxy_pattern_title,
                     R.string.proxy_pattern_description,
                     ProxyPattern.class),
+            new PatternsDetail(R.string.compound_pattern_title,
+                    R.string.compound_pattern_description,
+                    CompoundPattern.class),
     };
 }

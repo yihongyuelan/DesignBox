@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-            android:name="com.seven.designbox.designpatterns.common.GlobalApp"
+            android:name=".designpatterns.common.GlobalApp"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -15,7 +15,7 @@
         <meta-data android:name="design_width" android:value="1080" />
         <meta-data android:name="design_height" android:value="1920" />
 
-        <activity android:name="com.seven.designbox.main.MainActivity">
+        <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -23,35 +23,17 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.seven.designbox.designpatterns.patterns.observer.ObserverPattern"
-                  android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name="com.seven.designbox.designpatterns.patterns.decorator.DecoratorPattern"
-                  android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name="com.seven.designbox.designpatterns.patterns.factory.FactoryPattern"
-                  android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name="com.seven.designbox.designpatterns.patterns.singleton.SingletonPattern"
-                  android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name="com.seven.designbox.designpatterns.patterns.command.CommandPattern"
-                  android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name="com.seven.designbox.designpatterns.patterns.adaptive.AdaptivePattern"
-                  android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name="com.seven.designbox.designpatterns.patterns.template.TemplatePattern"
-                  android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name="com.seven.designbox.designpatterns.patterns.composite.CompositePattern"
-                  android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name="com.seven.designbox.designpatterns.patterns.state.StatePattern"
-                  android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name="com.seven.designbox.designpatterns.patterns.proxy.ProxyPattern"
-                  android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".designpatterns.patterns.observer.ObserverPattern"/>
+        <activity android:name=".designpatterns.patterns.decorator.DecoratorPattern"/>
+        <activity android:name=".designpatterns.patterns.factory.FactoryPattern"/>
+        <activity android:name=".designpatterns.patterns.singleton.SingletonPattern"/>
+        <activity android:name=".designpatterns.patterns.command.CommandPattern"/>
+        <activity android:name=".designpatterns.patterns.adaptive.AdaptivePattern"/>
+        <activity android:name=".designpatterns.patterns.template.TemplatePattern"/>
+        <activity android:name=".designpatterns.patterns.composite.CompositePattern"/>
+        <activity android:name=".designpatterns.patterns.state.StatePattern"/>
+        <activity android:name=".designpatterns.patterns.proxy.ProxyPattern"/>
+        <activity android:name=".designpatterns.patterns.compound.CompoundPattern"/>
 
     </application>
 

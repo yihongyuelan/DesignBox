@@ -31,4 +31,7 @@
     <!-- Proxy -->
     <string name="proxy_pattern_title">Proxy pattern</string>
     <string name="proxy_pattern_description">Wraps another object and control access</string>
+    <!-- MVC -->
+    <string name="compound_pattern_title">Compound Patterns</string>
+    <string name="compound_pattern_description">Model-View-Controller</string>
 </resources>
