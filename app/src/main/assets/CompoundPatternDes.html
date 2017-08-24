@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Proxy Pattern</title>
+	<title>Compound Pattern</title>
 	<style type="text/css">
 		h1 { text-align:center; text-shadow: #BBB 1px 1px 1px; color: black !important; font-family:  "Gill Sans", "Lucida Grande", Helvetica, sans-serif;  }
 		body { font-family:Arial, Helvetica, sans-serif; font-size:12px; background: -webkit-gradient(linear,left top,left bottom,color-stop(0.04, rgb(240,240,240)), color-stop(0.52, rgb(255,255,255)))}
@@ -18,26 +18,9 @@
 <div id="content_div">
 	<span class="important_text"><font size="8">The Compound Patterns</font></span>
 	<br />
+	<br />
 	<span class="regular_text"><font size="5">A Compound Pattern combines two or more patterns into a solution that
 	solves a recurring or general problem.</font></span>
-	<br />
-	<span class="regular_text"><font size="3" color="blue">1. The Model View Controller Pattern(MVC) is a compound pattern consisting
-	of the Observer, Strategy and Composite patterns.</font></span>
-	<br />
-	<span class="regular_text"><font size="3" color="blue">2. The model makes use of the Observer Pattern so that it can keep
-	observers updated yet stay decoupled from them.</font></span>
-	<br />
-	<span class="regular_text"><font size="3" color="blue">3. The controller is a strategy for the view. The view can use different
-	implementations of the controller to get different behavior.</font></span>
-	<br />
-	<span class="regular_text"><font size="3" color="blue">4. The view uses the Composite Pattern to implement the user interface,
-	which usually consists of nested components like panels, frames and buttons.</font></span>
-	<br />
-	<span class="regular_text"><font size="3" color="blue">5. These patterns work together to decouple the three players in the MVC
-	model, which keeps designs clear and flexible.</font></span>
-	<br />
-	<span class="regular_text"><font size="3" color="blue">6. The Adapter Pattern can be used to adapt a new model to an existing
-	view and controller.</font></span>
 	<br />
 	<br />
 	<span class="important_text"><font size="8">Give a sight on MVC</font></span>
@@ -46,37 +29,37 @@
 	<img src="images/CompoundPatterns00.png" width="100%"/>
 	<br />
 	<br />
-	<span class="regular_text">Use the Proxy Pattern to create a representative object that controls access to another object,
-	which maybe remote, expensive to create or in need of securing.</span>
+	<span class="important_text"><font size="8">Observer, Strategy and Composite</font></span>
+	<img src="images/CompoundPatterns01.png" width="100%"/>
 	<br />
 	<br />
-	<span class="important_text">Remote Proxy</span>
-	<br />
-	<span class="regular_text">With Remote Proxy, the proxy acts as a local representative for an object that lives in a different JVM.
-	A method call on the proxy results in the call being transferred over the wire, invoked remotely, and the result
-	being returned back to the proxy and then to the client.</span>
+	<span class="important_text"><font size="8">Bullet points</font></span>
 	<br />
 	<br />
-	<img src="images/ProxyPattern01.png" />
+	<span class="regular_text"><font size="3" color="blue">1. The Model View Controller Pattern(MVC) is a compound pattern consisting
+	of the Observer, Strategy and Composite patterns.</font></span>
 	<br />
 	<br />
-	<span class="important_text">Virtual Proxy</span>
-	<br />
-	<span class="regular_text">Virtual Proxy acts as a representative for an object that may be expensive to create. The Virtual Proxy
-	often defers the creation of the object until it is needed; the Virtual Proxy also acts as a surrogate for the object before and
-	while it is being created. After that, the proxy delegates requests directly to the RealSubject.</span>
+	<span class="regular_text"><font size="3" color="blue">2. The model makes use of the Observer Pattern so that it can keep
+	observers updated yet stay decoupled from them.</font></span>
 	<br />
 	<br />
-	<img src="images/ProxyPattern02.png" />
+	<span class="regular_text"><font size="3" color="blue">3. The controller is a strategy for the view. The view can use different
+	implementations of the controller to get different behavior.</font></span>
 	<br />
 	<br />
-	<span class="important_text">Protection Proxy</span>
-	<p>
-	<span class="regular_text">It's a proxy that controls access to an object based on access rights. For instance, if we had
-	an employee object, a protection proxy might allow the employee to call certain methods on the object. a manager to call
-	additional methods(like setSalary())), an a human resources employee to call any method on the object.</span>
-	</p>
-	<img src="images/ProxyPattern03.png" />
+	<span class="regular_text"><font size="3" color="blue">4. The view uses the Composite Pattern to implement the user interface,
+	which usually consists of nested components like panels, frames and buttons.</font></span>
+	<br />
+	<br />
+	<span class="regular_text"><font size="3" color="blue">5. These patterns work together to decouple the three players in the MVC
+	model, which keeps designs clear and flexible.</font></span>
+	<br />
+	<br />
+	<span class="regular_text"><font size="3" color="blue">6. The Adapter Pattern can be used to adapt a new model to an existing
+	view and controller.</font></span>
+	<br />
+	<br />
 </div>
 </body>
 </html>
