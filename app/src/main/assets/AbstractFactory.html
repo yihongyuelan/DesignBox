@@ -16,14 +16,16 @@
 </head>
 <body onload="prettyPrint()">
 <div id="content_div">
-    <span class="important_text">Why we need Abstract Factory?</span>
-    <br />
-    <span class="regular_text"> Factory Method can solve our issues, so why we need Abstract Factory? Let's take a look at our PizzaStore again. Now we need to add a variety of ingredients.</span>
-    <br />
-    <img src="images/Ingredients.jpg" />
+    <span class="important_text"><font size="8">Why we need Abstract Factory?</font></span>
     <br />
     <br />
-    <span class="important_text">Now we’re going to build a factory to create our ingredients; the factory will be responsible for creating each ingredient in the ingredient family.</span>
+    <span class="regular_text"><font size="5">Factory Method can solve our issues, so why we need Abstract Factory? Let's take a look at our PizzaStore again. Now we need to add a variety of ingredients.</font></span>
+    <br />
+    <br />
+    <img src="images/Ingredients.jpg"  width="100%"/>
+    <br />
+    <br />
+    <span class="regular_text"><font size="5">Now we’re going to build a factory to create our ingredients; the factory will be responsible for creating each ingredient in the ingredient family.</font></span>
     <br />
     <br />
     <div class="code_style">
@@ -60,7 +62,7 @@ public class NYPizzaIntegredientFactory implements PizzaIngredientFactory {
     </pre>
     </div>
     <br />
-    <span class="important_text">Rework the Pizza class.</span>
+    <span class="important_text"><font size="8">Rework the Pizza class.</font></span>
     <pre class="prettyprint">
 /**
  * Make prepare to abstract.
@@ -96,7 +98,7 @@ public class CheesePizza extends Pizza {
 }
     </pre>
     <br />
-    <span class="important_text">Revisiting our pizza stores.</span>
+    <span class="important_text"><font size="8">Revisiting our pizza stores.</font></span>
     <br />
     <pre class="prettyprint">
 /**
@@ -123,17 +125,18 @@ public class NYStylePizzaStore extends PizzaStore{
     <br />
     </div>
     <br />
-    <span class="important_text">Abstract Factory Pattern defined</span>
+    <span class="important_text"><font size="8">Abstract Factory Pattern defined</font></span>
     <br />
-    <span class="regular_text"> The Abstract Factory Pattern provides an interface for creating families of related or dependent objects without specifying their concrete classes.</span>
-    <img src="images/AbstractFactoryDefined.jpg" />
+    <span class="regular_text"><font size="5">The Abstract Factory Pattern provides an interface
+        for creating families of related or dependent objects without specifying their concrete classes.</font></span>
+    <img src="images/AbstractFactoryDefined.jpg" width="100%"/>
     <br />
-    <span class="important_text">Keyword for Abstract Factory:</span>
+    <span class="important_text"><font size="8">Keyword for Abstract Factory:</font></span>
     <br />
-    <span class="regular_text">Depend on abstraction. Do not depend on concrete classes.</span>
+    <span class="regular_text"><font size="5">Depend on abstraction. Do not depend on concrete classes.</font></span>
     <br />
     <br />
-    <img src="images/OO_Principles.jpg" />
+    <img src="images/OO_Principles.jpg" width="100%"/>
     <br />
 </div>
 </body>
