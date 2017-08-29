@@ -16,14 +16,14 @@
 </head>
 <body onload="prettyPrint()">
 <div id="content_div">
-    <span class="important_text">What is Singleton pattern?</span>
+    <span class="important_text"><font size="8">What is Singleton pattern?</font></span>
     <br />
-    <span class="regular_text"> There are some classes that <b style="color: red;">should only be instantiated once.</b></span>
+    <span class="regular_text"><font size="5">There are some classes that <b style="color: red;">should only be instantiated once.</b></font></span>
     <br />
     <br />
-    <span class="important_text">But why we need the Singleton pattern?</span>
+    <span class="important_text"><font size="8">But why we need the Singleton pattern?</font></span>
     <br />
-    <span class="regular_text"> There are many objects we only need one of: thread pools, caches, dialog boxes, objects that handle preferences and registry settings, objects used for logging, and objects that act as device drivers to devices like printers and graphics cards. In fact, for many of these types of objects, if we were to instantiate more than one we'd run into all sorts of problems like incorrect program behavior, overuse of resources, or inconsistent results.</span>
+    <span class="regular_text"><font size="5">There are many objects we only need one of: thread pools, caches, dialog boxes, objects that handle preferences and registry settings, objects used for logging, and objects that act as device drivers to devices like printers and graphics cards. In fact, for many of these types of objects, if we were to instantiate more than one we'd run into all sorts of problems like incorrect program behavior, overuse of resources, or inconsistent results.</font></span>
     <br />
     <div class="code_style">
     <pre class="prettyprint">
@@ -60,24 +60,24 @@ public class Singleton {
         </pre>
     </div>
     <br />
-    <span class="important_text">Singleton Pattern defined.</span>
+    <span class="important_text"><font size="8">Singleton Pattern defined.</font></span>
     <br />
-    <img src="images/SingletonPatternDefined.png" />
-    <br />
-    <br />
-    <span class="important_text">If there are multi threads to call getInstance at the same time, that may create two object.</span>
-    <br />
-    <img src="images/SingletonMultithreading.jpg" />
+    <img src="images/SingletonPatternDefined.png" width="100%"/>
     <br />
     <br />
-    <span class="important_text">The only time synchronization is relevant is the first time through this method. In other words, once we've set the uniqueInstance variable to an instance of Singleton, we hava no further need to synchronize this method. After the first time through, synchronization is totally unneeded overhead!</span>
+    <span class="important_text"><font size="8">If there are multi threads to call getInstance at the same time, that may create two object.</font></span>
+    <br />
+    <img src="images/SingletonMultithreading.jpg" width="100%"/>
     <br />
     <br />
-    <span class="important_text">So how to improve multithreading?</span>
+    <span class="important_text"><font size="8">The only time synchronization is relevant is the first time through this method. In other words, once we've set the uniqueInstance variable to an instance of Singleton, we hava no further need to synchronize this method. After the first time through, synchronization is totally unneeded overhead!</font></span>
     <br />
-    <span class="important_text">1. Do nothing if the performance of getInstance() isn't critical to your application.</span>
     <br />
-    <span class="important_text">2. Move to an eagerly created instance rather than a lazily created one.</span>
+    <span class="important_text"><font size="8">So how to improve multithreading?</font></span>
+    <br />
+    <span class="important_text"><font size="8">1. Do nothing if the performance of getInstance() isn't critical to your application.</font></span>
+    <br />
+    <span class="important_text"><font size="8">2. Move to an eagerly created instance rather than a lazily created one.</font></span>
     <br />
     <div class="code_style">
     <pre class="prettyprint">
@@ -101,9 +101,10 @@ class Singleton2 {
 	</pre>
     <br />
     <br />
-    <span class="important_text">3. Use "double-checked locking" to reduce the use of synchronization in getInstance().</span>
+    <span class="important_text"><font size="8">3. Use "double-checked locking" to reduce the use of synchronization in getInstance().</font></span>
     <br />
-    <img src="images/SingletonMultithreading_volatile.jpg" />
+    <br />
+    <img src="images/SingletonMultithreading_volatile.jpg" width="100%"/>
     <br />
     </div>
     <br />
