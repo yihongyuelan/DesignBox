@@ -15,13 +15,21 @@
 */
 package com.seven.designbox.designpatterns.patterns.compound.view;
 
+import com.seven.designbox.R;
+
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 public class PlayerDetailsViewMvcImpl implements PlayerDetailsViewMvc {
     private View mRootView;
     private ShowDetailsViewListener mListener;
     private boolean mMoreInfoSupported = true;
+
+    public PlayerDetailsViewMvcImpl(LayoutInflater inflater, ViewGroup container) {
+        mRootView = inflater.inflate(R.layout.player_details_mvc, container, false);
+    }
     @Override
     public View getRootView() {
         return null;
