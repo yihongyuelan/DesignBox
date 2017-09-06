@@ -15,12 +15,16 @@
 */
 package com.seven.designbox.designpatterns.patterns.compound.view;
 
+import com.seven.designbox.designpatterns.patterns.compound.model.DetailsInfo;
+
 public interface PlayerDetailsViewMvc extends ViewMvc {
-    interface ShowDetailsViewListener {
-        void onMoreInfoClick();
+    interface DetailsViewListener {
+        void onLastBtnClicked();
+        void onNextBtnClicked();
+        DetailsInfo getDetailsInfo();
     }
 
-    void moreInfoNotSupported();
+    void setListener(DetailsViewListener listener);
 
-    void setListener(ShowDetailsViewListener listener);
+    void updateDetails();
 }

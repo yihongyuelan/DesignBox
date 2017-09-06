@@ -15,7 +15,7 @@
  */
 package com.seven.designbox.designpatterns.patterns.compound.model;
 
-public class SongInfo {
+public class DetailsInfo {
     private long id;
     private String name;
     private String singer;

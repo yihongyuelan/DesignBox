@@ -26,29 +26,28 @@ import android.widget.TextView;
 
 public class PlayerDetailsViewMvcImpl implements PlayerDetailsViewMvc {
     private View mRootView;
-    private ShowDetailsViewListener mListener;
-    private boolean mMoreInfoSupported = true;
+    private DetailsViewListener mListener;
     private ButtonClickListener mClickListener;
 
     private TextView mNameTv;
     private TextView mSingerTv;
     private TextView mLyricsTv;
-    private Button mMoreInfoBtn, mLastBtn, mPlayBtn, mNextBtn;
+    private Button mMoreInfoBtn, mLastBtn, mNextBtn;
 
     private class ButtonClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
+            if (mListener == null)
+                return;
             switch (v.getId()) {
                 case R.id.btn_more_info:
-                    if (mListener != null) {
-                        mListener.onMoreInfoClick();
-                    }
+
                     break;
                 case R.id.btn_last:
-                    break;
-                case R.id.btn_play:
+                    mListener.onLastBtnClicked();
                     break;
                 case R.id.btn_next:
+                    mListener.onNextBtnClicked();
                     break;
                 default:
                     break;
@@ -68,7 +67,6 @@ public class PlayerDetailsViewMvcImpl implements PlayerDetailsViewMvc {
         mLyricsTv = findViewById(R.id.tv_lyrics);
         mMoreInfoBtn = findViewById(R.id.btn_more_info);
         mLastBtn = findViewById(R.id.btn_last);
-        mPlayBtn = findViewById(R.id.btn_play);
         mNextBtn = findViewById(R.id.btn_next);
     }
 
@@ -78,7 +76,6 @@ public class PlayerDetailsViewMvcImpl implements PlayerDetailsViewMvc {
         }
         mMoreInfoBtn.setOnClickListener(mClickListener);
         mLastBtn.setOnClickListener(mClickListener);
-        mPlayBtn.setOnClickListener(mClickListener);
         mNextBtn.setOnClickListener(mClickListener);
     }
 
@@ -93,13 +90,13 @@ public class PlayerDetailsViewMvcImpl implements PlayerDetailsViewMvc {
     }
 
     @Override
-    public void moreInfoNotSupported() {
-        mMoreInfoSupported = false;
+    public void setListener(DetailsViewListener listener) {
+        mListener = listener;
     }
 
     @Override
-    public void setListener(ShowDetailsViewListener listener) {
-        mListener = listener;
+    public void updateDetails() {
+        //getCurrentSong
     }
 
     @SuppressWarnings("unchecked")
@@ -110,4 +107,5 @@ public class PlayerDetailsViewMvcImpl implements PlayerDetailsViewMvc {
             throw e;
         }
     }
+
 }

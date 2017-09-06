@@ -26,7 +26,7 @@ public class PlayerManager {
     }
 
     public interface PlayerManagerListener {
-        void onSongChanged(SongInfo info);
+        void onSongChanged();
     }
 
     public void registerListener(PlayerManagerListener listener) {
@@ -37,10 +37,19 @@ public class PlayerManager {
         mListeners.remove(listener);
     }
 
-    public void getSongDetails() {
-        SongInfo info = new SongInfo();
+    public void lastSong() {
         for (PlayerManagerListener listener : mListeners) {
-            listener.onSongChanged(info);
+            listener.onSongChanged();
         }
+    }
+
+    public void nextSong() {
+        for (PlayerManagerListener listener : mListeners) {
+            listener.onSongChanged();
+        }
+    }
+
+    public DetailsInfo getDetailsInfo() {
+        return null;
     }
 }

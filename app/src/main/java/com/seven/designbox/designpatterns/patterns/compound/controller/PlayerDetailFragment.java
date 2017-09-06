@@ -15,8 +15,8 @@
  */
 package com.seven.designbox.designpatterns.patterns.compound.controller;
 
+import com.seven.designbox.designpatterns.patterns.compound.model.DetailsInfo;
 import com.seven.designbox.designpatterns.patterns.compound.model.PlayerManager;
-import com.seven.designbox.designpatterns.patterns.compound.model.SongInfo;
 import com.seven.designbox.designpatterns.patterns.compound.view.PlayerDetailsViewMvc;
 import com.seven.designbox.designpatterns.patterns.compound.view.PlayerDetailsViewMvcImpl;
 
@@ -29,7 +29,7 @@ import android.view.ViewGroup;
 
 // Controller
 public class PlayerDetailFragment extends Fragment implements
-        PlayerDetailsViewMvc.ShowDetailsViewListener,
+        PlayerDetailsViewMvc.DetailsViewListener,
         PlayerManager.PlayerManagerListener {
 
     private PlayerDetailsViewMvc mViewMvc;
@@ -57,12 +57,22 @@ public class PlayerDetailFragment extends Fragment implements
     }
 
     @Override
-    public void onMoreInfoClick() {
-        mPlayerManager.getSongDetails();
+    public void onLastBtnClicked() {
+        mPlayerManager.lastSong();
     }
 
     @Override
-    public void onSongChanged(SongInfo info) {
+    public void onNextBtnClicked() {
+        mPlayerManager.nextSong();
+    }
 
+    @Override
+    public DetailsInfo getDetailsInfo() {
+        return mPlayerManager.getDetailsInfo();
+    }
+
+    @Override
+    public void onSongChanged() {
+        mViewMvc.updateDetails();
     }
 }
