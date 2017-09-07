@@ -15,14 +15,22 @@
  */
 package com.seven.designbox.designpatterns.patterns.compound.model;
 
+import com.seven.designbox.R;
+
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerManager {
     private List<PlayerManagerListener> mListeners;
+    private String[] mSingerNames, mSongNames, mSongLyrics;
 
-    public PlayerManager() {
+    public PlayerManager(Context context) {
         mListeners = new ArrayList<>();
+        mSingerNames = context.getResources().getStringArray(R.array.singer_names);
+        mSongNames = context.getResources().getStringArray(R.array.song_names);
+        mSongLyrics = context.getResources().getStringArray(R.array.song_lyrics);
     }
 
     public interface PlayerManagerListener {

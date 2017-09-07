@@ -29,10 +29,8 @@ public class PlayerDetailsViewMvcImpl implements PlayerDetailsViewMvc {
     private DetailsViewListener mListener;
     private ButtonClickListener mClickListener;
 
-    private TextView mNameTv;
-    private TextView mSingerTv;
-    private TextView mLyricsTv;
-    private Button mMoreInfoBtn, mLastBtn, mNextBtn;
+    private TextView mNameTv, mSingerTv, mLyricsTv;
+    private Button mLastBtn, mNextBtn;
 
     private class ButtonClickListener implements View.OnClickListener {
         @Override
@@ -40,9 +38,6 @@ public class PlayerDetailsViewMvcImpl implements PlayerDetailsViewMvc {
             if (mListener == null)
                 return;
             switch (v.getId()) {
-                case R.id.btn_more_info:
-
-                    break;
                 case R.id.btn_last:
                     mListener.onLastBtnClicked();
                     break;
@@ -65,7 +60,6 @@ public class PlayerDetailsViewMvcImpl implements PlayerDetailsViewMvc {
         mNameTv = findViewById(R.id.tv_name);
         mSingerTv = findViewById(R.id.tv_singer);
         mLyricsTv = findViewById(R.id.tv_lyrics);
-        mMoreInfoBtn = findViewById(R.id.btn_more_info);
         mLastBtn = findViewById(R.id.btn_last);
         mNextBtn = findViewById(R.id.btn_next);
     }
@@ -74,7 +68,6 @@ public class PlayerDetailsViewMvcImpl implements PlayerDetailsViewMvc {
         if (mClickListener == null) {
             mClickListener = new ButtonClickListener();
         }
-        mMoreInfoBtn.setOnClickListener(mClickListener);
         mLastBtn.setOnClickListener(mClickListener);
         mNextBtn.setOnClickListener(mClickListener);
     }
@@ -96,16 +89,12 @@ public class PlayerDetailsViewMvcImpl implements PlayerDetailsViewMvc {
 
     @Override
     public void updateDetails() {
-        //getCurrentSong
+        mListener.getDetailsInfo();
     }
 
     @SuppressWarnings("unchecked")
     private <T extends View> T findViewById(int id) {
-        try {
-            return (T) mRootView.findViewById(id);
-        } catch (ClassCastException e) {
-            throw e;
-        }
+        return (T) mRootView.findViewById(id);
     }
 
 }
