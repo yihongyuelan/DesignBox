@@ -16,6 +16,7 @@
 package com.seven.designbox.designpatterns.patterns.compound.view;
 
 import com.seven.designbox.R;
+import com.seven.designbox.designpatterns.patterns.compound.model.SongInfo;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -89,7 +90,7 @@ public class PlayerDetailsViewMvcImpl implements PlayerDetailsViewMvc {
 
     @Override
     public void updateDetails() {
-        mListener.getDetailsInfo();
+        SongInfo info = mListener.getSongInfo();
     }
 
     @SuppressWarnings("unchecked")

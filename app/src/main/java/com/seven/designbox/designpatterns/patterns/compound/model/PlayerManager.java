@@ -24,13 +24,34 @@ import java.util.List;
 
 public class PlayerManager {
     private List<PlayerManagerListener> mListeners;
-    private String[] mSingerNames, mSongNames, mSongLyrics;
+    private String[] mSingerArray, mNameArray, mLyricsArray;
+    private List<SongInfo> mSongInfoList;
+    private SongInfo mCurrentSong;
 
     public PlayerManager(Context context) {
+        mSongInfoList = new ArrayList<>();
         mListeners = new ArrayList<>();
-        mSingerNames = context.getResources().getStringArray(R.array.singer_names);
-        mSongNames = context.getResources().getStringArray(R.array.song_names);
-        mSongLyrics = context.getResources().getStringArray(R.array.song_lyrics);
+        mSingerArray = context.getResources().getStringArray(R.array.singer_names);
+        mNameArray = context.getResources().getStringArray(R.array.song_names);
+        mLyricsArray = context.getResources().getStringArray(R.array.song_lyrics);
+        initAllSongs();
+    }
+
+    private void initAllSongs() {
+        for (int i = 0; i < mSingerArray.length; i++) {
+            mSongInfoList.add(createSongInfo(i, mSingerArray[i], mNameArray[i], mLyricsArray[i]));
+        }
+        mCurrentSong = mSongInfoList.get(0);
+    }
+
+    private SongInfo createSongInfo(long id, String singer, String name, String lyrics) {
+        SongInfo info = new SongInfo();
+        info.setId(id);
+        info.setSinger(singer);
+        info.setName(name);
+        info.setLyrics(lyrics);
+        info.setPlaying(false);
+        return info;
     }
 
     public interface PlayerManagerListener {
@@ -57,7 +78,7 @@ public class PlayerManager {
         }
     }
 
-    public DetailsInfo getDetailsInfo() {
+    public SongInfo getSongsInfo() {
         return null;
     }
 }

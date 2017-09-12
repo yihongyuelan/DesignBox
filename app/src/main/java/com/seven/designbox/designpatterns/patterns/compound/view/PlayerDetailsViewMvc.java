@@ -15,13 +15,13 @@
 */
 package com.seven.designbox.designpatterns.patterns.compound.view;
 
-import com.seven.designbox.designpatterns.patterns.compound.model.DetailsInfo;
+import com.seven.designbox.designpatterns.patterns.compound.model.SongInfo;
 
 public interface PlayerDetailsViewMvc extends ViewMvc {
     interface DetailsViewListener {
         void onLastBtnClicked();
         void onNextBtnClicked();
-        DetailsInfo getDetailsInfo();
+        SongInfo getSongInfo();
     }
 
     void setListener(DetailsViewListener listener);

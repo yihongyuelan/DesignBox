@@ -15,7 +15,7 @@
  */
 package com.seven.designbox.designpatterns.patterns.compound.controller;
 
-import com.seven.designbox.designpatterns.patterns.compound.model.DetailsInfo;
+import com.seven.designbox.designpatterns.patterns.compound.model.SongInfo;
 import com.seven.designbox.designpatterns.patterns.compound.model.PlayerManager;
 import com.seven.designbox.designpatterns.patterns.compound.view.PlayerDetailsViewMvc;
 import com.seven.designbox.designpatterns.patterns.compound.view.PlayerDetailsViewMvcImpl;
@@ -38,7 +38,7 @@ public class PlayerDetailFragment extends Fragment implements
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mPlayerManager = new PlayerManager();
+        mPlayerManager = new PlayerManager(getContext());
         mViewMvc = new PlayerDetailsViewMvcImpl(inflater, container);
         mViewMvc.setListener(this);
         return mViewMvc.getRootView();
@@ -67,8 +67,8 @@ public class PlayerDetailFragment extends Fragment implements
     }
 
     @Override
-    public DetailsInfo getDetailsInfo() {
-        return mPlayerManager.getDetailsInfo();
+    public SongInfo getSongInfo() {
+        return mPlayerManager.getSongsInfo();
     }
 
     @Override

@@ -15,11 +15,52 @@
  */
 package com.seven.designbox.designpatterns.patterns.compound.model;
 
-public class DetailsInfo {
+public class SongInfo {
     private long id;
     private String name;
     private String singer;
-    private String moreInfoTxt;
-    private boolean hasMoreInfo = false;
+    private String lyrics;
     private boolean playing = false;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSinger() {
+        return singer;
+    }
+
+    public void setSinger(String singer) {
+        this.singer = singer;
+    }
+
+    public String getLyrics() {
+        return lyrics;
+    }
+
+    public void setLyrics(String lyrics) {
+        this.lyrics = lyrics;
+    }
+
+    public boolean isPlaying() {
+        return playing;
+    }
+
+    public void setPlaying(boolean playing) {
+        this.playing = playing;
+    }
+
+
 }
