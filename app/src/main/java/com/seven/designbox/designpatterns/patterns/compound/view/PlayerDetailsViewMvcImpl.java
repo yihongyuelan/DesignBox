@@ -19,11 +19,15 @@ import com.seven.designbox.R;
 import com.seven.designbox.designpatterns.patterns.compound.model.SongInfo;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.lang.ref.WeakReference;
 
 public class PlayerDetailsViewMvcImpl implements PlayerDetailsViewMvc {
     private View mRootView;
@@ -32,6 +36,22 @@ public class PlayerDetailsViewMvcImpl implements PlayerDetailsViewMvc {
 
     private TextView mNameTv, mSingerTv, mLyricsTv;
     private Button mLastBtn, mNextBtn;
+    private WeakHandler mWeakHandler;
+
+    private static class WeakHandler extends Handler {
+        private WeakReference<PlayerDetailsViewMvcImpl> mWeakReference;
+
+        public WeakHandler(PlayerDetailsViewMvcImpl fragment) {
+            mWeakReference = new WeakReference<>(fragment);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.obj != null) {
+                mWeakReference.get().updateUI((SongInfo) msg.obj);
+            }
+        }
+    }
 
     private class ButtonClickListener implements View.OnClickListener {
         @Override
@@ -71,6 +91,7 @@ public class PlayerDetailsViewMvcImpl implements PlayerDetailsViewMvc {
         }
         mLastBtn.setOnClickListener(mClickListener);
         mNextBtn.setOnClickListener(mClickListener);
+        mWeakHandler = new WeakHandler(this);
     }
 
     @Override
@@ -90,7 +111,15 @@ public class PlayerDetailsViewMvcImpl implements PlayerDetailsViewMvc {
 
     @Override
     public void updateDetails() {
-        SongInfo info = mListener.getSongInfo();
+        mWeakHandler.sendMessage(mWeakHandler.obtainMessage(0, mListener.getSongInfo()));
+    }
+
+    private void updateUI(SongInfo info) {
+        if (info != null) {
+            mSingerTv.setText(info.getSinger());
+            mNameTv.setText(info.getName());
+            mLyricsTv.setText(info.getLyrics());
+        }
     }
 
     @SuppressWarnings("unchecked")

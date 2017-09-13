@@ -27,10 +27,12 @@ public class PlayerManager {
     private String[] mSingerArray, mNameArray, mLyricsArray;
     private List<SongInfo> mSongInfoList;
     private SongInfo mCurrentSong;
+    private int mSongCounts;
 
     public PlayerManager(Context context) {
         mSongInfoList = new ArrayList<>();
         mListeners = new ArrayList<>();
+        mCurrentSong = new SongInfo();
         mSingerArray = context.getResources().getStringArray(R.array.singer_names);
         mNameArray = context.getResources().getStringArray(R.array.song_names);
         mLyricsArray = context.getResources().getStringArray(R.array.song_lyrics);
@@ -38,13 +40,14 @@ public class PlayerManager {
     }
 
     private void initAllSongs() {
-        for (int i = 0; i < mSingerArray.length; i++) {
+        mSongCounts = mSingerArray.length;
+        for (int i = 0; i < mSongCounts; i++) {
             mSongInfoList.add(createSongInfo(i, mSingerArray[i], mNameArray[i], mLyricsArray[i]));
         }
         mCurrentSong = mSongInfoList.get(0);
     }
 
-    private SongInfo createSongInfo(long id, String singer, String name, String lyrics) {
+    private SongInfo createSongInfo(int id, String singer, String name, String lyrics) {
         SongInfo info = new SongInfo();
         info.setId(id);
         info.setSinger(singer);
@@ -67,18 +70,29 @@ public class PlayerManager {
     }
 
     public void lastSong() {
+        int id = mCurrentSong.getId() - 1;
+        mCurrentSong = id < 0 ? getSong(mSongCounts - 1) : getSong(id);
         for (PlayerManagerListener listener : mListeners) {
             listener.onSongChanged();
         }
     }
 
     public void nextSong() {
+        int id = mCurrentSong.getId() + 1;
+        mCurrentSong = id > mSongCounts ? getSong(0) : getSong(id);
         for (PlayerManagerListener listener : mListeners) {
             listener.onSongChanged();
         }
     }
 
     public SongInfo getSongsInfo() {
+        return mCurrentSong;
+    }
+
+    private SongInfo getSong(int id) {
+        if (mSongInfoList.get(0) != null) {
+            return mSongInfoList.get(id);
+        }
         return null;
     }
 }

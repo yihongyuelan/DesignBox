@@ -16,17 +16,17 @@
 package com.seven.designbox.designpatterns.patterns.compound.model;
 
 public class SongInfo {
-    private long id;
+    private int id;
     private String name;
     private String singer;
     private String lyrics;
     private boolean playing = false;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
