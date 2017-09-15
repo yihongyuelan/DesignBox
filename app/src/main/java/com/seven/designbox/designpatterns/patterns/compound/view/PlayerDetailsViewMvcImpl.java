@@ -18,9 +18,9 @@ package com.seven.designbox.designpatterns.patterns.compound.view;
 import com.seven.designbox.R;
 import com.seven.designbox.designpatterns.patterns.compound.model.SongInfo;
 
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,6 +81,7 @@ public class PlayerDetailsViewMvcImpl implements PlayerDetailsViewMvc {
         mNameTv = findViewById(R.id.tv_name);
         mSingerTv = findViewById(R.id.tv_singer);
         mLyricsTv = findViewById(R.id.tv_lyrics);
+        mLyricsTv.setMovementMethod(new ScrollingMovementMethod());
         mLastBtn = findViewById(R.id.btn_last);
         mNextBtn = findViewById(R.id.btn_next);
     }
@@ -97,11 +98,6 @@ public class PlayerDetailsViewMvcImpl implements PlayerDetailsViewMvc {
     @Override
     public View getRootView() {
         return mRootView;
-    }
-
-    @Override
-    public Bundle getViewState() {
-        return null;
     }
 
     @Override

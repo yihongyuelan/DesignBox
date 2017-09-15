@@ -16,13 +16,10 @@
 
 package com.seven.designbox.designpatterns.patterns.compound.view;
 
-import android.os.Bundle;
 import android.view.View;
 
 public interface ViewMvc {
 
     View getRootView();
-
-    Bundle getViewState();
 
 }

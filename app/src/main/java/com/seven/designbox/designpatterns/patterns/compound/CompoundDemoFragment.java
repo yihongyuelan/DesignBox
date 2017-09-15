@@ -15,11 +15,8 @@ public class CompoundDemoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.patterns_proxy, null, false);
-        //View
-        PlayerDetailFragment fragment = new PlayerDetailFragment();
-
         getChildFragmentManager().beginTransaction()
-                .replace(R.id.download_fg_container, fragment)
+                .replace(R.id.download_fg_container, new PlayerDetailFragment())
                 .commit();
         return view;
     }

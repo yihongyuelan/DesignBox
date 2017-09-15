@@ -54,6 +54,8 @@
             android:gravity="center"
             android:textSize="16sp"
             android:scrollbars="vertical"
+            android:fadeScrollbars="false"
+            android:scrollbarThumbVertical="@drawable/scrollbar_bg"
             android:text="@string/compound_pattern_lyrics"/>
 
     </FrameLayout>

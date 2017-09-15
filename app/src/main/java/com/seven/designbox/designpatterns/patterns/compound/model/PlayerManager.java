@@ -79,7 +79,7 @@ public class PlayerManager {
 
     public void nextSong() {
         int id = mCurrentSong.getId() + 1;
-        mCurrentSong = id > mSongCounts ? getSong(0) : getSong(id);
+        mCurrentSong = id < mSongCounts ? getSong(id) : getSong(0);
         for (PlayerManagerListener listener : mListeners) {
             listener.onSongChanged();
         }
