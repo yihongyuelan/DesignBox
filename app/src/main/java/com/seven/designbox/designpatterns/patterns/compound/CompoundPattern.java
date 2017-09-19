@@ -19,8 +19,9 @@ public class CompoundPattern extends PatternsCommonActivity {
 
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 getSupportFragmentManager(), FragmentPagerItems.with(this)
-                .add(R.string.composite_pattern_des, CompoundDesFragment.class)
-                .add(R.string.composite_pattern_demo, CompoundDemoFragment.class)
+                .add(R.string.compound_pattern_des, CompoundDesFragment.class)
+                .add(R.string.compound_pattern_demo_mvc, CompoundDemoFragmentMvc.class)
+                .add(R.string.compound_pattern_demo_mvp, CompoundDemoFragmentMvp.class)
                 .create());
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);

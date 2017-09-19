@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.seven.designbox.designpatterns.patterns.compound.controller;
+package com.seven.designbox.designpatterns.patterns.compound.mvc.controller;
 
 import com.seven.designbox.designpatterns.patterns.compound.model.SongInfo;
 import com.seven.designbox.designpatterns.patterns.compound.model.PlayerManager;
-import com.seven.designbox.designpatterns.patterns.compound.view.PlayerDetailsViewMvc;
-import com.seven.designbox.designpatterns.patterns.compound.view.PlayerDetailsViewMvcImpl;
+import com.seven.designbox.designpatterns.patterns.compound.mvc.view.PlayerDetailsViewMvc;
+import com.seven.designbox.designpatterns.patterns.compound.mvc.view.PlayerDetailsViewMvcImpl;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

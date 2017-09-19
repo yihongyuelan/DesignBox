@@ -13,7 +13,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-package com.seven.designbox.designpatterns.patterns.compound.view;
+package com.seven.designbox.designpatterns.patterns.compound.mvc.view;
 
 import com.seven.designbox.R;
 import com.seven.designbox.designpatterns.patterns.compound.model.SongInfo;

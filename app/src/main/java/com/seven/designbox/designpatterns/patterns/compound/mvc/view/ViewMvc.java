@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.seven.designbox.designpatterns.patterns.compound.view;
+package com.seven.designbox.designpatterns.patterns.compound.mvc.view;
 
 import android.view.View;
 
