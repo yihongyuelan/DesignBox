@@ -16,4 +16,20 @@
 package com.seven.designbox.designpatterns.patterns.compound.mvp.view;
 
 public class PlayerDetailContract {
+    interface BasePresenter {
+        void start();
+    }
+
+    public interface Presenter extends BasePresenter {
+        void onLastBtnClicked();
+        void onNextBtnClicked();
+    }
+
+    interface BaseView<T> {
+        void setPresenter(T presenter);
+    }
+
+    public interface View extends BaseView<Presenter> {
+
+    }
 }

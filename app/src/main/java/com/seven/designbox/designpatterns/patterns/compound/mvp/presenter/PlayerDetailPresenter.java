@@ -15,5 +15,35 @@
 */
 package com.seven.designbox.designpatterns.patterns.compound.mvp.presenter;
 
-public class PlayerDetailPresenter {
+import com.seven.designbox.designpatterns.patterns.compound.model.PlayerManager;
+import com.seven.designbox.designpatterns.patterns.compound.mvp.view.PlayerDetailContract;
+
+import android.content.Context;
+
+public class PlayerDetailPresenter implements PlayerDetailContract.Presenter {
+    private PlayerManager mPlayerManager;
+    private PlayerDetailContract.View mPlayerDetailView;
+
+    public PlayerDetailPresenter(Context context) {
+        mPlayerManager = new PlayerManager(context);
+    }
+
+    @Override
+    public void start() {
+
+    }
+
+    @Override
+    public void onLastBtnClicked() {
+        if (mPlayerManager != null) {
+            mPlayerManager.lastSong();
+        }
+    }
+
+    @Override
+    public void onNextBtnClicked() {
+        if (mPlayerManager != null) {
+            mPlayerManager.nextSong();
+        }
+    }
 }

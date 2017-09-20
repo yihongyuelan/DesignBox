@@ -15,7 +15,78 @@
 */
 package com.seven.designbox.designpatterns.patterns.compound.mvp.view;
 
-import android.support.v4.app.Fragment;
+import com.seven.designbox.R;
 
-public class PlayerDetailFragment extends Fragment {
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.text.method.ScrollingMovementMethod;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class PlayerDetailFragment extends Fragment implements PlayerDetailContract.View {
+
+    private View mRootView;
+    private TextView mNameTv, mSingerTv, mLyricsTv;
+    private Button mLastBtn, mNextBtn;
+    private ButtonClickListener mClickListener;
+    private PlayerDetailContract.Presenter mPresenter;
+
+    @Override
+    public void setPresenter(PlayerDetailContract.Presenter presenter) {
+        mPresenter = presenter;
+    }
+
+    private class ButtonClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            if (mPresenter == null)
+                return;
+            switch (v.getId()) {
+                case R.id.btn_last:
+                    mPresenter.onLastBtnClicked();
+                    break;
+                case R.id.btn_next:
+                    mPresenter.onNextBtnClicked();
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mRootView = inflater.inflate(R.layout.player_details_mvc, container, false);
+        initViews();
+        initListeners();
+        return mRootView;
+    }
+
+    private void initViews() {
+        mNameTv = findViewById(R.id.tv_name);
+        mSingerTv = findViewById(R.id.tv_singer);
+        mLyricsTv = findViewById(R.id.tv_lyrics);
+        mLyricsTv.setMovementMethod(new ScrollingMovementMethod());
+        mLastBtn = findViewById(R.id.btn_last);
+        mNextBtn = findViewById(R.id.btn_next);
+    }
+
+    private void initListeners() {
+        if (mClickListener == null) {
+            mClickListener = new ButtonClickListener();
+        }
+        mLastBtn.setOnClickListener(mClickListener);
+        mNextBtn.setOnClickListener(mClickListener);
+    }
+
+    @SuppressWarnings("unchecked")
+    private <T extends View> T findViewById(int id) {
+        return (T) mRootView.findViewById(id);
+    }
 }
