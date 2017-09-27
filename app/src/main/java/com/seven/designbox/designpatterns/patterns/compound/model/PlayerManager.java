@@ -61,6 +61,10 @@ public class PlayerManager {
         void onSongChanged();
     }
 
+    public interface PlayManagerCallback {
+        void onSongUpdated(SongInfo info);
+    }
+
     public void registerListener(PlayerManagerListener listener) {
         mListeners.add(listener);
     }
@@ -87,6 +91,12 @@ public class PlayerManager {
 
     public SongInfo getSongsInfo() {
         return mCurrentSong;
+    }
+
+    public void getSongsInfo(PlayManagerCallback callback) {
+        if (mCurrentSong.isValid()) {
+            callback.onSongUpdated(mCurrentSong);
+        }
     }
 
     private SongInfo getSong(int id) {

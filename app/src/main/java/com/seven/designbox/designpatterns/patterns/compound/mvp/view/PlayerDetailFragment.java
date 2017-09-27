@@ -16,8 +16,11 @@
 package com.seven.designbox.designpatterns.patterns.compound.mvp.view;
 
 import com.seven.designbox.R;
+import com.seven.designbox.designpatterns.patterns.compound.model.SongInfo;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.method.ScrollingMovementMethod;
@@ -27,17 +30,30 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.lang.ref.WeakReference;
+
 public class PlayerDetailFragment extends Fragment implements PlayerDetailContract.View {
 
     private View mRootView;
     private TextView mNameTv, mSingerTv, mLyricsTv;
     private Button mLastBtn, mNextBtn;
+    private WeakHandler mWeakHandler;
     private ButtonClickListener mClickListener;
     private PlayerDetailContract.Presenter mPresenter;
 
-    @Override
-    public void setPresenter(PlayerDetailContract.Presenter presenter) {
-        mPresenter = presenter;
+    private static class WeakHandler extends Handler {
+        private WeakReference<PlayerDetailFragment> mWeakReference;
+
+        public WeakHandler(PlayerDetailFragment fragment) {
+            mWeakReference = new WeakReference<>(fragment);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.obj != null) {
+                mWeakReference.get().updateUI((SongInfo) msg.obj);
+            }
+        }
     }
 
     private class ButtonClickListener implements View.OnClickListener {
@@ -58,11 +74,21 @@ public class PlayerDetailFragment extends Fragment implements PlayerDetailContra
         }
     }
 
+    @Override
+    public void setPresenter(PlayerDetailContract.Presenter presenter) {
+        mPresenter = presenter;
+    }
+
+    @Override
+    public void updateDetails(SongInfo info) {
+        mWeakHandler.sendMessage(mWeakHandler.obtainMessage(0, info));
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.player_details_mvc, container, false);
+        mWeakHandler = new WeakHandler(this);
         initViews();
         initListeners();
         return mRootView;
@@ -88,5 +114,13 @@ public class PlayerDetailFragment extends Fragment implements PlayerDetailContra
     @SuppressWarnings("unchecked")
     private <T extends View> T findViewById(int id) {
         return (T) mRootView.findViewById(id);
+    }
+
+    private void updateUI(SongInfo info) {
+        if (info != null) {
+            mSingerTv.setText(info.getSinger());
+            mNameTv.setText(info.getName());
+            mLyricsTv.setText(info.getLyrics());
+        }
     }
 }

@@ -15,9 +15,11 @@
 */
 package com.seven.designbox.designpatterns.patterns.compound.mvp.view;
 
+import com.seven.designbox.designpatterns.patterns.compound.model.SongInfo;
+
 public class PlayerDetailContract {
     interface BasePresenter {
-        void start();
+        void stop();
     }
 
     public interface Presenter extends BasePresenter {
@@ -30,6 +32,6 @@ public class PlayerDetailContract {
     }
 
     public interface View extends BaseView<Presenter> {
-
+        void updateDetails(SongInfo info);
     }
 }

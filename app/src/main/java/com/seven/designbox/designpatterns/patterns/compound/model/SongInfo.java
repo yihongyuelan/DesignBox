@@ -16,7 +16,7 @@
 package com.seven.designbox.designpatterns.patterns.compound.model;
 
 public class SongInfo {
-    private int id;
+    private int id = -1;
     private String name;
     private String singer;
     private String lyrics;
@@ -62,5 +62,11 @@ public class SongInfo {
         this.playing = playing;
     }
 
+    public boolean isValid() {
+        if (id == -1) {
+            return false;
+        }
+        return true;
+    }
 
 }

@@ -16,21 +16,28 @@
 package com.seven.designbox.designpatterns.patterns.compound.mvp.presenter;
 
 import com.seven.designbox.designpatterns.patterns.compound.model.PlayerManager;
+import com.seven.designbox.designpatterns.patterns.compound.model.SongInfo;
 import com.seven.designbox.designpatterns.patterns.compound.mvp.view.PlayerDetailContract;
 
-import android.content.Context;
-
-public class PlayerDetailPresenter implements PlayerDetailContract.Presenter {
+public class PlayerDetailPresenter implements
+        PlayerDetailContract.Presenter,
+        PlayerManager.PlayerManagerListener {
     private PlayerManager mPlayerManager;
     private PlayerDetailContract.View mPlayerDetailView;
 
-    public PlayerDetailPresenter(Context context) {
-        mPlayerManager = new PlayerManager(context);
+    public PlayerDetailPresenter(PlayerManager manager,
+                                 PlayerDetailContract.View detailView) {
+        mPlayerManager = manager;
+        mPlayerManager.registerListener(this);
+        mPlayerDetailView = detailView;
+        mPlayerDetailView.setPresenter(this);
     }
 
     @Override
-    public void start() {
-
+    public void stop() {
+        if (mPlayerManager != null) {
+            mPlayerManager.unregisterListener(this);
+        }
     }
 
     @Override
@@ -45,5 +52,15 @@ public class PlayerDetailPresenter implements PlayerDetailContract.Presenter {
         if (mPlayerManager != null) {
             mPlayerManager.nextSong();
         }
+    }
+
+    @Override
+    public void onSongChanged() {
+        mPlayerManager.getSongsInfo(new PlayerManager.PlayManagerCallback() {
+            @Override
+            public void onSongUpdated(SongInfo info) {
+                mPlayerDetailView.updateDetails(info);
+            }
+        });
     }
 }
