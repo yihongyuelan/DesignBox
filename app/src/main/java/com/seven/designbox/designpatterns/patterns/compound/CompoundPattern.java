@@ -22,6 +22,7 @@ public class CompoundPattern extends PatternsCommonActivity {
                 .add(R.string.compound_pattern_des, CompoundDesFragment.class)
                 .add(R.string.compound_pattern_demo_mvc, CompoundDemoFragmentMvc.class)
                 .add(R.string.compound_pattern_demo_mvp, CompoundDemoFragmentMvp.class)
+                .add(R.string.compound_pattern_demo_mvvm, CompoundDemoFragmentMvvm.class)
                 .create());
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
