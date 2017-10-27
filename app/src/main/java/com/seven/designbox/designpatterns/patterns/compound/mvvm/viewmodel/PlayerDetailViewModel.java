@@ -15,5 +15,15 @@
 */
 package com.seven.designbox.designpatterns.patterns.compound.mvvm.viewmodel;
 
-public class PlayerDetailViewModel {
+import android.databinding.BaseObservable;
+
+public class PlayerDetailViewModel extends BaseObservable {
+
+    public void onLastBtnClicked() {
+
+    }
+
+    public void onNextBtnClicked() {
+
+    }
 }

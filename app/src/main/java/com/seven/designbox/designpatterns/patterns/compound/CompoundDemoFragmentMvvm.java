@@ -2,7 +2,7 @@ package com.seven.designbox.designpatterns.patterns.compound;
 
 
 import com.seven.designbox.R;
-import com.seven.designbox.designpatterns.patterns.compound.mvc.controller.PlayerDetailFragment;
+import com.seven.designbox.designpatterns.patterns.compound.mvvm.view.PlayerDetailFragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
