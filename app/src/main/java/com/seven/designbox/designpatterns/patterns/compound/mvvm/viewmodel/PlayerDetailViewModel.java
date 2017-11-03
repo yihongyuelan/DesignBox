@@ -15,15 +15,49 @@
 */
 package com.seven.designbox.designpatterns.patterns.compound.mvvm.viewmodel;
 
-import android.databinding.BaseObservable;
+import com.seven.designbox.R;
+import com.seven.designbox.designpatterns.patterns.compound.model.PlayerManager;
+import com.seven.designbox.designpatterns.patterns.compound.model.SongInfo;
 
-public class PlayerDetailViewModel extends BaseObservable {
+import android.content.Context;
+import android.databinding.BaseObservable;
+import android.databinding.ObservableField;
+
+public class PlayerDetailViewModel extends BaseObservable implements PlayerManager.PlayerManagerTransfer{
+    public final ObservableField<String> mCurLyrics = new ObservableField<>();
+    public final ObservableField<String> mCurSinger = new ObservableField<>();
+    public final ObservableField<String> mCurName = new ObservableField<>();
+
+    private final PlayerManager mPlayerManager;
+
+    public PlayerDetailViewModel(Context context, PlayerManager manager) {
+        mPlayerManager = manager;
+        mPlayerManager.addTransferListener(this);
+        updateUI(context.getString(R.string.compound_pattern_name),
+                context.getString(R.string.compound_pattern_singer),
+                context.getString(R.string.compound_pattern_lyrics));
+    }
 
     public void onLastBtnClicked() {
-
+        if (mPlayerManager != null) {
+            mPlayerManager.lastSong();
+        }
     }
 
     public void onNextBtnClicked() {
+        if (mPlayerManager != null) {
+            mPlayerManager.nextSong();
+        }
+    }
 
+    private void updateUI(String name, String singer, String lyrics) {
+        mCurName.set(name);
+        mCurSinger.set(singer);
+        mCurLyrics.set(lyrics);
+    }
+
+    @Override
+    public void onSongChanged(SongInfo info) {
+        updateUI(info.getName(), info.getSinger(), info.getLyrics());
     }
 }

@@ -35,10 +35,12 @@
     <string name="composite_pattern_demo">Demo</string>
 
     <string name="compound_pattern_des">Description</string>
-    <string name="compound_pattern_demo_mvc">Demo MVC</string>
-    <string name="compound_pattern_demo_mvp">Demo MVP</string>
-    <string name="compound_pattern_demo_mvvm">Demo MVVM</string>
+    <string name="compound_pattern_demo_mvc">MVC</string>
+    <string name="compound_pattern_demo_mvp">MVP</string>
+    <string name="compound_pattern_demo_mvvm">MVVM</string>
 
+    <string name="compound_pattern_name">Want to Want Me</string>
+    <string name="compound_pattern_singer">Jason DeRulo</string>
     <string name="compound_pattern_lyrics">\"Want To Want Me\"\n
 (Derulo)
 \n

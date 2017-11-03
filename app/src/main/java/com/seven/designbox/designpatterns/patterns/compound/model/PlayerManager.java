@@ -24,6 +24,7 @@ import java.util.List;
 
 public class PlayerManager {
     private List<PlayerManagerListener> mListeners;
+    private PlayerManagerTransfer mTransfer;
     private String[] mSingerArray, mNameArray, mLyricsArray;
     private List<SongInfo> mSongInfoList;
     private SongInfo mCurrentSong;
@@ -61,8 +62,16 @@ public class PlayerManager {
         void onSongChanged();
     }
 
-    public interface PlayManagerCallback {
+    public interface PlayerManagerCallback {
         void onSongUpdated(SongInfo info);
+    }
+
+    public interface PlayerManagerTransfer {
+        void onSongChanged(SongInfo info);
+    }
+
+    public void addTransferListener(PlayerManagerTransfer transfer) {
+        mTransfer = transfer;
     }
 
     public void registerListener(PlayerManagerListener listener) {
@@ -76,6 +85,7 @@ public class PlayerManager {
     public void lastSong() {
         int id = mCurrentSong.getId() - 1;
         mCurrentSong = id < 0 ? getSong(mSongCounts - 1) : getSong(id);
+        updateTransfer(mCurrentSong);
         for (PlayerManagerListener listener : mListeners) {
             listener.onSongChanged();
         }
@@ -84,6 +94,7 @@ public class PlayerManager {
     public void nextSong() {
         int id = mCurrentSong.getId() + 1;
         mCurrentSong = id < mSongCounts ? getSong(id) : getSong(0);
+        updateTransfer(mCurrentSong);
         for (PlayerManagerListener listener : mListeners) {
             listener.onSongChanged();
         }
@@ -93,7 +104,7 @@ public class PlayerManager {
         return mCurrentSong;
     }
 
-    public void getSongsInfo(PlayManagerCallback callback) {
+    public void getSongsInfo(PlayerManagerCallback callback) {
         if (mCurrentSong.isValid()) {
             callback.onSongUpdated(mCurrentSong);
         }
@@ -104,5 +115,11 @@ public class PlayerManager {
             return mSongInfoList.get(id);
         }
         return null;
+    }
+
+    private void updateTransfer(SongInfo info) {
+        if (mTransfer != null) {
+            mTransfer.onSongChanged(mCurrentSong);
+        }
     }
 }

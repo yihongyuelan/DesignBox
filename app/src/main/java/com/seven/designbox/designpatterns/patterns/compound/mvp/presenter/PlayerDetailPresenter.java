@@ -56,7 +56,7 @@ public class PlayerDetailPresenter implements
 
     @Override
     public void onSongChanged() {
-        mPlayerManager.getSongsInfo(new PlayerManager.PlayManagerCallback() {
+        mPlayerManager.getSongsInfo(new PlayerManager.PlayerManagerCallback() {
             @Override
             public void onSongUpdated(SongInfo info) {
                 mPlayerDetailView.updateDetails(info);
